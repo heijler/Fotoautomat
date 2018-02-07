@@ -1,0 +1,44 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#mirror {
+    background: hsla(0, 0%, 39.6%, 0.6);
+    background: radial-gradient(ellipse at center, hsl(0, 0%, 21.2%) 0%,hsl(0, 0%, 12.9%) 100%);
+    min-height: 100%;
+    min-width: 100%;
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+#mirror img {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    z-index: 1;
+    opacity: 0.15;
+}
+
+#dark {
+    background-color: #000000;
+    min-height: 100%;
+    min-width: 100%;
+    z-index: 1;
+    position: absolute;
+    opacity: 0.5;
+}
+
+/* http://thenewcode.com/1020/HTML5-Video-Effects-with-CSS-Blend-Modes */
+#camera {
+    transform: scale(-1, 1);
+    mix-blend-mode: soft-light;
+}
+
+#canvas {
+    display: none;
+}
