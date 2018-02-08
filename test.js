@@ -16,7 +16,7 @@ function init() {
 }
 window.addEventListener("load", init, false);
 
-// Prefer camera resolution nearest to 1280x720.
+// Prefer camera resolution closest to 1280x720.
 // var constraints = { audio: true, video: { width: 720, height: 720 } }; 
 
 // navigator.mediaDevices.getUserMedia(constraints)
