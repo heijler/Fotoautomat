@@ -9,6 +9,8 @@ var Photobooth = /** @class */ (function () {
         Main.constraints = new WebcameraSettings(1280, 720);
         var cam = new Webcamera(Main.constraints);
         Main.videoFeed = cam.getStream();
+        console.log(Main.videoFeed);
+        console.log(typeof Main.videoFeed);
         this.reflect(Main.videoFeed);
     }
     Photobooth.prototype.reflect = function (feed) {
