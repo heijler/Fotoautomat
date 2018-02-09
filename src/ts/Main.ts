@@ -2,15 +2,16 @@
  * Main Class
  */
 
-var Main = {
+abstract class Main {
+    static canvas = null;
+    static video = null;
+    static videoFeed:Promise <void | MediaStream> = null;
+    static constraints = null;
 
-    canvas: null,
-    video: null,
-    videoFeed: null,
-    constraints: null,
-
-    init: function() {
-        
+    static init() {
+        console.log("Main.init");
+        var pb = new Photobooth();
     }
-};
+
+}
 window.addEventListener("load", Main.init, false);
