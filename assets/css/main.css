@@ -34,7 +34,7 @@ body {
 }
 
 /* http://thenewcode.com/1020/HTML5-Video-Effects-with-CSS-Blend-Modes */
-#camera {
+video {
     transform: scale(-1, 1);
     mix-blend-mode: soft-light;
 }
