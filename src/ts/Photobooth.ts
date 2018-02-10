@@ -28,8 +28,16 @@ class Photobooth {
     // Methods
     //----------------------------------------------------------------------
 
-    reflect(feed:Promise <void | MediaStream>) {
-        Main.video.srcObject = Main.videoFeed;
+    reflect(feed:Promise <MediaStream>) {
+        var mediaStream:MediaStream;
+        feed.then(function(stream){
+            mediaStream = stream;
+        })
+        .catch(function(err) {
+            console.log(err.name, err.message);
+        });
+
+        Main.video.srcObject = mediaStream;
         Main.video.addEventListener("loadedmetadata", function(event){
             Main.video.play();
         });
