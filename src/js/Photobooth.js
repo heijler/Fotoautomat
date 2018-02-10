@@ -2,22 +2,25 @@
  * Represents the photobooth
  */
 var Photobooth = /** @class */ (function () {
+    //----------------------------------------------------------------------
+    // Constructor
+    //----------------------------------------------------------------------
     function Photobooth() {
+        //----------------------------------------------------------------------
+        // Properties
+        //----------------------------------------------------------------------
         this.videoElement = null;
-        Main.canvas = document.getElementById("canvas");
-        Main.video = document.getElementsByTagName("video")[0];
-        Main.constraints = new WebcameraSettings(1280, 720);
         var cam = new Webcamera(Main.constraints);
-        Main.videoFeed = cam.getStream();
-        console.log(Main.videoFeed);
-        console.log(typeof Main.videoFeed);
-        this.reflect(Main.videoFeed);
-    }
-    Photobooth.prototype.reflect = function (feed) {
-        Main.video.srcObject = Main.videoFeed;
-        Main.video.addEventListener("loadedmetadata", function (event) {
-            Main.video.play();
+        var promise = cam.getPromise();
+        // Main.videoFeed = cam.getPromise();
+        console.log("Photobooth constructor", promise);
+        promise.then(function (stream) {
+            console.log("In .then()", stream);
+        })
+            .catch(function (err) {
+            console.log(err.name, err.message);
         });
-    };
+        //this.reflect(promise); // Temporary
+    }
     return Photobooth;
 }());
