@@ -1,6 +1,9 @@
 /**
  * Represents a warning
  */
+
+ //@TODO: Map common err.names with user friendly messages in a static Utils class.
+
 class Warning {
     //----------------------------------------------------------------------
     // Properties
