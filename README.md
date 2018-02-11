@@ -2,7 +2,7 @@
 A photo booth in the browser based on Web APIs, canvas and PHP
 
 ## Setup
-To compile the Typescript to JavaScript (requires node/npm and the package 'typescript' to be installed):
+To compile the Typescript to JavaScript (requires node/npm and the package 'typescript' (tested with typescript 2.7.1) to be installed):
 ```
 tsc -p tsconfig.json
 ```
