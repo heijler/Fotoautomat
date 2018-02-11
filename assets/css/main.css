@@ -40,5 +40,29 @@ video {
 }
 
 #canvas {
+    /* display: none; */
+}
+
+#warning {
     display: none;
+    background: #ff7500;
+    color: #fff;
+    width: 100%;
+    z-index: 999;
+    position: absolute;
+    padding: 10px 40px;
+    text-align: right;
+    font-family: sans-serif;
+    box-sizing: border-box;
+}
+
+#warning:after {
+    content: "X";
+    background-color: #e66900;
+    margin: 10px;
+    width: 30px;
+    height: 30px;
+    padding: 5px 11px;
+    border-radius: 27px;
+    color: #b35200;
 }
