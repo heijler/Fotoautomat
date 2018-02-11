@@ -11,6 +11,7 @@ class Warning {
 
     private warning:string;
     private warningElement:HTMLElement;
+    private eventHandler = this.hideWarning.bind(this); //To keep a a reference to the function/method in the correct scope.
 
     //----------------------------------------------------------------------
     // Constructor
@@ -25,13 +26,15 @@ class Warning {
     //----------------------------------------------------------------------
     // Methods
     //----------------------------------------------------------------------
-    displayWarning() {
+    displayWarning():void {
         Main.warningElement.style.display = "block";
-        Main.warningElement.textContent = this.warning;
+        Main.warningElement.innerHTML = this.warning;
+        Main.warningElement.addEventListener("click", this.eventHandler, false);
     }
 
-    hideWarning() {
+    hideWarning():void {
         Main.warningElement.style.display = "none";
-        Main.warningElement.textContent = "";
+        Main.warningElement.innerHTML = "";
+        Main.warningElement.removeEventListener("click", this.eventHandler, false);
     }
 }

@@ -39,9 +39,9 @@ video {
     mix-blend-mode: soft-light;
 }
 
-#canvas {
-    /* display: none; */
-}
+/* #canvas {
+    display: none;
+} */
 
 #warning {
     display: none;
@@ -54,9 +54,10 @@ video {
     text-align: right;
     font-family: sans-serif;
     box-sizing: border-box;
+    cursor: pointer;
 }
 
-#warning:after {
+#warning::after {
     content: "X";
     background-color: #e66900;
     margin: 10px;
@@ -66,3 +67,9 @@ video {
     border-radius: 27px;
     color: #b35200;
 }
+
+#warning:hover::after {
+    background-color: #bd5600;
+    color: #f57000;
+}
+
