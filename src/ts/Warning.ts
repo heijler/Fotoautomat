@@ -21,17 +21,30 @@ class Warning {
     constructor(warning) {
         this.warning = warning;
         this.warningElement = Main.warningElement;
+        this.displayWarning();
     }
 
+    
     //----------------------------------------------------------------------
-    // Methods
+    // Dymanic Methods
     //----------------------------------------------------------------------
+
     displayWarning():void {
+        var map = {
+            NotAllowedError: "You must allow your webcamera to be used!",
+            NotReadableError: "Webcamera is not readable, please reload and try another camera!",
+            AbortError: "null",
+            NotFoundError: "null",
+            OverconstrainedError: "null",
+            SecurityError: "null",
+            TypeError: "null"
+        };
+
         Main.warningElement.style.display = "block";
-        Main.warningElement.innerHTML = this.warning;
+        Main.warningElement.innerHTML = map[this.warning];
         Main.warningElement.addEventListener("click", this.eventHandler, false);
     }
-
+    
     hideWarning():void {
         Main.warningElement.style.display = "none";
         Main.warningElement.innerHTML = "";

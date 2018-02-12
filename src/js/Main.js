@@ -1,6 +1,7 @@
 /**
  * Main Class
  */
+// Using an abstract class to make sure the class can't be instantiated, wrong or not?
 var Main = /** @class */ (function () {
     function Main() {
     }

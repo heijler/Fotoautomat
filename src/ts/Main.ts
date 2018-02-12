@@ -2,6 +2,8 @@
  * Main Class
  */
 
+
+// Using an abstract class to make sure the class can't be instantiated, wrong or not?
 abstract class Main {
 
     //----------------------------------------------------------------------
