@@ -1,5 +1,7 @@
-/** 
+/**
+ * Photobooth
  * Represents the photobooth
+ * @class Photobooth
  */
 class Photobooth {
 
@@ -30,6 +32,12 @@ class Photobooth {
     // Methods
     //----------------------------------------------------------------------
 
+    /**
+     * displayReflection
+     * Assigns the stream to the video-object and plays it back.
+     * @param {MediaStream} stream 
+     * @memberof Photobooth
+     */
     displayReflection(stream:MediaStream) {
         Main.video.srcObject = stream;
         Main.video.addEventListener("loadedmetadata", function(event) {

@@ -1,5 +1,7 @@
 /**
- * Represents the webcamera stream
+ * Webcamera
+ * Represents the webcamera stream.
+ * @class Webcamera
  */
 var Webcamera = /** @class */ (function () {
     //----------------------------------------------------------------------
@@ -11,6 +13,12 @@ var Webcamera = /** @class */ (function () {
     //----------------------------------------------------------------------
     // Methods
     //----------------------------------------------------------------------
+    /**
+     * getPromise
+     * Returns the promise that is returned from mediaDevices.getUserMedia().
+     * @returns {(Promise <void | MediaStream>)}
+     * @memberof Webcamera
+     */
     Webcamera.prototype.getPromise = function () {
         if (navigator.mediaDevices) {
             return navigator.mediaDevices.getUserMedia(this.constraints)
@@ -21,12 +29,10 @@ var Webcamera = /** @class */ (function () {
                 console.dir(err);
                 console.log(err.name, err.message);
                 var warn = new Warning(err.name);
-                // if (err.name == "NotAllowedError") {
-                //     warn.createWarning(err.name);
-                // } else if (err.name == "NotReadableError") {
-                //     warn.createWarning(err.name);
-                // }
             });
+        }
+        else {
+            var warn = new Warning("one");
         }
     };
     return Webcamera;

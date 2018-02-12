@@ -1,5 +1,7 @@
 /**
+ * Photobooth
  * Represents the photobooth
+ * @class Photobooth
  */
 var Photobooth = /** @class */ (function () {
     //----------------------------------------------------------------------
@@ -23,6 +25,12 @@ var Photobooth = /** @class */ (function () {
     //----------------------------------------------------------------------
     // Methods
     //----------------------------------------------------------------------
+    /**
+     * displayReflection
+     * Assigns the stream to the video-object and plays it back.
+     * @param {MediaStream} stream
+     * @memberof Photobooth
+     */
     Photobooth.prototype.displayReflection = function (stream) {
         Main.video.srcObject = stream;
         Main.video.addEventListener("loadedmetadata", function (event) {

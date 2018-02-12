@@ -1,17 +1,25 @@
 /**
- * Main Class
+ * Main
+ * @abstract
+ * @class Main
  */
-// Using an abstract class to make sure the class can't be instantiated, wrong or not?
+// Using abstract class to prevent instantiation wrong?
 var Main = /** @class */ (function () {
     function Main() {
     }
     //----------------------------------------------------------------------
     // Methods
     //----------------------------------------------------------------------
+    /**
+     * init
+     * Assigns DOM-element references to properties and instantiates the photobooth
+     * @static
+     * @memberof Main
+     */
     Main.init = function () {
         Main.canvas = document.getElementsByTagName("canvas")[0];
         Main.video = document.getElementsByTagName("video")[0];
-        Main.constraints = new WebcameraSettings(1280, 720);
+        Main.constraints = new WebcameraSettings(1280, 800);
         Main.warningElement = document.getElementById("warning");
         var pb = new Photobooth();
     };
