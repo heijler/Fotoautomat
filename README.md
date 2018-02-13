@@ -8,11 +8,15 @@ tsc -p tsconfig.json
 ```
 
 
-## Classes
-- Main - Document class
-- Photobooth - Represents the photobooth
-- Webcamera - Represents the camera connection
-- WebcameraSettings - Represents the settings for the MediaDevice
+## Classes & packages
+- photobooth
+    - Main - Document class
+    - Photobooth - Represents the photobooth
+- utils
+    - Warning - Represents a warn/user feedback
+- webcam
+    - Webcamera - Represents the camera connection
+    - WebcameraSettings - Represents the settings for the MediaDevice
 
 ## Future classes?
 - Machine
