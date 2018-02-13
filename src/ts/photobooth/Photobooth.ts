@@ -38,10 +38,18 @@ class Photobooth {
      * @param {MediaStream} stream 
      * @memberof Photobooth
      */
-    displayReflection(stream:MediaStream) {
+    displayReflection(stream:MediaStream):void {
         Main.video.srcObject = stream;
         Main.video.addEventListener("loadedmetadata", function(event) {
             Main.video.play();
         });
+    }
+
+    saveImage():void {
+        var context:CanvasRenderingContext2D = Main.canvas.getContext('2d');
+        var img:HTMLImageElement = document.getElementsByTagName("img")[1];
+        context.drawImage(Main.video, 0, 0, 576, 720, 0, 0, 576, 720);
+        img.src = Main.canvas.toDataURL('image/png');
+        console.log("image in img-element");
     }
 }

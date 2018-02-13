@@ -39,9 +39,14 @@ video {
     mix-blend-mode: soft-light;
 }
 
-/* #canvas {
+#canvas {
     display: none;
-} */
+}
+
+#image {
+    position: absolute;
+    z-index:1;
+}
 
 #warning {
     display: none;

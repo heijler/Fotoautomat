@@ -37,5 +37,12 @@ var Photobooth = /** @class */ (function () {
             Main.video.play();
         });
     };
+    Photobooth.prototype.saveImage = function () {
+        var context = Main.canvas.getContext('2d');
+        var img = document.getElementsByTagName("img")[1];
+        context.drawImage(Main.video, 0, 0, 576, 720, 0, 0, 576, 720);
+        img.src = Main.canvas.toDataURL('image/png');
+        console.log("image in img-element");
+    };
     return Photobooth;
 }());
