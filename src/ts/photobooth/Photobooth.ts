@@ -45,6 +45,11 @@ class Photobooth {
         });
     }
 
+    /**
+     * saveImage
+     * Writes image data to canvas and fetches the image DataURI
+     * @memberof Photobooth
+     */
     saveImage():void {
         var context:CanvasRenderingContext2D = Main.canvas.getContext('2d');
         var img:HTMLImageElement = document.getElementsByTagName("img")[1];
