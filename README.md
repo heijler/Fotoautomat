@@ -15,6 +15,9 @@ tsc -p tsconfig.json
 - photobooth
     - Main - Document class
     - Photobooth - Represents the photobooth
+-ui
+    - Reflection - Represents the "reflection"
+    - UI - Represents UI elements/references
 - utils
     - Warning - Represents a warn/user feedback
 - webcam
