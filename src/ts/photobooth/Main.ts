@@ -5,9 +5,7 @@ namespace photobooth {
      * @class Main
      */
     
-    // Using abstract class to prevent instantiation wrong?
-    // https://stackoverflow.com/a/13222267
-    export abstract class Main {
+    export class Main {
     
         //----------------------------------------------------------------------
         // Properties
@@ -29,16 +27,14 @@ namespace photobooth {
          * @memberof Main
          */
         static init():void {
-            photobooth.Main.canvas = document.getElementsByTagName("canvas")[0];
-            photobooth.Main.canvas.height = 720; // dynamiskt
-            photobooth.Main.canvas.width = 576; // dynamiskt
             photobooth.Main.video = document.getElementsByTagName("video")[0];
-            // Main.constraints = new WebcameraSettings(1280, 720);
-            // Main.constraints = new WebcameraSettings({ideal: 2560}, {ideal: 1440});
-            photobooth.Main.constraints = new webcam.WebcameraSettings();
-            // Main.constraints = new WebcameraSettings(1000, 1000);
             photobooth.Main.warningElement = document.getElementById("warning");
+            photobooth.Main.canvas = document.getElementsByTagName("canvas")[0];
             
+            photobooth.Main.canvas.height = 720; // dynamiskt
+            photobooth.Main.canvas.width  = 576; // dynamiskt
+
+            photobooth.Main.constraints  = new webcam.WebcameraSettings();
             var pb:photobooth.Photobooth = new photobooth.Photobooth();
             var timeout = setTimeout(pb.saveImage, 5000);
         }

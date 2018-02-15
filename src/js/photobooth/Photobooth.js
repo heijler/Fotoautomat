@@ -14,19 +14,26 @@ var photobooth;
             // Properties
             //----------------------------------------------------------------------
             this.videoElement = null;
-            var cam = new webcam.Webcamera(photobooth.Main.constraints);
-            var promise = cam.getPromise();
-            var _this = this;
-            promise.then(function (stream) {
-                _this.displayReflection(stream);
-            })
-                .catch(function (err) {
-                console.log(err.name, err.message);
-            });
+            this.init();
         }
         //----------------------------------------------------------------------
         // Methods
         //----------------------------------------------------------------------
+        /**
+         * Init
+         * Get the promise from webcamera and resolve to video
+         * @memberof Photobooth
+         */
+        Photobooth.prototype.init = function () {
+            var cam = new webcam.Webcamera(photobooth.Main.constraints);
+            var promise = cam.getPromise();
+            promise.then(function (stream) {
+                this.displayReflection(stream);
+            }.bind(this)) //To keep the object/this reference
+                .catch(function (err) {
+                console.error(err.name, err.message);
+            });
+        };
         /**
          * displayReflection
          * Assigns the stream to the video-object and plays it back.
@@ -34,7 +41,6 @@ var photobooth;
          * @memberof Photobooth
          */
         Photobooth.prototype.displayReflection = function (stream) {
-            console.log(stream);
             var temp = stream.getTracks();
             var temp2 = temp[0].getConstraints();
             // var temp3 = temp[0].getCapabilities();

@@ -28,8 +28,8 @@ var webcam;
                     return mediaStream;
                 })
                     .catch(function (err) {
-                    console.dir(err);
-                    console.log(err.name, err.message);
+                    // console.dir(err);
+                    console.error(err.name, err.message);
                     var warn = new utils.Warning(err.name);
                 });
             }

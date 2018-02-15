@@ -1,10 +1,8 @@
 namespace webcam {
     /**
      * WebcameraSettings
-     * Represents a video media object setting.
-     * Ex. { audio: false, video: { width: 1280, height: 720 } };
-     * @TODO:
-     * {audio: false, video: {width: {ideal: 1280}, height: {ideal: 720}}}
+     * Represents a video media object setting like:
+     * {audio: false, video: {width: {ideal: 1280}, height: {ideal: 720}}};
      * @class WebcameraSettings
      */
     export class WebcameraSettings {
