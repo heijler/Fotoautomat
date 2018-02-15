@@ -34,7 +34,7 @@ var webcam;
                 });
             }
             else {
-                var warn = new utils.Warning("one");
+                var warn = new utils.Warning("one"); // @FIX bra varning
             }
         };
         return Webcamera;

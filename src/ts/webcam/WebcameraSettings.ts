@@ -3,6 +3,8 @@ namespace webcam {
      * WebcameraSettings
      * Represents a video media object setting.
      * Ex. { audio: false, video: { width: 1280, height: 720 } };
+     * @TODO:
+     * {audio: false, video: {width: {ideal: 1280}, height: {ideal: 720}}}
      * @class WebcameraSettings
      */
     export class WebcameraSettings {
@@ -20,12 +22,12 @@ namespace webcam {
     
         /**
          * Get the width and height
-         * @param width ideal webcamera stream width
-         * @param height ideal webcamera stream height
+         * @param width default: 3840, ideal webcamera stream width
+         * @param height default: 2160, ideal webcamera stream height
          */
-        constructor(width, height) {
-            this.video.width = width;
-            this.video.height = height;
+        constructor(width = 3840, height = 2160) { // @FIX: typa
+            this.video.width = {ideal: width} as any;
+            this.video.height = {ideal: height} as any;
         }   
     }
 }

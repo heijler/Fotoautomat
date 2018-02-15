@@ -35,7 +35,7 @@ namespace photobooth {
             photobooth.Main.video = document.getElementsByTagName("video")[0];
             // Main.constraints = new WebcameraSettings(1280, 720);
             // Main.constraints = new WebcameraSettings({ideal: 2560}, {ideal: 1440});
-            photobooth.Main.constraints = new webcam.WebcameraSettings(3840, 2160);
+            photobooth.Main.constraints = new webcam.WebcameraSettings();
             // Main.constraints = new WebcameraSettings(1000, 1000);
             photobooth.Main.warningElement = document.getElementById("warning");
             
