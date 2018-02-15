@@ -1,39 +1,43 @@
-/**
- * Webcamera
- * Represents the webcamera stream.
- * @class Webcamera
- */
-var Webcamera = /** @class */ (function () {
-    //----------------------------------------------------------------------
-    // Constructor
-    //----------------------------------------------------------------------
-    function Webcamera(constraints) {
-        this.constraints = constraints;
-    }
-    //----------------------------------------------------------------------
-    // Methods
-    //----------------------------------------------------------------------
+var webcam;
+(function (webcam) {
     /**
-     * getPromise
-     * Returns the promise that is returned from mediaDevices.getUserMedia().
-     * @returns {(Promise <void | MediaStream>)}
-     * @memberof Webcamera
+     * Webcamera
+     * Represents the webcamera stream.
+     * @class Webcamera
      */
-    Webcamera.prototype.getPromise = function () {
-        if (navigator.mediaDevices) {
-            return navigator.mediaDevices.getUserMedia(this.constraints)
-                .then(function (mediaStream) {
-                return mediaStream;
-            })
-                .catch(function (err) {
-                console.dir(err);
-                console.log(err.name, err.message);
-                var warn = new Warning(err.name);
-            });
+    var Webcamera = /** @class */ (function () {
+        //----------------------------------------------------------------------
+        // Constructor
+        //----------------------------------------------------------------------
+        function Webcamera(constraints) {
+            this.constraints = constraints;
         }
-        else {
-            var warn = new Warning("one");
-        }
-    };
-    return Webcamera;
-}());
+        //----------------------------------------------------------------------
+        // Methods
+        //----------------------------------------------------------------------
+        /**
+         * getPromise
+         * Returns the promise that is returned from mediaDevices.getUserMedia().
+         * @returns {(Promise <void | MediaStream>)}
+         * @memberof Webcamera
+         */
+        Webcamera.prototype.getPromise = function () {
+            if (navigator.mediaDevices) {
+                return navigator.mediaDevices.getUserMedia(this.constraints)
+                    .then(function (mediaStream) {
+                    return mediaStream;
+                })
+                    .catch(function (err) {
+                    console.dir(err);
+                    console.log(err.name, err.message);
+                    var warn = new utils.Warning(err.name);
+                });
+            }
+            else {
+                var warn = new utils.Warning("one");
+            }
+        };
+        return Webcamera;
+    }());
+    webcam.Webcamera = Webcamera;
+})(webcam || (webcam = {}));
