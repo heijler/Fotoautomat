@@ -34,9 +34,6 @@ namespace ui {
             this.video.addEventListener("loadedmetadata", (event) => {
                 this.video.play();
             }, false);
-            // this.video.addEventListener("loadedmetadata", function(event) {
-            //     this.video.play();
-            // }.bind(this), false);
         }
     }
 }

@@ -1,5 +1,5 @@
-var utils;
-(function (utils) {
+var alert;
+(function (alert) {
     /**
      * Warning
      * Represents a warning/error message and displaying of warn/err-bar.
@@ -17,7 +17,7 @@ var utils;
             this.displayWarning();
         }
         //----------------------------------------------------------------------
-        // Dymanic Methods
+        // Methods
         //----------------------------------------------------------------------
         /**
          * displayWarning
@@ -40,8 +40,10 @@ var utils;
             };
             // Display the error/warning
             this.warningElement.style.display = "block";
-            this.warningElement.innerHTML = map[this.warning];
+            this.warningElement.innerHTML = map[this.warning.name];
             this.warningElement.addEventListener("click", this.eventHandler, false);
+            // Log
+            console.error(this.warning.name, this.warning.message);
         }
         /**
          * hideWarning
@@ -55,5 +57,5 @@ var utils;
             this.warningElement.removeEventListener("click", this.eventHandler, false);
         }
     }
-    utils.Warning = Warning;
-})(utils || (utils = {}));
+    alert.Warning = Warning;
+})(alert || (alert = {}));

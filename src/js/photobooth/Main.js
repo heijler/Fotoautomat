@@ -5,9 +5,7 @@ var photobooth;
      * @abstract
      * @class Main
      */
-    var Main = /** @class */ (function () {
-        function Main() {
-        }
+    class Main {
         //----------------------------------------------------------------------
         // Methods
         //----------------------------------------------------------------------
@@ -17,7 +15,7 @@ var photobooth;
          * @static
          * @memberof Main
          */
-        Main.init = function () {
+        static init() {
             photobooth.Main.video = document.getElementsByTagName("video")[0];
             photobooth.Main.warningElement = document.getElementById("warning");
             photobooth.Main.canvas = document.getElementsByTagName("canvas")[0];
@@ -26,16 +24,15 @@ var photobooth;
             photobooth.Main.constraints = new webcam.WebcameraSettings();
             var pb = new photobooth.Photobooth();
             var timeout = setTimeout(pb.saveImage, 5000);
-        };
-        //----------------------------------------------------------------------
-        // Properties
-        //----------------------------------------------------------------------
-        Main.canvas = null;
-        Main.video = null;
-        Main.constraints = null;
-        Main.warningElement = null;
-        return Main;
-    }());
+        }
+    }
+    //----------------------------------------------------------------------
+    // Properties
+    //----------------------------------------------------------------------
+    Main.canvas = null;
+    Main.video = null;
+    Main.constraints = null;
+    Main.warningElement = null;
     photobooth.Main = Main;
 })(photobooth || (photobooth = {}));
 window.addEventListener("load", photobooth.Main.init, false);

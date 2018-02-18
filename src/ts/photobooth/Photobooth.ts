@@ -29,16 +29,15 @@ namespace photobooth {
          * Get the promise from webcamera and resolve to video
          * @memberof Photobooth
          */
-        private init():void {
+        private init() {
             var cam = new webcam.Webcamera(photobooth.Main.constraints);
-            var promise = cam.getPromise();
-            // Arrow function to retain lexical scope of this, no need for .bind(this);
-            promise.then((stream:MediaStream) => {
+            var stream = cam.getStreamPromise();
+            stream.then((stream:MediaStream) => {
                 this.displayReflection(stream);
             })
-            .catch((err) => {
-                console.error(err.name, err.message);
-            });
+            .catch((err:Error) => {
+                var warn = new alert.SystemWarning(err);
+            })
         }
 
         /**
@@ -48,16 +47,6 @@ namespace photobooth {
          * @memberof Photobooth
          */
         private displayReflection(stream:MediaStream):void {
-    
-            var temp = stream.getTracks();
-            var temp2 = temp[0].getConstraints();
-            // var temp3 = temp[0].getCapabilities();
-            var temp4 = temp[0].getSettings();
-            console.log("getContraints", temp2);
-            // console.log("getCapabilities", temp3);
-            console.log("getSettings", temp4);
-    
-    
             photobooth.Main.video.srcObject = stream;
             photobooth.Main.video.addEventListener("loadedmetadata", function(event) {
                 photobooth.Main.video.play();

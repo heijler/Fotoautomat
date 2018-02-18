@@ -1,15 +1,15 @@
-namespace utils {
+namespace alert {
     /**
      * Warning
      * Represents a warning/error message and displaying of warn/err-bar.
      * @class Warning
      */
-    export class Warning {
+    export abstract class Warning {
         //----------------------------------------------------------------------
         // Properties
         //----------------------------------------------------------------------
     
-        private warning:string;
+        protected warning:Error;
         private warningElement:HTMLElement;
         private eventHandler = this.hideWarning.bind(this); //To keep a a reference to the function/method in the correct scope.
     
@@ -18,7 +18,7 @@ namespace utils {
         //----------------------------------------------------------------------
     
         // @TODO: Make it possible to send with callback function that will be run once the x-button of warning is clicked.
-        public constructor(warning) {
+        public constructor(warning:Error) {
             this.warning = warning;
             this.warningElement = photobooth.Main.warningElement;
             this.displayWarning();
@@ -26,7 +26,7 @@ namespace utils {
     
         
         //----------------------------------------------------------------------
-        // Dymanic Methods
+        // Methods
         //----------------------------------------------------------------------
     
         /**
@@ -38,7 +38,6 @@ namespace utils {
         private displayWarning():void {
             // Error/Warning name - message mapping
             var map = {
-                One: "Thisis a warn",
                 NotAllowedError: "You must allow your webcamera to be used!",
                 NotReadableError: "Webcamera is not readable, please reload and try another camera!",
                 AbortError: "null",
@@ -52,8 +51,11 @@ namespace utils {
     
             // Display the error/warning
             this.warningElement.style.display = "block";
-            this.warningElement.innerHTML = map[this.warning];
+            this.warningElement.innerHTML = map[this.warning.name];
             this.warningElement.addEventListener("click", this.eventHandler, false);
+
+            // Log
+            console.error(this.warning.name, this.warning.message);
         }
         
         /**

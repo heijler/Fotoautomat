@@ -1,10 +1,10 @@
 var ui;
 (function (ui) {
-    var UI = /** @class */ (function () {
+    class UI {
         //----------------------------------------------------------------------
         // Constructor
         //----------------------------------------------------------------------
-        function UI() {
+        constructor() {
             //----------------------------------------------------------------------
             // Properties
             //----------------------------------------------------------------------
@@ -16,7 +16,6 @@ var ui;
             this.video = document.getElementsByTagName("video")[0];
             this.warningElement = document.getElementById("warning");
         }
-        return UI;
-    }());
+    }
     ui.UI = UI;
 })(ui || (ui = {}));
