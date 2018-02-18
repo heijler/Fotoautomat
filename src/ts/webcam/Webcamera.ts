@@ -15,7 +15,7 @@ namespace webcam {
         // Constructor
         //----------------------------------------------------------------------
     
-        constructor(constraints:WebcameraSettings) {
+        public constructor(constraints:WebcameraSettings) {
             this.constraints = constraints;
         }
     
@@ -29,10 +29,10 @@ namespace webcam {
          * @returns {(Promise <void | MediaStream>)} 
          * @memberof Webcamera
          */
-        getPromise():Promise <void | MediaStream> {
+        public getPromise():Promise <void | MediaStream> {
             if(navigator.mediaDevices) {
                 return navigator.mediaDevices.getUserMedia(this.constraints)
-                .then(function(mediaStream) {
+                .then(function(mediaStream:MediaStream) {
                     return mediaStream;
                 })
                 .catch(function(err){
@@ -44,6 +44,22 @@ namespace webcam {
                 var warn = new utils.Warning("one"); // @FIX bra varning
             }
         }
+
+        // /**
+        //  * 
+        //  * 
+        //  * @returns {MediaStream} 
+        //  * @memberof Webcamera
+        //  */
+        // returnPromise():Promise <MediaStream> {
+        //     var promise:Promise <void | MediaStream> = this.getPromise();
+        //     return promise.then((stream:MediaStream) => {
+        //         return stream;
+        //     })
+        //     .catch((err) => {
+        //         return err;
+        //     });
+        // }
     }
 }
 

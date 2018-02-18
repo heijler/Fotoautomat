@@ -11,7 +11,7 @@ namespace ui {
         //----------------------------------------------------------------------
         // Constructor
         //----------------------------------------------------------------------
-        constructor() {
+        protected constructor() {
             this.canvas = document.getElementsByTagName("canvas")[0];
             this.video = document.getElementsByTagName("video")[0];
             this.warningElement = document.getElementById("warning");

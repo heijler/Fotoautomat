@@ -16,7 +16,7 @@ namespace photobooth {
         // Constructor
         //----------------------------------------------------------------------
         
-        constructor() {
+        public constructor() {
             this.init();
         }
     
@@ -29,13 +29,14 @@ namespace photobooth {
          * Get the promise from webcamera and resolve to video
          * @memberof Photobooth
          */
-        init():void {
+        private init():void {
             var cam = new webcam.Webcamera(photobooth.Main.constraints);
             var promise = cam.getPromise();
-            promise.then(function(stream:MediaStream){
+            // Arrow function to retain lexical scope of this, no need for .bind(this);
+            promise.then((stream:MediaStream) => {
                 this.displayReflection(stream);
-            }.bind(this)) //To keep the object/this reference
-            .catch(function(err) {
+            })
+            .catch((err) => {
                 console.error(err.name, err.message);
             });
         }
@@ -46,7 +47,7 @@ namespace photobooth {
          * @param {MediaStream} stream 
          * @memberof Photobooth
          */
-        displayReflection(stream:MediaStream):void {
+        private displayReflection(stream:MediaStream):void {
     
             var temp = stream.getTracks();
             var temp2 = temp[0].getConstraints();
@@ -68,7 +69,7 @@ namespace photobooth {
          * Writes image data to canvas and fetches the image DataURI
          * @memberof Photobooth
          */
-        saveImage():void {
+        public saveImage():void {
             var context:CanvasRenderingContext2D = photobooth.Main.canvas.getContext('2d');
             var img:HTMLImageElement = document.getElementsByTagName("img")[1];
             // s - source

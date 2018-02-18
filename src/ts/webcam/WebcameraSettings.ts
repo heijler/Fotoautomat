@@ -23,7 +23,7 @@ namespace webcam {
          * @param width default: 3840, ideal webcamera stream width
          * @param height default: 2160, ideal webcamera stream height
          */
-        constructor(width = 3840, height = 2160) { // @FIX: typa
+        public constructor(width = 3840, height = 2160) { // @FIX: typa
             this.video.width = {ideal: width} as any;
             this.video.height = {ideal: height} as any;
         }   

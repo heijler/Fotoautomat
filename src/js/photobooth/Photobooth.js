@@ -25,11 +25,13 @@ var photobooth;
          * @memberof Photobooth
          */
         Photobooth.prototype.init = function () {
+            var _this = this;
             var cam = new webcam.Webcamera(photobooth.Main.constraints);
             var promise = cam.getPromise();
+            // Arrow function to retain lexical scope of this, no need for .bind(this);
             promise.then(function (stream) {
-                this.displayReflection(stream);
-            }.bind(this)) //To keep the object/this reference
+                _this.displayReflection(stream);
+            })
                 .catch(function (err) {
                 console.error(err.name, err.message);
             });

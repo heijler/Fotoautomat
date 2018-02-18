@@ -11,10 +11,10 @@ namespace photobooth {
         // Properties
         //----------------------------------------------------------------------
     
-        static canvas:HTMLCanvasElement = null;
-        static video:HTMLVideoElement = null;
-        static constraints:webcam.WebcameraSettings = null;
-        static warningElement:HTMLElement = null;
+        public static canvas:HTMLCanvasElement = null;
+        public static video:HTMLVideoElement = null;
+        public static constraints:webcam.WebcameraSettings = null;
+        public static warningElement:HTMLElement = null;
     
         //----------------------------------------------------------------------
         // Methods
@@ -26,7 +26,7 @@ namespace photobooth {
          * @static
          * @memberof Main
          */
-        static init():void {
+        public static init():void {
             photobooth.Main.video = document.getElementsByTagName("video")[0];
             photobooth.Main.warningElement = document.getElementById("warning");
             photobooth.Main.canvas = document.getElementsByTagName("canvas")[0];

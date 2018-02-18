@@ -13,7 +13,7 @@ namespace ui {
         //----------------------------------------------------------------------
         // Constructor
         //----------------------------------------------------------------------
-        constructor(stream:MediaStream) {
+        public constructor(stream:MediaStream) {
             super();
             this.stream = stream;
         }
@@ -30,9 +30,13 @@ namespace ui {
         
         renderReflection(stream:MediaStream):void {
             this.video.srcObject = stream;
-            this.video.addEventListener("loadedmetadata", function(event) {
+            // Arrow function to keep the lexical scope.
+            this.video.addEventListener("loadedmetadata", (event) => {
                 this.video.play();
-            }.bind(this), false);
+            }, false);
+            // this.video.addEventListener("loadedmetadata", function(event) {
+            //     this.video.play();
+            // }.bind(this), false);
         }
     }
 }

@@ -18,7 +18,7 @@ namespace utils {
         //----------------------------------------------------------------------
     
         // @TODO: Make it possible to send with callback function that will be run once the x-button of warning is clicked.
-        constructor(warning) {
+        public constructor(warning) {
             this.warning = warning;
             this.warningElement = photobooth.Main.warningElement;
             this.displayWarning();
@@ -35,7 +35,7 @@ namespace utils {
          * @return void
          * @memberof Warning
          */
-        displayWarning():void {
+        private displayWarning():void {
             // Error/Warning name - message mapping
             var map = {
                 One: "Thisis a warn",
@@ -62,7 +62,7 @@ namespace utils {
          * @return void
          * @memberof Warning
          */
-        hideWarning():void {
+        private hideWarning():void {
             this.warningElement.style.display = "none";
             this.warningElement.innerHTML = "";
             this.warningElement.removeEventListener("click", this.eventHandler, false);

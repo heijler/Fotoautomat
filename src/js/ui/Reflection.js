@@ -38,10 +38,15 @@ var ui;
             // Use values from settings to prepare video element here, this method needs to run before the stream is delegated to the video object.
         };
         Reflection.prototype.renderReflection = function (stream) {
+            var _this = this;
             this.video.srcObject = stream;
+            // Arrow function to keep the lexical scope.
             this.video.addEventListener("loadedmetadata", function (event) {
-                this.video.play();
-            }.bind(this), false);
+                _this.video.play();
+            }, false);
+            // this.video.addEventListener("loadedmetadata", function(event) {
+            //     this.video.play();
+            // }.bind(this), false);
         };
         return Reflection;
     }(ui.UI));
