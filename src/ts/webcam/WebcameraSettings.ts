@@ -5,14 +5,14 @@ namespace webcam {
      * {audio: false, video: {width: {ideal: 1280}, height: {ideal: 720}}};
      * @class WebcameraSettings
      */
-    export class WebcameraSettings {
+    export class WebcameraSettings implements IWebcamSetting {
     
         //----------------------------------------------------------------------
         // Properties
         //----------------------------------------------------------------------
     
-        public audio:boolean|MediaTrackConstraints = false;
-        public video = {} as any;
+        public audio:boolean = false;
+        public video:ISize;
     
         //----------------------------------------------------------------------
         // Constructor
@@ -22,10 +22,13 @@ namespace webcam {
          * Get the width and height
          * @param width default: 3840, ideal webcamera stream width
          * @param height default: 2160, ideal webcamera stream height
+         * @TODO: new jsdoc here
          */
-        public constructor(width = 3840, height = 2160) { // @FIX: typa
-            this.video.width = {ideal: width} as any;
-            this.video.height = {ideal: height} as any;
+        public constructor(width:IDimension = {ideal:3840}, height:IDimension = {ideal:2160}) {
+            this.video.height = height;
+            this.video.width = width;
+            // this.video = width;
+            // this.video.height = {ideal: height};
         }   
     }
 }
