@@ -24,7 +24,15 @@ tsc -p tsconfig.json
     - Webcamera - Represents the camera connection
     - WebcameraSettings - Represents the settings for the MediaDevice
 
+
 ## Future classes?
-- Machine
-- Coin
-- XHR
+- ui
+    - Reflection - Represents the reflection UI.
+    - Export - Represents the export UI.
+    - Coinslot - Represents the coinslot UI.
+    - PhotoStrips - Represents the photostrips UI.
+    - StartButton - Represents the start button UI.
+    - EyeLevel - Represents the eye level UI.
+    - Sign - Represents a sign UI.
+    - PhotoboothUI - Start class for UI components.
+
