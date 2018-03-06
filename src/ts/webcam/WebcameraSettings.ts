@@ -12,7 +12,7 @@ namespace webcam {
         //----------------------------------------------------------------------
     
         public audio:boolean = false;
-        public video:ISize;
+        public video:ISize = {} as any;
     
         //----------------------------------------------------------------------
         // Constructor
@@ -27,6 +27,7 @@ namespace webcam {
         public constructor(width:IDimension = {ideal:3840}, height:IDimension = {ideal:2160}) {
             this.video.height = height;
             this.video.width = width;
+            
             // this.video = width;
             // this.video.height = {ideal: height};
         }   

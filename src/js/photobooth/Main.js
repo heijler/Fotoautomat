@@ -23,7 +23,7 @@ var photobooth;
             photobooth.Main.canvas.width = 576; // dynamiskt
             photobooth.Main.constraints = new webcam.WebcameraSettings();
             var pb = new photobooth.Photobooth();
-            var timeout = setTimeout(pb.saveImage, 5000);
+            // var timeout = setTimeout(pb.saveImage, 5000);
         }
     }
     //----------------------------------------------------------------------

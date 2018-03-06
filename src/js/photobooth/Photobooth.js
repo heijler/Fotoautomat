@@ -28,22 +28,10 @@ var photobooth;
             var cam = new webcam.Webcamera(photobooth.Main.constraints);
             var stream = cam.getStreamPromise();
             stream.then((stream) => {
-                this.displayReflection(stream);
+                var reflection = new ui.Reflection(stream);
             })
                 .catch((err) => {
-                console.error(err.name, err.message);
-            });
-        }
-        /**
-         * displayReflection
-         * Assigns the stream to the video-object and plays it back.
-         * @param {MediaStream} stream
-         * @memberof Photobooth
-         */
-        displayReflection(stream) {
-            photobooth.Main.video.srcObject = stream;
-            photobooth.Main.video.addEventListener("loadedmetadata", function (event) {
-                photobooth.Main.video.play();
+                var warn = new alert.SystemWarning(err);
             });
         }
         /**

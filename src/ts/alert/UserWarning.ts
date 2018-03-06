@@ -35,13 +35,13 @@ namespace alert {
         // Methods
         //----------------------------------------------------------------------
         
-        private displayWarning():void {
-            // @TODO: Move logic from Warning.ts to here
-        }
+        // private displayWarning():void {
+        //     // @TODO: Move logic from Warning.ts to here
+        // }
 
-        private hideWarning():void {
-        // @TODO: Move logic from Warning.ts to here
-        }
+        // private hideWarning():void {
+        // // @TODO: Move logic from Warning.ts to here
+        // }
         
     }
 }

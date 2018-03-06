@@ -33,26 +33,13 @@ namespace photobooth {
             var cam = new webcam.Webcamera(photobooth.Main.constraints);
             var stream = cam.getStreamPromise();
             stream.then((stream:MediaStream) => {
-                this.displayReflection(stream);
+                var reflection = new ui.Reflection(stream);
             })
             .catch((err:Error) => {
                 var warn = new alert.SystemWarning(err);
             })
         }
 
-        /**
-         * displayReflection
-         * Assigns the stream to the video-object and plays it back.
-         * @param {MediaStream} stream 
-         * @memberof Photobooth
-         */
-        private displayReflection(stream:MediaStream):void {
-            photobooth.Main.video.srcObject = stream;
-            photobooth.Main.video.addEventListener("loadedmetadata", function(event) {
-                photobooth.Main.video.play();
-            });
-        }
-    
         /**
          * saveImage
          * Writes image data to canvas and fetches the image DataURI

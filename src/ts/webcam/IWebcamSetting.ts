@@ -11,18 +11,6 @@ namespace webcam {
     }
 
     export interface IDimension {
-        ideal: Number;
+        ideal: number;
     }
-
-    // var obj: IWebcamSetting = {
-    //     audio: false,
-    //     video: {
-    //         height: {
-    //             ideal: 720
-    //         },
-    //         width: {
-    //             ideal: 1080
-    //         }
-    //     }
-    // }
 }

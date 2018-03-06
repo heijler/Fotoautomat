@@ -36,7 +36,7 @@ namespace photobooth {
 
             photobooth.Main.constraints  = new webcam.WebcameraSettings();
             var pb:photobooth.Photobooth = new photobooth.Photobooth();
-            var timeout = setTimeout(pb.saveImage, 5000);
+            // var timeout = setTimeout(pb.saveImage, 5000);
         }
     }
 

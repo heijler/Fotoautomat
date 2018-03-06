@@ -16,17 +16,25 @@ var ui;
             //----------------------------------------------------------------------
             this.stream = null;
             this.stream = stream;
+            this.prepareVideo();
         }
         //----------------------------------------------------------------------
         // Methods
         //----------------------------------------------------------------------
-        prepareVideo(stream) {
-            var videoTrack = stream.getTracks();
+        prepareVideo() {
+            var videoTrack = this.stream.getTracks();
             var videoSettings = videoTrack[0].getSettings();
             // Use values from settings to prepare video element here, this method needs to run before the stream is delegated to the video object.
+            // console.log("videoSettings.height, videoSettings.width", videoSettings.height, videoSettings.width);
+            // console.log("window.innerHeight", window.innerHeight);
+            // console.log("(window.innerHeight/5)*4", (window.innerHeight/5) * 4);
+            // console.log((videoSettings.width - ((window.innerHeight / 5) * 4)) / 2);
+            this.mirror.style.width = (document.documentElement.clientHeight / 5) * 4 + "px";
+            this.video.style.marginLeft = -(videoSettings.width - ((window.innerHeight / 5) * 4)) / 2 + "px";
+            this.renderReflection();
         }
-        renderReflection(stream) {
-            this.video.srcObject = stream;
+        renderReflection() {
+            this.video.srcObject = this.stream;
             // Arrow function to keep the lexical scope.
             this.video.addEventListener("loadedmetadata", (event) => {
                 this.video.play();
