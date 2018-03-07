@@ -3,16 +3,29 @@ body {
     padding: 0;
 }
 
-#mirror {
+.wrapper {
+    width:33.33%;
+    box-sizing:border-box;
+}
+
+.fullWidth {
+    display:block;
+    width:100%;
+}
+
+#videoContainer {
     background: hsla(0, 0%, 39.6%, 0.6);
     background: radial-gradient(ellipse at center, hsl(0, 0%, 21.2%) 0%,hsl(0, 0%, 12.9%) 100%);
     max-height: 100vh;
     display: block;
     overflow: hidden;
     margin: 0 auto;
+    position: absolute;
+    left: 0;
+    right: 0;
 }
 
-#mirror img {
+#videoContainer img {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
@@ -20,15 +33,31 @@ body {
     z-index: 1;
     opacity: 0.7;
     mix-blend-mode: color-dodge;
+    background-image: url("../img/HAL9000.png");
+    width: 328px;
+    height: 328px;
+    background-repeat: no-repeat;
 }
 
-#dark {
+#videoOverlay {
     background-color: #000000;
     min-height: 100%;
-    min-width: 100%;
+    /* min-width: 100%; */
+    margin: 0 auto;
+    left: 0;
+    right: 0;
     z-index: 1;
     position: absolute;
     opacity: 0.2;
+}
+
+#eyeLevel {
+    height:10px;
+    width:100%;
+    background:#ffffff;
+    top: calc(50% - 5px);
+    position: absolute;
+    z-index: 2;
 }
 
 /* http://thenewcode.com/1020/HTML5-Video-Effects-with-CSS-Blend-Modes */

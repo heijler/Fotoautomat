@@ -13,7 +13,7 @@ var alert;
         constructor(warning) {
             this.eventHandler = this.hideWarning.bind(this); //To keep a a reference to the function/method in the correct scope.
             this.warning = warning;
-            this.warningElement = photobooth.Main.warningElement;
+            this.warningElement = photobooth.Main.ui.warning;
             this.displayWarning();
         }
         //----------------------------------------------------------------------

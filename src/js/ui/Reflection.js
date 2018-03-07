@@ -5,17 +5,18 @@ var ui;
      * Represents the reflection/mirror
      * @class Reflection
      */
-    class Reflection extends ui.UI {
+    class Reflection {
         //----------------------------------------------------------------------
         // Constructor
         //----------------------------------------------------------------------
         constructor(stream) {
-            super();
             //----------------------------------------------------------------------
             // Properties
             //----------------------------------------------------------------------
             this.stream = null;
+            this.ui = null;
             this.stream = stream;
+            this.ui = photobooth.Main.ui;
             this.prepareVideo();
         }
         //----------------------------------------------------------------------
@@ -24,20 +25,15 @@ var ui;
         prepareVideo() {
             var videoTrack = this.stream.getTracks();
             var videoSettings = videoTrack[0].getSettings();
-            // Use values from settings to prepare video element here, this method needs to run before the stream is delegated to the video object.
-            // console.log("videoSettings.height, videoSettings.width", videoSettings.height, videoSettings.width);
-            // console.log("window.innerHeight", window.innerHeight);
-            // console.log("(window.innerHeight/5)*4", (window.innerHeight/5) * 4);
-            // console.log((videoSettings.width - ((window.innerHeight / 5) * 4)) / 2);
-            this.mirror.style.width = (document.documentElement.clientHeight / 5) * 4 + "px";
-            this.video.style.marginLeft = -(videoSettings.width - ((window.innerHeight / 5) * 4)) / 2 + "px";
+            this.ui.videoContainer.style.width = (document.documentElement.clientHeight / 5) * 4 + "px";
+            this.ui.video.style.marginLeft = -(videoSettings.width - ((window.innerHeight / 5) * 4)) / 2 + "px";
+            this.ui.videoOverlay.style.width = this.ui.videoContainer.style.width;
             this.renderReflection();
         }
         renderReflection() {
-            this.video.srcObject = this.stream;
-            // Arrow function to keep the lexical scope.
-            this.video.addEventListener("loadedmetadata", (event) => {
-                this.video.play();
+            this.ui.video.srcObject = this.stream;
+            this.ui.video.addEventListener("loadedmetadata", (event) => {
+                this.ui.video.play();
             }, false);
         }
     }

@@ -3,24 +3,52 @@ namespace ui {
         //----------------------------------------------------------------------
         // Properties
         //----------------------------------------------------------------------
-        protected canvas:HTMLCanvasElement = null;
-        protected video:HTMLVideoElement = null;
-        protected mirror:HTMLElement = null;
-        // static constraints:webcam.WebcameraSettings = null;
-        protected warningElement:HTMLElement = null;
+        protected _wrapper:HTMLElement        = null;
+        protected _warning:HTMLElement        = null;
+        protected _body:HTMLBodyElement       = null;
+        protected _coin:HTMLElement           = null;
+        protected _start:HTMLElement          = null;
+        protected _export:HTMLElement         = null;
+        protected _frame:HTMLElement          = null;
+        protected _videoOverlay:HTMLElement   = null;
+        protected _eyeLevel:HTMLElement       = null;
+        protected _videoContainer:HTMLElement = null;
+        protected _hal9000:HTMLImageElement   = null;
+        protected _video:HTMLVideoElement     = null;
+        protected _canvas:HTMLCanvasElement   = null;
         
         //----------------------------------------------------------------------
         // Constructor
         //----------------------------------------------------------------------
         protected constructor() {
-            this.canvas = document.getElementsByTagName("canvas")[0];
-            this.video = document.getElementsByTagName("video")[0];
-            this.mirror = document.getElementById("mirror");
-            this.warningElement = document.getElementById("warning");
+            this._body = document.getElementsByTagName("body")[0];
         }
 
         //----------------------------------------------------------------------
         // Methods
         //----------------------------------------------------------------------
+
+        //----------------------------------------------------------------------
+        // Getters
+        //----------------------------------------------------------------------
+        public get warning():HTMLElement {
+            return this._warning;
+        }
+
+        public get canvas():HTMLCanvasElement {
+            return this._canvas;
+        }
+
+        public get video():HTMLVideoElement {
+            return this._video;
+        }
+
+        public get videoContainer():HTMLElement {
+            return this._videoContainer;
+        }
+
+        public get videoOverlay():HTMLElement {
+            return this._videoOverlay;
+        }
     }
 }

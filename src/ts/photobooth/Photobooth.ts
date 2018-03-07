@@ -11,12 +11,14 @@ namespace photobooth {
         //----------------------------------------------------------------------
     
         public videoElement = null;
+        private constraints = null;
     
         //----------------------------------------------------------------------
         // Constructor
         //----------------------------------------------------------------------
         
-        public constructor() {
+        public constructor(constraints:webcam.WebcameraSettings) {
+            this.constraints = constraints;
             this.init();
         }
     
@@ -30,7 +32,7 @@ namespace photobooth {
          * @memberof Photobooth
          */
         private init() {
-            var cam = new webcam.Webcamera(photobooth.Main.constraints);
+            var cam = new webcam.Webcamera(this.constraints);
             var stream = cam.getStreamPromise();
             stream.then((stream:MediaStream) => {
                 var reflection = new ui.Reflection(stream);
@@ -46,13 +48,13 @@ namespace photobooth {
          * @memberof Photobooth
          */
         public saveImage():void {
-            var context:CanvasRenderingContext2D = photobooth.Main.canvas.getContext('2d');
+            var context:CanvasRenderingContext2D = photobooth.Main.ui.canvas.getContext('2d');
             var img:HTMLImageElement = document.getElementsByTagName("img")[1];
             // s - source
             // d - destination
             // image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight
-            context.drawImage(photobooth.Main.video, 352, 0, 576, 720, 0, 0, 576, 720);
-            img.src = photobooth.Main.canvas.toDataURL('image/png');
+            context.drawImage(photobooth.Main.ui.video, 352, 0, 576, 720, 0, 0, 576, 720);
+            img.src = photobooth.Main.ui.canvas.toDataURL('image/png');
             console.log("image in img-element");
         }
     }

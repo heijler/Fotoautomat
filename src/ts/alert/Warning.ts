@@ -20,7 +20,7 @@ namespace alert {
         // @TODO: Make it possible to send with callback function that will be run once the x-button of warning is clicked.
         public constructor(warning:Error) {
             this.warning = warning;
-            this.warningElement = photobooth.Main.warningElement;
+            this.warningElement = photobooth.Main.ui.warning;
             this.displayWarning();
         }
     
