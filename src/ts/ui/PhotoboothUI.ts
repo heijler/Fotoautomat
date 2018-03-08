@@ -46,8 +46,11 @@ namespace ui {
             this._wrapper.classList.add("wrapper");
             this._warning.id = "warning";
             this._coin.id = "coin";
+            this._coin.classList.add("controls");
             this._start.id = "start";
+            this._start.classList.add("controls");
             this._export.id = "export";
+            this._export.classList.add("controls");
             this._frame.id = "frame";
             this._videoOverlay.id = "videoOverlay";
             this._eyeLevel.id = "eyeLevel";
@@ -55,6 +58,7 @@ namespace ui {
             this._hal9000.id = "hal9000";
             this._video.id = "reflectionVideo";
             this._canvas.id = "canvas";
+            this.createComponents();
             this.appendElements();
         }
 
@@ -84,13 +88,22 @@ namespace ui {
             videoWrap.appendChild(this._frame);
 
             canvasWrap.appendChild(this._canvas);
+
             
             // Append to body
             this._body.appendChild(warnWrap);
             this._body.appendChild(controlsWrap);
             this._body.appendChild(videoWrap);
             this._body.appendChild(canvasWrap);
-            console.log(this);
+        }
+
+        private createComponents():void {
+            this.createCoinslot();
+        }
+
+        private createCoinslot():void {
+            var coinslot = new Coinslot();
+            this._coin.appendChild(coinslot.element);
         }
     }
 }

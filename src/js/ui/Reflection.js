@@ -13,10 +13,10 @@ var ui;
             //----------------------------------------------------------------------
             // Properties
             //----------------------------------------------------------------------
-            this.stream = null;
             this.ui = null;
-            this.stream = stream;
+            this.stream = null;
             this.ui = photobooth.Main.ui;
+            this.stream = stream;
             this.prepareVideo();
         }
         //----------------------------------------------------------------------
@@ -26,7 +26,8 @@ var ui;
             var videoTrack = this.stream.getTracks();
             var videoSettings = videoTrack[0].getSettings();
             this.ui.videoContainer.style.width = (document.documentElement.clientHeight / 5) * 4 + "px";
-            this.ui.video.style.marginLeft = -(videoSettings.width - ((window.innerHeight / 5) * 4)) / 2 + "px";
+            this.ui.video.style.marginLeft = -(videoSettings.width - ((document.documentElement.clientHeight / 5) * 4)) / 2 + "px";
+            console.log(videoSettings.width, ((document.documentElement.clientHeight / 5) * 4));
             this.ui.videoOverlay.style.width = this.ui.videoContainer.style.width;
             this.renderReflection();
         }

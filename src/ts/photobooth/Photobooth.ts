@@ -10,8 +10,7 @@ namespace photobooth {
         // Properties
         //----------------------------------------------------------------------
     
-        public videoElement = null;
-        private constraints = null;
+        private constraints:webcam.WebcameraSettings = null;
     
         //----------------------------------------------------------------------
         // Constructor

@@ -8,15 +8,15 @@ namespace ui {
         //----------------------------------------------------------------------
         // Properties
         //----------------------------------------------------------------------
-        private stream:MediaStream = null;
         private ui:PhotoboothUI = null;
+        private stream:MediaStream = null;
 
         //----------------------------------------------------------------------
         // Constructor
         //----------------------------------------------------------------------
         public constructor(stream:MediaStream) {
-            this.stream = stream;
             this.ui = photobooth.Main.ui;
+            this.stream = stream;
             this.prepareVideo();
         }
 
@@ -28,7 +28,8 @@ namespace ui {
             var videoTrack = this.stream.getTracks();
             var videoSettings = videoTrack[0].getSettings();
             this.ui.videoContainer.style.width = (document.documentElement.clientHeight / 5) * 4 + "px";
-            this.ui.video.style.marginLeft = -(videoSettings.width - ((window.innerHeight / 5) * 4)) / 2 + "px";
+            this.ui.video.style.marginLeft = -(videoSettings.width - ((document.documentElement.clientHeight / 5) * 4)) / 2 +  "px";
+            console.log(videoSettings.width, ((document.documentElement.clientHeight / 5) * 4));
             this.ui.videoOverlay.style.width = this.ui.videoContainer.style.width;
             this.renderReflection();
         }

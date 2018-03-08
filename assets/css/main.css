@@ -6,6 +6,8 @@ body {
 .wrapper {
     width:33.33%;
     box-sizing:border-box;
+    float:left;
+    margin-top:20px;
 }
 
 .fullWidth {
@@ -104,4 +106,49 @@ video {
 #warning:hover::after {
     background-color: #bd5600;
     color: #f57000;
+}
+
+.sign {
+    background: #eaeaea;
+    padding:20px;
+}
+
+.sign img {
+    max-width: calc(100% - 40px);
+    margin: 0 auto;
+    display: block;
+}
+
+.signWrapper {
+    float:left;
+    overflow: hidden;
+    border: 20px solid #c3c3c3;
+}
+
+.signTitle {
+    font-family: sans-serif;
+    font-size: 28px;
+    max-width: calc(100% - 40px);
+    margin:0 auto;
+    display: block;
+}
+
+.coinslotWrapper:after {
+    clear:both;
+    content:"";
+    display: block;
+}
+
+.coinslot {
+    height: 100px;
+    width: 15px;
+    background:#484848;
+    float:left;
+    border: 20px solid #c3c3c3;
+    margin: 0 20px;
+}
+
+.controls {
+    float: left;
+    width: 100%;
 }

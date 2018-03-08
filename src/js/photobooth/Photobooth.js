@@ -13,7 +13,6 @@ var photobooth;
             //----------------------------------------------------------------------
             // Properties
             //----------------------------------------------------------------------
-            this.videoElement = null;
             this.constraints = null;
             this.constraints = constraints;
             this.init();
