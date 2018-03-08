@@ -9,7 +9,7 @@ var ui;
         //----------------------------------------------------------------------
         // Constructor
         //----------------------------------------------------------------------
-        constructor(text, image, height = 150, width = 300) {
+        constructor(text, image) {
             //----------------------------------------------------------------------
             // Properties
             //----------------------------------------------------------------------
@@ -22,8 +22,6 @@ var ui;
             this.ui = photobooth.Main.ui;
             this.text = text;
             this.image = image;
-            this.width = width;
-            this.height = height;
             this.renderSign();
         }
         //----------------------------------------------------------------------
@@ -35,8 +33,6 @@ var ui;
         createElements() {
             var signWrapper = document.createElement("div");
             signWrapper.classList.add("signWrapper");
-            signWrapper.style.height = this.height + "px";
-            signWrapper.style.width = this.width + "px";
             var sign = document.createElement("div");
             sign.classList.add("sign");
             var title = document.createElement("h3");
@@ -44,7 +40,6 @@ var ui;
             title.textContent = this.text;
             var image = document.createElement("img");
             image.src = this.image;
-            console.log("image height", image.height);
             sign.appendChild(title);
             sign.appendChild(image);
             signWrapper.appendChild(sign);

@@ -29,8 +29,8 @@ namespace ui {
             var videoSettings = videoTrack[0].getSettings();
             this.ui.videoContainer.style.width = (document.documentElement.clientHeight / 5) * 4 + "px";
             this.ui.video.style.marginLeft = -(videoSettings.width - ((document.documentElement.clientHeight / 5) * 4)) / 2 +  "px";
-            console.log(videoSettings.width, ((document.documentElement.clientHeight / 5) * 4));
             this.ui.videoOverlay.style.width = this.ui.videoContainer.style.width;
+            this.ui.body.style.gridTemplateColumns = "1fr " + this.ui.videoContainer.style.width + " 1fr";
             this.renderReflection();
         }
         

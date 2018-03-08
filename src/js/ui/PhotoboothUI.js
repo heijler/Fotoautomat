@@ -57,37 +57,53 @@ var ui;
         }
         appendElements() {
             // Clone wrapper elements
+            // Adding classnames and then removing, so that other elements won't get it..            
+            this._wrapper.classList.add("controlWrapper");
             var controlsWrap = this._wrapper.cloneNode();
+            this._wrapper.classList.remove("controlWrapper");
+            this._wrapper.classList.add("videoWrapper");
             var videoWrap = this._wrapper.cloneNode();
-            var canvasWrap = this._wrapper.cloneNode();
-            // Add specific class to warning element, and then remove the class for future wrappers.
-            this._wrapper.classList.add("fullWidth");
+            this._wrapper.classList.remove("videoWrapper");
+            this._wrapper.classList.add("exportWrapper");
+            var exportWrap = this._wrapper.cloneNode();
+            this._wrapper.classList.remove("exportWrapper");
+            this._wrapper.classList.add("warningWrapper");
             var warnWrap = this._wrapper.cloneNode();
-            this._wrapper.classList.remove("fullWidth");
+            this._wrapper.classList.remove("warningWrapper");
             // Append elements to wrapper elements
             warnWrap.appendChild(this._warning);
             controlsWrap.appendChild(this._coin);
             controlsWrap.appendChild(this._start);
-            controlsWrap.appendChild(this._export);
+            exportWrap.appendChild(this._export);
             this._videoContainer.appendChild(this._hal9000);
             this._videoContainer.appendChild(this._video);
             this._videoOverlay.appendChild(this._eyeLevel);
             this._frame.appendChild(this._videoOverlay);
             this._frame.appendChild(this._videoContainer);
             videoWrap.appendChild(this._frame);
-            canvasWrap.appendChild(this._canvas);
+            exportWrap.appendChild(this._canvas);
             // Append to body
             this._body.appendChild(warnWrap);
             this._body.appendChild(controlsWrap);
             this._body.appendChild(videoWrap);
-            this._body.appendChild(canvasWrap);
+            this._body.appendChild(exportWrap);
         }
         createComponents() {
             this.createCoinslot();
+            this.createStartbutton();
+            this.createExportslot();
         }
         createCoinslot() {
             var coinslot = new ui.Coinslot();
             this._coin.appendChild(coinslot.element);
+        }
+        createStartbutton() {
+            var startbutton = new ui.Startbutton();
+            this._start.appendChild(startbutton.element);
+        }
+        createExportslot() {
+            var exportSlot = new ui.Export();
+            this._export.appendChild(exportSlot.element);
         }
     }
     ui.PhotoboothUI = PhotoboothUI;

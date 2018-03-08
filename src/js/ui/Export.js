@@ -1,11 +1,11 @@
 var ui;
 (function (ui) {
     /**
-     * Coinslot
-     * Represents the coinslot
-     * @class Coinslot
+     * Export
+     * Represents the Export
+     * @class Export
      */
-    class Coinslot {
+    class Export {
         //----------------------------------------------------------------------
         // Constructor
         //----------------------------------------------------------------------
@@ -17,25 +17,27 @@ var ui;
             this.sign = null;
             this.element = null;
             this.ui = photobooth.Main.ui;
-            this.sign = new ui.Sign("Insert coin here", "assets/img/HAL9000.png");
-            this.renderCoinslot();
+            this.sign = new ui.Sign("Photo delivery here", "assets/img/bg-pattern.png");
+            this.renderExportslot();
         }
         //----------------------------------------------------------------------
         // Methods
         //----------------------------------------------------------------------
-        renderCoinslot() {
+        renderExportslot() {
             this.createElements();
         }
         createElements() {
-            var coinslotWrapper = document.createElement("div");
-            coinslotWrapper.classList.add("coinslotWrapper");
-            var coinslot = document.createElement("div");
-            coinslot.classList.add("coinslot");
-            coinslot.style.height = this.sign.element.style.height;
-            coinslotWrapper.appendChild(this.sign.element);
-            coinslotWrapper.appendChild(coinslot);
-            this.element = coinslotWrapper;
+            var exportWrapper = document.createElement("div");
+            exportWrapper.classList.add("exportSlotWrapper");
+            var exportDivider = document.createElement("div");
+            exportDivider.id = "exportSlotDivider";
+            var exportEl = document.createElement("div");
+            exportEl.classList.add("export");
+            exportEl.appendChild(exportDivider);
+            exportWrapper.appendChild(this.sign.element);
+            exportWrapper.appendChild(exportEl);
+            this.element = exportWrapper;
         }
     }
-    ui.Coinslot = Coinslot;
+    ui.Export = Export;
 })(ui || (ui = {}));

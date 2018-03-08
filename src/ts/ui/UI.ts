@@ -50,5 +50,9 @@ namespace ui {
         public get videoOverlay():HTMLElement {
             return this._videoOverlay;
         }
+
+        public get body():HTMLElement {
+            return this._body;
+        }
     }
 }

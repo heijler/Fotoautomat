@@ -44,6 +44,9 @@ var ui;
         get videoOverlay() {
             return this._videoOverlay;
         }
+        get body() {
+            return this._body;
+        }
     }
     ui.UI = UI;
 })(ui || (ui = {}));

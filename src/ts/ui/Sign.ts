@@ -18,12 +18,10 @@ namespace ui {
         //----------------------------------------------------------------------
         // Constructor
         //----------------------------------------------------------------------
-        public constructor(text:string, image:string, height:number = 150, width:number = 300) {
+        public constructor(text:string, image:string) {
             this.ui = photobooth.Main.ui;
             this.text = text;
             this.image = image;
-            this.width = width;
-            this.height = height;
             this.renderSign();
         }
 
@@ -38,8 +36,6 @@ namespace ui {
         private createElements():void {
             var signWrapper = document.createElement("div");
                 signWrapper.classList.add("signWrapper");
-                signWrapper.style.height = this.height + "px";
-                signWrapper.style.width = this.width + "px";
 
             var sign = document.createElement("div");
                 sign.classList.add("sign");
@@ -50,7 +46,6 @@ namespace ui {
 
             var image = document.createElement("img");
                 image.src = this.image;
-                console.log("image height", image.height);
 
             sign.appendChild(title);
             sign.appendChild(image);

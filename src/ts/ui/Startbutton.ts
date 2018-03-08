@@ -1,15 +1,14 @@
 namespace ui {
     /** 
-     * Coinslot
-     * Represents the coinslot
-     * @class Coinslot
+     * Startbutton
+     * Represents the Startbutton
+     * @class Startbutton
      */
-    export class Coinslot {
+    export class Startbutton {
         //----------------------------------------------------------------------
         // Properties
         //----------------------------------------------------------------------
         private ui:PhotoboothUI = null;
-        private sign:Sign = null;
         public element:HTMLElement = null;
 
         //----------------------------------------------------------------------
@@ -17,27 +16,23 @@ namespace ui {
         //----------------------------------------------------------------------
         public constructor() {
             this.ui = photobooth.Main.ui;
-            this.sign = new Sign("Insert coin here", "assets/img/HAL9000.png");
-            this.renderCoinslot();
+            this.renderStartbutton();
         }
 
         //----------------------------------------------------------------------
         // Methods
         //----------------------------------------------------------------------
 
-        private renderCoinslot():void{
+        private renderStartbutton():void{
             this.createElements();
         }
 
         private createElements():void {
-            var coinslotWrapper = document.createElement("div");
-                coinslotWrapper.classList.add("coinslotWrapper");
-            var coinslot = document.createElement("div");
-                coinslot.classList.add("coinslot");
-                coinslot.style.height = this.sign.element.style.height;
-            coinslotWrapper.appendChild(this.sign.element);
-            coinslotWrapper.appendChild(coinslot);
-            this.element = coinslotWrapper;
+            var startButton = document.createElement("div");
+                startButton.id = "startButton";
+                startButton.textContent = "Start";
+                startButton.classList.add("startButton-inactive");
+            this.element = startButton;
 
         }
        

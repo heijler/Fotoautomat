@@ -1,18 +1,50 @@
 body {
     margin: 0;
-    padding: 0;
+    background: #7DB3B1;
+    display:grid;
+    grid-column-gap:20px;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas:
+    "warning warning warning"
+    "control video export";
+    overflow:hidden;
+}
+
+body:after {
+    content:"";
+    top:0;
+    left:0;
+    bottom:0;
+    right:0;
+    position: absolute;
+    z-index: -1;
+    background-image: url(../img/bg-pattern.png);
+    opacity: 0.4;
 }
 
 .wrapper {
-    width:33.33%;
-    box-sizing:border-box;
-    float:left;
-    margin-top:20px;
+    opacity: 1;
 }
 
-.fullWidth {
-    display:block;
-    width:100%;
+.warningWrapper {
+    grid-area: warning;
+    display: block;
+    width: 100vw;
+}
+
+.controlWrapper {
+    grid-area:control;
+    height:100vh;
+}
+
+.videoWrapper {
+    grid-area:video;
+    height:100vh;
+}
+
+.exportWrapper {
+    grid-area:export;
+    height:100vh;
 }
 
 #videoContainer {
@@ -42,40 +74,41 @@ body {
 }
 
 #videoOverlay {
-    background-color: #000000;
+    background-color: #dbdbdb;
+    background: radial-gradient(ellipse at top left, hsla(0,0%,100%,1) 0%, hsla(0,0%,70%,1) 100%);
     min-height: 100%;
-    /* min-width: 100%; */
     margin: 0 auto;
     left: 0;
     right: 0;
     z-index: 1;
     position: absolute;
-    opacity: 0.2;
+    opacity: 0.7;
 }
 
 #eyeLevel {
-    height:10px;
-    width:100%;
-    background:#ffffff;
+    /* height: 10px;
+    width: 100%;
+    background: #ffffff;
     top: calc(50% - 5px);
     position: absolute;
-    z-index: 2;
+    z-index: 2; */
 }
 
 /* http://thenewcode.com/1020/HTML5-Video-Effects-with-CSS-Blend-Modes */
 video {
-    transform: scale(-1, 1);
-    mix-blend-mode: soft-light;
-    max-height: 100vh;
+    /* transform: scale(-1, 1); */
+    /* mix-blend-mode: soft-light; */
+    /* mix-blend-mode: multiply;
+    max-height: 100vh; */
 }
 
 #canvas {
-    display: none;
+    /* display: none; */
 }
 
 #image {
-    position: absolute;
-    z-index:1;
+    /* position: absolute;
+    z-index: 1; */
 }
 
 #warning {
@@ -93,62 +126,111 @@ video {
 }
 
 #warning::after {
-    content: "X";
+    /* content: "X";
     background-color: #e66900;
     margin: 10px;
     width: 30px;
     height: 30px;
     padding: 5px 11px;
     border-radius: 27px;
-    color: #b35200;
+    color: #b35200; */
 }
 
 #warning:hover::after {
-    background-color: #bd5600;
-    color: #f57000;
+    /* background-color: #bd5600;
+    color: #f57000; */
 }
 
 .sign {
-    background: #eaeaea;
-    padding:20px;
+    /* background: #eaeaea;
+    padding: 20px; */
 }
 
 .sign img {
-    max-width: calc(100% - 40px);
+    /* max-width: calc(100% - 40px);
     margin: 0 auto;
-    display: block;
+    display: block; */
 }
 
 .signWrapper {
-    float:left;
+    /* float: left;
     overflow: hidden;
-    border: 20px solid #c3c3c3;
+    width: calc(95% - 60px);
+    outline: 20px solid #c3c3c3;
+    margin-right: 60px; */
 }
 
 .signTitle {
-    font-family: sans-serif;
-    font-size: 28px;
+    /* font-family: sans-serif;
+    font-size: 26px;
     max-width: calc(100% - 40px);
-    margin:0 auto;
+    margin: 0 auto;
     display: block;
+    user-select: none;
+    -moz-user-select: none;
+    text-align: center; */
 }
 
 .coinslotWrapper:after {
-    clear:both;
-    content:"";
-    display: block;
+    /* clear: both;
+    content: "";
+    display: block; */
 }
 
 .coinslot {
-    height: 100px;
-    width: 15px;
+    /* height: 100px;
+    width: 5%;
     background:#484848;
-    float:left;
-    border: 20px solid #c3c3c3;
-    margin: 0 20px;
+    float: left;
+    outline: 20px solid #c3c3c3; */
 }
 
 .controls {
+    /* float: left;
+    width: 70%;
+    margin-top: 20px;
+    margin-left: 20px; */
+}
+
+#start {
+    /* outline: 20px solid hsla(114.2, 73%, 17.6%, 0.9);
+    margin-top: 60px;
+    user-select: none;
+    -moz-user-select: none; */
+}
+
+#startButton {
+    /* font-family: sans-serif;
+    font-size: 8em;
+    text-align: center;
+    color: hsla(0, 0%, 100%, 0.7); */
+}
+
+.startButton-inactive {
+    /* background: radial-gradient(ellipse at center, rgba(76,171,65,1) 0%, rgba(23,117,14,1) 84%, rgba(23,117,14,1) 100%); */
+}
+
+.startButton-active {
+    /* background: radial-gradient(ellipse at center, rgba(163,250,169,1) 0%, rgba(52,247,65,1) 16%, rgba(76,171,65,1) 46%, rgba(23,117,14,1) 84%, rgba(23,117,14,1) 100%); */
+}
+
+#coin .sign {
+    /* height: 60px; */
+}
+
+#export {
+    /* margin-top:60px; */
+}
+
+#export .signWrapper {
+    /* width:100%; */
+}
+
+.export {
+    /* width: 100%;
+    height: 260px;
+    background: red;
     float: left;
-    width: 100%;
+    margin-top: 60px;
+    outline: 20px solid green; */
 }
