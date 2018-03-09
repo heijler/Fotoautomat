@@ -17,7 +17,7 @@ var ui;
             this.sign = null;
             this.element = null;
             this.ui = photobooth.Main.ui;
-            this.sign = new ui.Sign("Insert coin here", "assets/img/export-arrow.svg");
+            this.sign = new ui.Sign("Insert coin here", "assets/img/coin-arrow.svg");
             this.renderCoinslot();
         }
         //----------------------------------------------------------------------

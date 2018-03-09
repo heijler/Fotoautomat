@@ -1,3 +1,9 @@
+@font-face {
+    font-family: "Stardos Stencil";
+    src: url(../fonts/StardosStencil-Regular.ttf);
+    font-weight: 400;
+}
+
 body {
     margin: 0;
     background: #7DB3B1;
@@ -104,10 +110,13 @@ body:after {
     z-index: 1;
     opacity: 0.7;
     mix-blend-mode: color-dodge;
-    background-image: url("../img/HAL9000.png");
+    /* background-image: url("../img/HAL9000.png"); */
     width: 328px;
     height: 328px;
-    background-repeat: no-repeat;
+    /* background-repeat: no-repeat; */
+    -moz-user-select: none;
+    user-select: none;
+    pointer-events: none;
 }
 
 #videoOverlay {
@@ -119,7 +128,7 @@ body:after {
     right: 0;
     z-index: 1;
     position: absolute;
-    opacity: 0.7;
+    opacity: 0.5;
 }
 
 #eyeLevel {
@@ -184,6 +193,9 @@ video {
     max-width: calc(100% - 40px);
     margin: 0 auto;
     display: block;
+    -moz-user-select: none;
+    user-select: none;
+    pointer-events: none;
 }
 
 .signWrapper {
@@ -193,8 +205,8 @@ video {
 }
 
 .signTitle {
-    font-family: sans-serif;
-    font-size: 22px;
+    font-family: "Stardos Stencil", sans-serif;
+    font-size: 40px;
     max-width: calc(100% - 40px);
     margin: 0 auto;
     display: block;
