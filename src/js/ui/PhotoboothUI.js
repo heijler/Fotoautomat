@@ -50,6 +50,7 @@ var ui;
             this._eyeLevel.id = "eyeLevel";
             this._videoContainer.id = "videoContainer";
             this._hal9000.id = "hal9000";
+            this._hal9000.draggable = false;
             this._video.id = "reflectionVideo";
             this._canvas.id = "canvas";
             this.createComponents();

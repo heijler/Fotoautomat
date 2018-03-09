@@ -40,6 +40,7 @@ var ui;
             title.textContent = this.text;
             var image = document.createElement("img");
             image.src = this.image;
+            image.draggable = false;
             sign.appendChild(title);
             sign.appendChild(image);
             signWrapper.appendChild(sign);

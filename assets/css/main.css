@@ -2,7 +2,7 @@ body {
     margin: 0;
     background: #7DB3B1;
     display:grid;
-    grid-column-gap:100px;
+    grid-column-gap:20px;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-areas:
     "warning warning warning"
@@ -131,12 +131,9 @@ body:after {
     z-index: 2;
 }
 
-/* http://thenewcode.com/1020/HTML5-Video-Effects-with-CSS-Blend-Modes */
 video {
     transform: scale(-1, 1);
-    /* mix-blend-mode: soft-light; */
-    mix-blend-mode: multiply;
-    /* max-height: 100vh; */
+    mix-blend-mode: soft-light;
 }
 
 #canvas {
@@ -204,6 +201,7 @@ video {
     user-select: none;
     -moz-user-select: none;
     text-align: center;
+    color: #191111;
 }
 
 .coinslot {
@@ -227,6 +225,14 @@ video {
     font-size: 5em;
     text-align: center;
     color: hsla(0, 0%, 100%, 0.7);
+}
+
+#startButton:hover {
+    cursor: pointer;
+}
+
+#startButton:active {
+    transform: scale(0.95);
 }
 
 .startButton-inactive {

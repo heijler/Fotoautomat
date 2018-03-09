@@ -46,6 +46,7 @@ namespace ui {
 
             var image = document.createElement("img");
                 image.src = this.image;
+                image.draggable = false;
 
             sign.appendChild(title);
             sign.appendChild(image);
