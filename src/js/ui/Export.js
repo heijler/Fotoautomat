@@ -17,7 +17,7 @@ var ui;
             this.sign = null;
             this.element = null;
             this.ui = photobooth.Main.ui;
-            this.sign = new ui.Sign("Photo delivery here", "assets/img/bg-pattern.png");
+            this.sign = new ui.Sign("Photo delivery here", "assets/img/export-arrow.svg");
             this.renderExportslot();
         }
         //----------------------------------------------------------------------

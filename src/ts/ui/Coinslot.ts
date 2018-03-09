@@ -17,7 +17,7 @@ namespace ui {
         //----------------------------------------------------------------------
         public constructor() {
             this.ui = photobooth.Main.ui;
-            this.sign = new Sign("Insert coin here", "assets/img/HAL9000.png");
+            this.sign = new Sign("Insert coin here", "assets/img/export-arrow.svg");
             this.renderCoinslot();
         }
 

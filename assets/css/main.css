@@ -2,11 +2,11 @@ body {
     margin: 0;
     background: #7DB3B1;
     display:grid;
-    grid-column-gap:20px;
+    grid-column-gap:100px;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-areas:
     "warning warning warning"
-    "control video export";
+    "control video strips";
     overflow:hidden;
 }
 
@@ -23,7 +23,7 @@ body:after {
 }
 
 .wrapper {
-    opacity: 1;
+    display: block;
 }
 
 .warningWrapper {
@@ -35,6 +35,14 @@ body:after {
 .controlWrapper {
     grid-area:control;
     height:100vh;
+    margin-left:100px;
+    display:grid;
+    grid-row-gap: 20px;
+    grid-template-rows: 1fr 1fr 8fr;
+    grid-template-areas: 
+    "coin"
+    "start"
+    "export"
 }
 
 .videoWrapper {
@@ -42,9 +50,38 @@ body:after {
     height:100vh;
 }
 
-.exportWrapper {
-    grid-area:export;
-    height:100vh;
+.coinslotWrapper {
+    display:grid;
+    grid-column-gap: 60px;
+    grid-template-columns: 20fr 1fr;
+    grid-template-areas:
+    "sign coinslot";
+    margin: 40px 0px;
+}
+
+#coin {
+    grid-area: coin;
+}
+
+#start {
+    grid-area: start;
+}
+
+#export {
+    grid-area: export;
+    margin-top: 60px;
+}
+
+.coinslotWrapper .signWrapper {
+    grid-area: sign;
+}
+
+.coinslotWrapper .coinslot {
+    grid-area: coinslot;
+}
+
+.coinslotWrapper .sign img {
+    width:50%;
 }
 
 #videoContainer {
@@ -86,20 +123,20 @@ body:after {
 }
 
 #eyeLevel {
-    /* height: 10px;
+    height: 10px;
     width: 100%;
     background: #ffffff;
     top: calc(50% - 5px);
     position: absolute;
-    z-index: 2; */
+    z-index: 2;
 }
 
 /* http://thenewcode.com/1020/HTML5-Video-Effects-with-CSS-Blend-Modes */
 video {
-    /* transform: scale(-1, 1); */
+    transform: scale(-1, 1);
     /* mix-blend-mode: soft-light; */
-    /* mix-blend-mode: multiply;
-    max-height: 100vh; */
+    mix-blend-mode: multiply;
+    /* max-height: 100vh; */
 }
 
 #canvas {
@@ -126,111 +163,93 @@ video {
 }
 
 #warning::after {
-    /* content: "X";
+    content: "X";
     background-color: #e66900;
     margin: 10px;
     width: 30px;
     height: 30px;
     padding: 5px 11px;
     border-radius: 27px;
-    color: #b35200; */
+    color: #b35200;
 }
 
 #warning:hover::after {
-    /* background-color: #bd5600;
-    color: #f57000; */
+    background-color: #bd5600;
+    color: #f57000;
 }
 
 .sign {
-    /* background: #eaeaea;
-    padding: 20px; */
+    background: #eaeaea;
+    padding: 20px;
 }
 
 .sign img {
-    /* max-width: calc(100% - 40px);
+    max-width: calc(100% - 40px);
     margin: 0 auto;
-    display: block; */
+    display: block;
 }
 
 .signWrapper {
-    /* float: left;
     overflow: hidden;
-    width: calc(95% - 60px);
     outline: 20px solid #c3c3c3;
-    margin-right: 60px; */
+    /* margin: 0 20px; */
 }
 
 .signTitle {
-    /* font-family: sans-serif;
+    font-family: sans-serif;
     font-size: 26px;
     max-width: calc(100% - 40px);
     margin: 0 auto;
     display: block;
     user-select: none;
     -moz-user-select: none;
-    text-align: center; */
-}
-
-.coinslotWrapper:after {
-    /* clear: both;
-    content: "";
-    display: block; */
+    text-align: center;
 }
 
 .coinslot {
-    /* height: 100px;
-    width: 5%;
     background:#484848;
-    float: left;
-    outline: 20px solid #c3c3c3; */
+    outline: 20px solid #c3c3c3;
 }
 
 .controls {
-    /* float: left;
-    width: 70%;
-    margin-top: 20px;
-    margin-left: 20px; */
+    margin: 0 20px;
 }
 
 #start {
-    /* outline: 20px solid hsla(114.2, 73%, 17.6%, 0.9);
-    margin-top: 60px;
+    grid-area: start;
     user-select: none;
-    -moz-user-select: none; */
+    -moz-user-select: none;
 }
 
 #startButton {
-    /* font-family: sans-serif;
+    outline: 20px solid hsla(114.2, 73%, 17.6%, 0.9);
+    font-family: sans-serif;
     font-size: 8em;
     text-align: center;
-    color: hsla(0, 0%, 100%, 0.7); */
+    color: hsla(0, 0%, 100%, 0.7);
 }
 
 .startButton-inactive {
-    /* background: radial-gradient(ellipse at center, rgba(76,171,65,1) 0%, rgba(23,117,14,1) 84%, rgba(23,117,14,1) 100%); */
+    background: radial-gradient(ellipse at center, rgba(76,171,65,1) 0%, rgba(23,117,14,1) 84%, rgba(23,117,14,1) 100%);
 }
 
 .startButton-active {
-    /* background: radial-gradient(ellipse at center, rgba(163,250,169,1) 0%, rgba(52,247,65,1) 16%, rgba(76,171,65,1) 46%, rgba(23,117,14,1) 84%, rgba(23,117,14,1) 100%); */
-}
-
-#coin .sign {
-    /* height: 60px; */
-}
-
-#export {
-    /* margin-top:60px; */
-}
-
-#export .signWrapper {
-    /* width:100%; */
+    background: radial-gradient(ellipse at center, rgba(163,250,169,1) 0%, rgba(52,247,65,1) 16%, rgba(76,171,65,1) 46%, rgba(23,117,14,1) 84%, rgba(23,117,14,1) 100%);
 }
 
 .export {
-    /* width: 100%;
+    width: 100%;
     height: 260px;
-    background: red;
+    background: #616161;
     float: left;
     margin-top: 60px;
-    outline: 20px solid green; */
+    outline: 20px solid #c3c3c3;
+}
+
+#exportSlotDivider {
+    width:20px;
+    height:100%;
+    display: block;
+    background: #5b5b5b;
+    margin: 0 auto;
 }

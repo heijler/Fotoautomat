@@ -17,7 +17,7 @@ namespace ui {
         //----------------------------------------------------------------------
         public constructor() {
             this.ui = photobooth.Main.ui;
-            this.sign = new Sign("Photo delivery here", "assets/img/bg-pattern.png");
+            this.sign = new Sign("Photo delivery here", "assets/img/export-arrow.svg");
             this.renderExportslot();
         }
 

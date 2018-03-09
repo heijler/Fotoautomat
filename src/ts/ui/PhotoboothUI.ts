@@ -74,9 +74,9 @@ namespace ui {
             var videoWrap = this._wrapper.cloneNode();
             this._wrapper.classList.remove("videoWrapper");
 
-            this._wrapper.classList.add("exportWrapper");
-            var exportWrap = this._wrapper.cloneNode();
-            this._wrapper.classList.remove("exportWrapper");
+            this._wrapper.classList.add("stripsWrapper");
+            var stripsWrap = this._wrapper.cloneNode();
+            this._wrapper.classList.remove("stripsWrapper");
 
             
             this._wrapper.classList.add("warningWrapper");
@@ -88,7 +88,7 @@ namespace ui {
 
             controlsWrap.appendChild(this._coin);
             controlsWrap.appendChild(this._start);
-            exportWrap.appendChild(this._export);
+            controlsWrap.appendChild(this._export);
 
             this._videoContainer.appendChild(this._hal9000);
             this._videoContainer.appendChild(this._video);
@@ -97,14 +97,14 @@ namespace ui {
             this._frame.appendChild(this._videoContainer);
             videoWrap.appendChild(this._frame);
 
-            exportWrap.appendChild(this._canvas);
+            stripsWrap.appendChild(this._canvas);
 
             
             // Append to body
             this._body.appendChild(warnWrap);
             this._body.appendChild(controlsWrap);
             this._body.appendChild(videoWrap);
-            this._body.appendChild(exportWrap);
+            this._body.appendChild(stripsWrap);
         }
 
         private createComponents():void {
