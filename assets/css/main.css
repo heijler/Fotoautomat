@@ -145,8 +145,8 @@ video {
     mix-blend-mode: soft-light;
 }
 
-#canvas {
-    /* display: none; */
+#canvas, #tempCanvas {
+    display: none;
 }
 
 #image {

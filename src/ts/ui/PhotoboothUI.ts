@@ -29,7 +29,15 @@ namespace ui {
             this._wrapper = document.createElement("div");
             this._warning = document.createElement("div");
             this._coin = document.createElement("div");
-            this._coinSlot = new Coinslot().element;
+
+            var cs = new Coinslot();
+            this._coinSlotWrapper = cs.element;
+            this._coinSlot = cs.child;
+
+            // var sb = new Startbutton();
+            // this._start = sb.element;
+            // this._startBtn = sb.child;
+
             this._start = document.createElement("div");
             this._export = document.createElement("div");
             this._frame = document.createElement("div");
@@ -39,6 +47,7 @@ namespace ui {
             this._hal9000 = document.createElement("img");
             this._video = document.createElement("video");
             this._canvas = document.createElement("canvas");
+            this._tempCanvas = document.createElement("canvas");
             this._shelf = document.createElement("div");
             this.assignAttributes();
         }
@@ -62,6 +71,9 @@ namespace ui {
             this._hal9000.draggable = false;
             this._video.id = "reflectionVideo";
             this._canvas.id = "canvas";
+            // this._canvas.width = 400;
+            // this._canvas.height = 500;
+            this._tempCanvas.id = "tempCanvas";
             this._shelf.classList.add("shelfWrapper");
             this.createComponents();
             this.appendElements();
@@ -70,7 +82,7 @@ namespace ui {
         private appendElements():void {
             // Clone wrapper elements
             
-            this._coin.appendChild(this._coinSlot);
+            this._coin.appendChild(this._coinSlotWrapper);
             // Adding classnames and then removing, so that other elements won't get it..            
             this._wrapper.classList.add("controlWrapper");
             var controlsWrap = this._wrapper.cloneNode();
@@ -111,6 +123,7 @@ namespace ui {
             this._body.appendChild(videoWrap);
             this._body.appendChild(stripsWrap);
             this._body.appendChild(this._canvas);
+            this._body.appendChild(this._tempCanvas);
         }
 
         private createComponents():void {

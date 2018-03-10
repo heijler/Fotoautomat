@@ -10,9 +10,6 @@ var ui;
         // Constructor
         //----------------------------------------------------------------------
         constructor(x, y) {
-            //----------------------------------------------------------------------
-            // Properties
-            //----------------------------------------------------------------------
             this.ui = null;
             this.element = null;
             this.posX = 0;
@@ -92,9 +89,13 @@ var ui;
             this.dispatchEvent();
         }
         dispatchEvent() {
-            var event = new Event("insert");
+            var event = new Event(Coin.INSERT_EVENT);
             this.ui.coinSlot.dispatchEvent(event);
         }
     }
+    //----------------------------------------------------------------------
+    // Properties
+    //----------------------------------------------------------------------
+    Coin.INSERT_EVENT = "coin-insert";
     ui.Coin = Coin;
 })(ui || (ui = {}));

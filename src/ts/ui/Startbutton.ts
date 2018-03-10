@@ -8,6 +8,7 @@ namespace ui {
         //----------------------------------------------------------------------
         // Properties
         //----------------------------------------------------------------------
+        public static BUTTON_PRESS:string = "start-pressed";
         private ui:PhotoboothUI = null;
         public element:HTMLElement = null;
 
@@ -35,14 +36,22 @@ namespace ui {
 
                 startButton.addEventListener("mousedown", this.onMouseDown.bind(this), false);
             this.element = startButton;
-
         }
 
         private onMouseDown(event:MouseEvent):void {
             if (this.element.classList.contains("startButton-active")) {
+
                 var audio = new Audio("assets/audio/button-push.wav");
                     audio.play();
+
+                this.dispatchEvent();
+
             }
+        }
+
+        private dispatchEvent():void {
+            var event = new Event(Startbutton.BUTTON_PRESS);
+            this.element.dispatchEvent(event);
         }
        
     }

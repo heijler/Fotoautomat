@@ -8,6 +8,7 @@ namespace ui {
         //----------------------------------------------------------------------
         // Properties
         //----------------------------------------------------------------------
+        public static INSERT_EVENT:string = "coin-insert";
         private ui:PhotoboothUI = null;
         public  element:HTMLElement = null;
         private posX:number = 0;
@@ -58,7 +59,6 @@ namespace ui {
 
             // this.ui.coin.children[0].children[1] == coinslot, but it's not a safe
             // reference to the element.
-            
             if (this.collisionDetection(this.element, this.ui.coinSlot)) {
                 this.element.style.backgroundImage = "url('assets/img/coin/coin-side.png')";
                 if (this.flag) {
@@ -106,7 +106,7 @@ namespace ui {
         }
 
         private dispatchEvent():void {
-            var event = new Event("insert")
+            var event = new Event(Coin.INSERT_EVENT);
             this.ui.coinSlot.dispatchEvent(event);
         }
     }

@@ -11,6 +11,7 @@ namespace ui {
         private ui:PhotoboothUI = null;
         private sign:Sign = null;
         public element:HTMLElement = null;
+        public child:HTMLElement = null;
 
         //----------------------------------------------------------------------
         // Constructor
@@ -37,6 +38,7 @@ namespace ui {
                 coinslot.style.height = this.sign.element.style.height;
             coinslotWrapper.appendChild(this.sign.element);
             coinslotWrapper.appendChild(coinslot);
+            this.child = coinslot;
             this.element = coinslotWrapper;
 
         }

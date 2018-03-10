@@ -11,6 +11,7 @@ namespace photobooth {
         //----------------------------------------------------------------------
     
         public static ui:ui.PhotoboothUI = null;
+        public static numPhotos:number = 4;
     
         //----------------------------------------------------------------------
         // Methods
@@ -23,20 +24,19 @@ namespace photobooth {
          * @memberof Main
          */
         public static init():void {
-            // photobooth.Main.canvas.height = 720; // dynamiskt
-            // photobooth.Main.canvas.width  = 576; // dynamiskt
-
-            // photobooth.Main.constraints  = new webcam.WebcameraSettings();
-            // var pb:photobooth.Photobooth = new photobooth.Photobooth();
-            // // var timeout = setTimeout(pb.saveImage, 5000);
             Main.ui = new ui.PhotoboothUI();
             Main.ui.init();
 
             var constraints:webcam.WebcameraSettings = new webcam.WebcameraSettings();
-            var pb:photobooth.Photobooth = new photobooth.Photobooth(constraints);
+            var pb:photobooth.Photobooth = new photobooth.Photobooth(constraints, Main.numPhotos);
 
-            Main.ui.coinSlot.addEventListener("insert", function() {
+            // This should listen for Coin.INSERT_EVENT.. 
+            Main.ui.coinSlot.addEventListener("coin-insert", function(event:Event) {
                 Main.ui.start.children[0].className = "startButton-active";
+            });
+            Main.ui.start.children[0].addEventListener("start-pressed", function(event:Event) {
+                // console.log("Startbutton was pressed");
+                pb.saveImage();
             });
         }
     }

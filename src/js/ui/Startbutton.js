@@ -10,9 +10,6 @@ var ui;
         // Constructor
         //----------------------------------------------------------------------
         constructor() {
-            //----------------------------------------------------------------------
-            // Properties
-            //----------------------------------------------------------------------
             this.ui = null;
             this.element = null;
             this.ui = photobooth.Main.ui;
@@ -36,8 +33,17 @@ var ui;
             if (this.element.classList.contains("startButton-active")) {
                 var audio = new Audio("assets/audio/button-push.wav");
                 audio.play();
+                this.dispatchEvent();
             }
         }
+        dispatchEvent() {
+            var event = new Event(Startbutton.BUTTON_PRESS);
+            this.element.dispatchEvent(event);
+        }
     }
+    //----------------------------------------------------------------------
+    // Properties
+    //----------------------------------------------------------------------
+    Startbutton.BUTTON_PRESS = "start-pressed";
     ui.Startbutton = Startbutton;
 })(ui || (ui = {}));

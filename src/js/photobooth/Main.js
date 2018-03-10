@@ -15,17 +15,17 @@ var photobooth;
          * @memberof Main
          */
         static init() {
-            // photobooth.Main.canvas.height = 720; // dynamiskt
-            // photobooth.Main.canvas.width  = 576; // dynamiskt
-            // photobooth.Main.constraints  = new webcam.WebcameraSettings();
-            // var pb:photobooth.Photobooth = new photobooth.Photobooth();
-            // // var timeout = setTimeout(pb.saveImage, 5000);
             Main.ui = new ui.PhotoboothUI();
             Main.ui.init();
             var constraints = new webcam.WebcameraSettings();
-            var pb = new photobooth.Photobooth(constraints);
-            Main.ui.coinSlot.addEventListener("insert", function () {
+            var pb = new photobooth.Photobooth(constraints, Main.numPhotos);
+            // This should listen for Coin.INSERT_EVENT.. 
+            Main.ui.coinSlot.addEventListener("coin-insert", function (event) {
                 Main.ui.start.children[0].className = "startButton-active";
+            });
+            Main.ui.start.children[0].addEventListener("start-pressed", function (event) {
+                // console.log("Startbutton was pressed");
+                pb.saveImage();
             });
         }
     }
@@ -33,6 +33,7 @@ var photobooth;
     // Properties
     //----------------------------------------------------------------------
     Main.ui = null;
+    Main.numPhotos = 4;
     photobooth.Main = Main;
 })(photobooth || (photobooth = {}));
 window.addEventListener("load", photobooth.Main.init, false);

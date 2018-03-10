@@ -13,7 +13,9 @@ var ui;
             this._body = null;
             this._coin = null;
             this._coinSlot = null;
+            this._coinSlotWrapper = null;
             this._start = null;
+            // protected _startBtn:HTMLElement         = null;
             this._export = null;
             this._frame = null;
             this._videoOverlay = null;
@@ -22,6 +24,7 @@ var ui;
             this._hal9000 = null;
             this._video = null;
             this._canvas = null;
+            this._tempCanvas = null;
             this._shelf = null;
             this._body = document.getElementsByTagName("body")[0];
         }
@@ -36,6 +39,9 @@ var ui;
         }
         get canvas() {
             return this._canvas;
+        }
+        get tempCanvas() {
+            return this._tempCanvas;
         }
         get video() {
             return this._video;

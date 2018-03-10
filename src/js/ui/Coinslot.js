@@ -16,6 +16,7 @@ var ui;
             this.ui = null;
             this.sign = null;
             this.element = null;
+            this.child = null;
             this.ui = photobooth.Main.ui;
             this.sign = new ui.Sign("Insert coin here", "assets/img/coin-arrow.svg");
             this.renderCoinslot();
@@ -34,6 +35,7 @@ var ui;
             coinslot.style.height = this.sign.element.style.height;
             coinslotWrapper.appendChild(this.sign.element);
             coinslotWrapper.appendChild(coinslot);
+            this.child = coinslot;
             this.element = coinslotWrapper;
         }
     }

@@ -3,21 +3,24 @@ namespace ui {
         //----------------------------------------------------------------------
         // Properties
         //----------------------------------------------------------------------
-        protected _wrapper:HTMLElement        = null;
-        protected _warning:HTMLElement        = null;
-        protected _body:HTMLBodyElement       = null;
-        protected _coin:HTMLElement           = null;
-        protected _coinSlot:HTMLElement       = null;
-        protected _start:HTMLElement          = null;
-        protected _export:HTMLElement         = null;
-        protected _frame:HTMLElement          = null;
-        protected _videoOverlay:HTMLElement   = null;
-        protected _eyeLevel:HTMLElement       = null;
-        protected _videoContainer:HTMLElement = null;
-        protected _hal9000:HTMLImageElement   = null;
-        protected _video:HTMLVideoElement     = null;
-        protected _canvas:HTMLCanvasElement   = null;
-        protected _shelf:HTMLElement          = null;
+        protected _wrapper:HTMLElement          = null;
+        protected _warning:HTMLElement          = null;
+        protected _body:HTMLBodyElement         = null;
+        protected _coin:HTMLElement             = null;
+        protected _coinSlot:HTMLElement         = null;
+        protected _coinSlotWrapper:HTMLElement  = null;
+        protected _start:HTMLElement            = null;
+        // protected _startBtn:HTMLElement         = null;
+        protected _export:HTMLElement           = null;
+        protected _frame:HTMLElement            = null;
+        protected _videoOverlay:HTMLElement     = null;
+        protected _eyeLevel:HTMLElement         = null;
+        protected _videoContainer:HTMLElement   = null;
+        protected _hal9000:HTMLImageElement     = null;
+        protected _video:HTMLVideoElement       = null;
+        protected _canvas:HTMLCanvasElement     = null;
+        protected _tempCanvas:HTMLCanvasElement = null;
+        protected _shelf:HTMLElement            = null;
         
         //----------------------------------------------------------------------
         // Constructor
@@ -39,6 +42,10 @@ namespace ui {
 
         public get canvas():HTMLCanvasElement {
             return this._canvas;
+        }
+
+        public get tempCanvas():HTMLCanvasElement {
+            return this._tempCanvas;
         }
 
         public get video():HTMLVideoElement {
@@ -72,5 +79,9 @@ namespace ui {
         public get start():HTMLElement {
             return this._start;
         }
+
+        // public get startBtn():HTMLElement {
+        //     return this._startBtn;
+        // }
     }
 }
