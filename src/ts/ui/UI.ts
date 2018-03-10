@@ -7,6 +7,7 @@ namespace ui {
         protected _warning:HTMLElement        = null;
         protected _body:HTMLBodyElement       = null;
         protected _coin:HTMLElement           = null;
+        protected _coinSlot:HTMLElement       = null;
         protected _start:HTMLElement          = null;
         protected _export:HTMLElement         = null;
         protected _frame:HTMLElement          = null;
@@ -15,7 +16,7 @@ namespace ui {
         protected _videoContainer:HTMLElement = null;
         protected _hal9000:HTMLImageElement   = null;
         protected _video:HTMLVideoElement     = null;
-        // protected _canvas:HTMLCanvasElement   = null;
+        protected _canvas:HTMLCanvasElement   = null;
         protected _shelf:HTMLElement          = null;
         
         //----------------------------------------------------------------------
@@ -36,9 +37,9 @@ namespace ui {
             return this._warning;
         }
 
-        // public get canvas():HTMLCanvasElement {
-        //     return this._canvas;
-        // }
+        public get canvas():HTMLCanvasElement {
+            return this._canvas;
+        }
 
         public get video():HTMLVideoElement {
             return this._video;
@@ -62,6 +63,14 @@ namespace ui {
 
         public get coin():HTMLElement {
             return this._coin;
+        }
+
+        public get coinSlot():HTMLElement {
+            return this._coinSlot;
+        }
+
+        public get start():HTMLElement {
+            return this._start;
         }
     }
 }

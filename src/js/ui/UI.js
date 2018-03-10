@@ -12,6 +12,7 @@ var ui;
             this._warning = null;
             this._body = null;
             this._coin = null;
+            this._coinSlot = null;
             this._start = null;
             this._export = null;
             this._frame = null;
@@ -20,7 +21,7 @@ var ui;
             this._videoContainer = null;
             this._hal9000 = null;
             this._video = null;
-            // protected _canvas:HTMLCanvasElement   = null;
+            this._canvas = null;
             this._shelf = null;
             this._body = document.getElementsByTagName("body")[0];
         }
@@ -33,9 +34,9 @@ var ui;
         get warning() {
             return this._warning;
         }
-        // public get canvas():HTMLCanvasElement {
-        //     return this._canvas;
-        // }
+        get canvas() {
+            return this._canvas;
+        }
         get video() {
             return this._video;
         }
@@ -53,6 +54,12 @@ var ui;
         }
         get coin() {
             return this._coin;
+        }
+        get coinSlot() {
+            return this._coinSlot;
+        }
+        get start() {
+            return this._start;
         }
     }
     ui.UI = UI;

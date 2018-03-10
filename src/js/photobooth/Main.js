@@ -24,8 +24,8 @@ var photobooth;
             Main.ui.init();
             var constraints = new webcam.WebcameraSettings();
             var pb = new photobooth.Photobooth(constraints);
-            Main.ui.coin.children[0].children[1].addEventListener("insert", function () {
-                console.log("inserted coin");
+            Main.ui.coinSlot.addEventListener("insert", function () {
+                Main.ui.start.children[0].className = "startButton-active";
             });
         }
     }

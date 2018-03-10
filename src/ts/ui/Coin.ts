@@ -58,15 +58,15 @@ namespace ui {
 
             // this.ui.coin.children[0].children[1] == coinslot, but it's not a safe
             // reference to the element.
-            if (this.collisionDetection(this.element, this.ui.coin.children[0].children[1])) {
+            
+            if (this.collisionDetection(this.element, this.ui.coinSlot)) {
                 this.element.style.backgroundImage = "url('assets/img/coin/coin-side.png')";
                 if (this.flag) {
-                    var audio = new Audio("assets/audio/Inserting Coin.wav");
+                    var audio = new Audio("assets/audio/coin-insert.wav");
                     audio.play();
                     this.flag = false;
-                    this.dispatchEvent();
-
-                    var timer = setTimeout(this.removeCoin.bind(this), 500);
+                    var timer = setTimeout(this.coinInsert.bind(this), 500);
+                    // this.dispatchEvent();
                     // clearTimeout(timer);
                     
                 }
@@ -100,9 +100,14 @@ namespace ui {
             this.element.parentElement.removeChild(this.element);
         }
 
+        private coinInsert():void {
+            this.removeCoin();
+            this.dispatchEvent();
+        }
+
         private dispatchEvent():void {
             var event = new Event("insert")
-            this.ui.coin.children[0].children[1].dispatchEvent(event);
+            this.ui.coinSlot.dispatchEvent(event);
         }
     }
 }
