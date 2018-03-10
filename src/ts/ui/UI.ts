@@ -15,7 +15,8 @@ namespace ui {
         protected _videoContainer:HTMLElement = null;
         protected _hal9000:HTMLImageElement   = null;
         protected _video:HTMLVideoElement     = null;
-        protected _canvas:HTMLCanvasElement   = null;
+        // protected _canvas:HTMLCanvasElement   = null;
+        protected _shelf:HTMLElement          = null;
         
         //----------------------------------------------------------------------
         // Constructor
@@ -35,9 +36,9 @@ namespace ui {
             return this._warning;
         }
 
-        public get canvas():HTMLCanvasElement {
-            return this._canvas;
-        }
+        // public get canvas():HTMLCanvasElement {
+        //     return this._canvas;
+        // }
 
         public get video():HTMLVideoElement {
             return this._video;
@@ -53,6 +54,14 @@ namespace ui {
 
         public get body():HTMLElement {
             return this._body;
+        }
+
+        public get shelf():HTMLElement {
+            return this._shelf;
+        }
+
+        public get coin():HTMLElement {
+            return this._coin;
         }
     }
 }

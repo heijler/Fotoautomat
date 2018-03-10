@@ -35,21 +35,6 @@ var photobooth;
                 var warn = new alert.SystemWarning(err);
             });
         }
-        /**
-         * saveImage
-         * Writes image data to canvas and fetches the image DataURI
-         * @memberof Photobooth
-         */
-        saveImage() {
-            var context = photobooth.Main.ui.canvas.getContext('2d');
-            var img = document.getElementsByTagName("img")[1];
-            // s - source
-            // d - destination
-            // image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight
-            context.drawImage(photobooth.Main.ui.video, 352, 0, 576, 720, 0, 0, 576, 720);
-            img.src = photobooth.Main.ui.canvas.toDataURL('image/png');
-            console.log("image in img-element");
-        }
     }
     photobooth.Photobooth = Photobooth;
 })(photobooth || (photobooth = {}));

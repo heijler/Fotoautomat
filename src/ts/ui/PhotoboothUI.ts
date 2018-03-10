@@ -37,7 +37,8 @@ namespace ui {
             this._videoContainer = document.createElement("div");
             this._hal9000 = document.createElement("img");
             this._video = document.createElement("video");
-            this._canvas = document.createElement("canvas");
+            // this._canvas = document.createElement("canvas");
+            this._shelf = document.createElement("div");
             this.assignAttributes();
         }
 
@@ -59,7 +60,8 @@ namespace ui {
             this._hal9000.src = "assets/img/HAL9000.png";
             this._hal9000.draggable = false;
             this._video.id = "reflectionVideo";
-            this._canvas.id = "canvas";
+            // this._canvas.id = "canvas";
+            this._shelf.classList.add("shelfWrapper");
             this.createComponents();
             this.appendElements();
         }
@@ -99,7 +101,8 @@ namespace ui {
             this._frame.appendChild(this._videoContainer);
             videoWrap.appendChild(this._frame);
 
-            stripsWrap.appendChild(this._canvas);
+            // stripsWrap.appendChild(this._canvas);
+            stripsWrap.appendChild(this._shelf);
 
             
             // Append to body
@@ -113,6 +116,7 @@ namespace ui {
             this.createCoinslot();
             this.createStartbutton();
             this.createExportslot();
+            this.createShelf();
         }
 
         private createCoinslot():void {
@@ -128,6 +132,11 @@ namespace ui {
         private createExportslot():void {
             var exportSlot = new Export();
             this._export.appendChild(exportSlot.element);
+        }
+
+        private createShelf():void {
+            var shelf = new Shelf();
+            this._shelf.appendChild(shelf.element);
         }
     }
 }

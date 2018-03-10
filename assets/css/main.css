@@ -186,7 +186,7 @@ video {
 
 .sign {
     background: #eaeaea;
-    padding: 10px;
+    padding: 10px 0;
 }
 
 .sign img {
@@ -206,7 +206,8 @@ video {
 
 .signTitle {
     font-family: "Stardos Stencil", sans-serif;
-    font-size: 40px;
+    font-size: 2.5vw;
+    line-height:1.1;
     max-width: calc(100% - 40px);
     margin: 0 auto;
     display: block;
@@ -270,4 +271,44 @@ video {
     display: block;
     background: #5b5b5b;
     margin: 0 auto;
+}
+
+.shelfWrapper {
+    margin-right:20px;
+}
+
+.shelf {
+    width: 20vw;
+    height: 20px;
+    background:black;
+    position: absolute;
+    bottom: 20px;
+}
+
+.coinstack {
+    background-image: url(../img/coin/coin-stack.png);
+    height: 120px;
+    width: 108px;
+    display: block;
+    background-repeat: no-repeat;
+    position: relative;
+    top: -120px;
+    clip-path: inset(-10px 0px 0px 0px);
+}
+
+.coin {
+    background-image: url(../img/coin/coin-front.png);
+    height: 77px;
+    width: 77px;
+    background-repeat: no-repeat;
+    position: fixed;
+    background-position: center;
+}
+
+.coin:hover {
+    cursor: grab;
+}
+
+.coin:active {
+    cursor: grabbing;
 }

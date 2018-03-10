@@ -34,7 +34,6 @@ namespace photobooth {
 
             var constraints:webcam.WebcameraSettings = new webcam.WebcameraSettings();
             var pb:photobooth.Photobooth = new photobooth.Photobooth(constraints);
-
         }
     }
 

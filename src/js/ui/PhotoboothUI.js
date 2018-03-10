@@ -33,7 +33,8 @@ var ui;
             this._videoContainer = document.createElement("div");
             this._hal9000 = document.createElement("img");
             this._video = document.createElement("video");
-            this._canvas = document.createElement("canvas");
+            // this._canvas = document.createElement("canvas");
+            this._shelf = document.createElement("div");
             this.assignAttributes();
         }
         assignAttributes() {
@@ -53,7 +54,8 @@ var ui;
             this._hal9000.src = "assets/img/HAL9000.png";
             this._hal9000.draggable = false;
             this._video.id = "reflectionVideo";
-            this._canvas.id = "canvas";
+            // this._canvas.id = "canvas";
+            this._shelf.classList.add("shelfWrapper");
             this.createComponents();
             this.appendElements();
         }
@@ -83,7 +85,8 @@ var ui;
             this._frame.appendChild(this._videoOverlay);
             this._frame.appendChild(this._videoContainer);
             videoWrap.appendChild(this._frame);
-            stripsWrap.appendChild(this._canvas);
+            // stripsWrap.appendChild(this._canvas);
+            stripsWrap.appendChild(this._shelf);
             // Append to body
             this._body.appendChild(warnWrap);
             this._body.appendChild(controlsWrap);
@@ -94,6 +97,7 @@ var ui;
             this.createCoinslot();
             this.createStartbutton();
             this.createExportslot();
+            this.createShelf();
         }
         createCoinslot() {
             var coinslot = new ui.Coinslot();
@@ -106,6 +110,10 @@ var ui;
         createExportslot() {
             var exportSlot = new ui.Export();
             this._export.appendChild(exportSlot.element);
+        }
+        createShelf() {
+            var shelf = new ui.Shelf();
+            this._shelf.appendChild(shelf.element);
         }
     }
     ui.PhotoboothUI = PhotoboothUI;
