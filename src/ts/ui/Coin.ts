@@ -64,6 +64,7 @@ namespace ui {
                     var audio = new Audio("assets/audio/Inserting Coin.wav");
                     audio.play();
                     this.flag = false;
+                    this.dispatchEvent();
 
                     var timer = setTimeout(this.removeCoin.bind(this), 500);
                     // clearTimeout(timer);
@@ -97,6 +98,11 @@ namespace ui {
 
         private removeCoin():void {
             this.element.parentElement.removeChild(this.element);
+        }
+
+        private dispatchEvent():void {
+            var event = new Event("insert")
+            this.ui.coin.children[0].children[1].dispatchEvent(event);
         }
     }
 }

@@ -293,7 +293,28 @@ video {
     background-repeat: no-repeat;
     position: relative;
     top: -120px;
-    clip-path: inset(-10px 0px 0px 0px);
+    /* clip-path: inset(-10px 0px 0px 0px); */
+}
+
+.coinstack:hover {
+    cursor: pointer;
+}
+
+.shine {
+    animation: shineAnimation 1.4s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease;
+    animation-delay: 1.4s;
+}
+
+@keyframes shineAnimation {
+    0% {
+        filter: brightness(100%);
+    } 50% {
+        filter: brightness(115%);
+    } 100% {
+        filter: brightness(100%);
+    }
 }
 
 .coin {

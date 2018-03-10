@@ -57,6 +57,7 @@ var ui;
                     var audio = new Audio("assets/audio/Inserting Coin.wav");
                     audio.play();
                     this.flag = false;
+                    this.dispatchEvent();
                     var timer = setTimeout(this.removeCoin.bind(this), 500);
                     // clearTimeout(timer);
                 }
@@ -85,6 +86,10 @@ var ui;
         }
         removeCoin() {
             this.element.parentElement.removeChild(this.element);
+        }
+        dispatchEvent() {
+            var event = new Event("insert");
+            this.ui.coin.children[0].children[1].dispatchEvent(event);
         }
     }
     ui.Coin = Coin;

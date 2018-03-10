@@ -28,12 +28,13 @@ var ui;
         }
         createElements() {
             var shelfItem = document.createElement("div");
-            shelfItem.classList.add(this.class);
+            shelfItem.classList.add(this.class, "shine");
             shelfItem.addEventListener("mousedown", this.onMouseDown.bind(this), false);
             this.element = shelfItem;
         }
         onMouseDown(event) {
             if (this.element.childNodes.length < 1) {
+                this.element.classList.remove("shine");
                 var coin = new ui.Coin(event.clientX, event.clientY);
                 this.element.appendChild(coin.element);
             }
