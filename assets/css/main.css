@@ -59,7 +59,7 @@ body:after {
 .coinslotWrapper {
     display:grid;
     grid-column-gap: 10px;
-    grid-template-columns: 14fr 1fr;
+    grid-template-columns: 8fr 30px;
     grid-template-areas:
     "sign coinslot";
     margin: 20px 0px;
@@ -240,6 +240,7 @@ video {
     color: hsla(0, 0%, 100%, 0.7);
     width: 70%;
     margin: 0 auto;
+    padding-top: 5px;
     box-shadow: 4px 4px 11px -1px hsla(147.9, 64.6%, 25.5%, 0.6);
 }
 

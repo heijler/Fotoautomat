@@ -4,6 +4,8 @@ namespace photobooth {
      * Represents the photobooth
      * @class Photobooth
      */
+    declare var jsPDF:any;
+
     export class Photobooth {
     
         //----------------------------------------------------------------------
@@ -61,26 +63,68 @@ namespace photobooth {
                 counter++;
                 if (counter == this.numPhotos) {
                     clearInterval(interval);
-                    setTimeout(this.getStrip, 2000);
+                    setTimeout(this.assignStripToElement, 2000);
                 }
             }.bind(this), 5000);
         }
 
+        /**
+         * captureFrame
+         * 
+         */
         private captureFrame():void {
             this.simulatePhotography();
             var context:CanvasRenderingContext2D = photobooth.Main.ui.tempCanvas.getContext('2d');
             var videoOffset:number = Math.abs(parseInt(Main.ui.video.style.marginLeft));
-                context.drawImage(photobooth.Main.ui.video, videoOffset, 0, this.width, this.height, 0, 0, this.width, this.height);
+            context.drawImage(photobooth.Main.ui.video, videoOffset, 0, this.width, this.height, 0, 0, this.width, this.height);
 
-            var temp = Main.ui.tempCanvas.toDataURL('image/png');
-            var img = new Image();
-                img.src = temp;
+            var imgData:ImageData = context.getImageData(0, 0, this.width, this.height);
+            context.putImageData(this.toGrayScale(imgData), 0, 0);
+
+            this.drawFrameOnCanvas();
+        }
+
+        /**
+         * drawFrameOnCanvas
+         * 
+         */
+        private drawFrameOnCanvas():void {
+            var imgBase64:string = Main.ui.tempCanvas.toDataURL('image/jpg');
+            var img:HTMLImageElement = new Image();
+                img.src = imgBase64;
                 img.addEventListener("load", function() {
                     Main.ui.canvas.getContext("2d").drawImage(img, 20, 20 + (this.photos.length * this.height) + (20 * this.photos.length));
                     this.photos.length++;
                 }.bind(this));
         }
 
+        /**
+         * toGrayScale
+         * Loops over ImageData data (RGBA pixel values) and converts to grayscale 
+         * using the Rec. 709 luma coefficients.  
+         * R = data[i]  
+         * G = data[i + 1]  
+         * B = data[i + 2]   
+         * A = data[i + 3]  
+         * @param imgData 
+         */
+
+        private toGrayScale(imgData:ImageData):ImageData {
+            var data:Uint8ClampedArray = imgData.data;
+            for (var i = 0; i < data.length; i+= 4) {
+                // Rec. 709 Luma coefficients
+                var luma = (data[i] * 0.2126) + (data[i + 1] * 0.7152) + (data[i + 2] * 0.0722);
+                data[i] = luma;
+                data[i + 1] = luma;
+                data[i + 2] = luma;
+            }
+            return imgData;
+        }
+
+        /**
+         * simulatePhotography
+         * 
+         */
         private simulatePhotography():void {
             var audio = new Audio("assets/audio/camera-shutter.wav");
                 audio.play();
@@ -92,6 +136,10 @@ namespace photobooth {
 
         }
 
+        /**
+         * setCanvasSize
+         * 
+         */
         private setCanvasSize():void {
             // Set the tempcanvas size, where photo will be temporarily stored
             Main.ui.tempCanvas.height = this.height;
@@ -103,21 +151,33 @@ namespace photobooth {
             Main.ui.canvas.width = this.width + 40;
             
             var ctx = Main.ui.canvas.getContext("2d");
-            ctx.fillStyle = "white";
+            // Fill canvas with white.
+            ctx.fillStyle = "#ffffff";
             ctx.rect(0, 0, this.width + 40, (this.height * this.numPhotos) + ((this.numPhotos + 1) * 20));
             ctx.fill();
         }
 
-        private getStrip():void {
+        /**
+         * assignStripToElement
+         * 
+         */
+        private assignStripToElement():void {
             var photostripWrapper = document.getElementsByClassName("photostripWrapper")[0]; // Make reference through main..
-            var URI = Main.ui.canvas.toDataURL("image/png");
+
+            var URI = Main.ui.canvas.toDataURL("image/jpg");
             var img = new Image();
             img.src = URI;
             img.classList.add("photostrip");
             
             photostripWrapper.classList.add("slideDownStrip")
             photostripWrapper.appendChild(img);
-            // document.body.appendChild(img); // This line only to see generated image.
+            
+            var pdf = new jsPDF();
+            var width = pdf.internal.pageSize.width;
+            var height = pdf.internal.pageSize.height;
+            pdf.internal.scaleFactor = 11;
+            pdf.addImage(img, "JPEG", 10, 10);
+            pdf.save("download.pdf");
         }
     }
 }

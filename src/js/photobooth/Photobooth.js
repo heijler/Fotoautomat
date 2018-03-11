@@ -1,10 +1,5 @@
 var photobooth;
 (function (photobooth) {
-    /**
-     * Photobooth
-     * Represents the photobooth
-     * @class Photobooth
-     */
     class Photobooth {
         //----------------------------------------------------------------------
         // Constructor
@@ -55,23 +50,61 @@ var photobooth;
                 counter++;
                 if (counter == this.numPhotos) {
                     clearInterval(interval);
-                    setTimeout(this.getStrip, 2000);
+                    setTimeout(this.assignStripToElement, 2000);
                 }
             }.bind(this), 5000);
         }
+        /**
+         * captureFrame
+         *
+         */
         captureFrame() {
             this.simulatePhotography();
             var context = photobooth.Main.ui.tempCanvas.getContext('2d');
             var videoOffset = Math.abs(parseInt(photobooth.Main.ui.video.style.marginLeft));
             context.drawImage(photobooth.Main.ui.video, videoOffset, 0, this.width, this.height, 0, 0, this.width, this.height);
-            var temp = photobooth.Main.ui.tempCanvas.toDataURL('image/png');
+            var imgData = context.getImageData(0, 0, this.width, this.height);
+            context.putImageData(this.toGrayScale(imgData), 0, 0);
+            this.drawFrameOnCanvas();
+        }
+        /**
+         * drawFrameOnCanvas
+         *
+         */
+        drawFrameOnCanvas() {
+            var imgBase64 = photobooth.Main.ui.tempCanvas.toDataURL('image/jpg');
             var img = new Image();
-            img.src = temp;
+            img.src = imgBase64;
             img.addEventListener("load", function () {
                 photobooth.Main.ui.canvas.getContext("2d").drawImage(img, 20, 20 + (this.photos.length * this.height) + (20 * this.photos.length));
                 this.photos.length++;
             }.bind(this));
         }
+        /**
+         * toGrayScale
+         * Loops over ImageData data (RGBA pixel values) and converts to grayscale
+         * using the Rec. 709 luma coefficients.
+         * R = data[i]
+         * G = data[i + 1]
+         * B = data[i + 2]
+         * A = data[i + 3]
+         * @param imgData
+         */
+        toGrayScale(imgData) {
+            var data = imgData.data;
+            for (var i = 0; i < data.length; i += 4) {
+                // Rec. 709 Luma coefficients
+                var luma = (data[i] * 0.2126) + (data[i + 1] * 0.7152) + (data[i + 2] * 0.0722);
+                data[i] = luma;
+                data[i + 1] = luma;
+                data[i + 2] = luma;
+            }
+            return imgData;
+        }
+        /**
+         * simulatePhotography
+         *
+         */
         simulatePhotography() {
             var audio = new Audio("assets/audio/camera-shutter.wav");
             audio.play();
@@ -80,6 +113,10 @@ var photobooth;
                 photobooth.Main.ui.flash.classList.remove("flashAnimation");
             });
         }
+        /**
+         * setCanvasSize
+         *
+         */
         setCanvasSize() {
             // Set the tempcanvas size, where photo will be temporarily stored
             photobooth.Main.ui.tempCanvas.height = this.height;
@@ -88,19 +125,29 @@ var photobooth;
             photobooth.Main.ui.canvas.height = (this.height * this.numPhotos) + ((this.numPhotos + 1) * 20);
             photobooth.Main.ui.canvas.width = this.width + 40;
             var ctx = photobooth.Main.ui.canvas.getContext("2d");
-            ctx.fillStyle = "white";
+            // Fill canvas with white.
+            ctx.fillStyle = "#ffffff";
             ctx.rect(0, 0, this.width + 40, (this.height * this.numPhotos) + ((this.numPhotos + 1) * 20));
             ctx.fill();
         }
-        getStrip() {
+        /**
+         * assignStripToElement
+         *
+         */
+        assignStripToElement() {
             var photostripWrapper = document.getElementsByClassName("photostripWrapper")[0]; // Make reference through main..
-            var URI = photobooth.Main.ui.canvas.toDataURL("image/png");
+            var URI = photobooth.Main.ui.canvas.toDataURL("image/jpg");
             var img = new Image();
             img.src = URI;
             img.classList.add("photostrip");
             photostripWrapper.classList.add("slideDownStrip");
             photostripWrapper.appendChild(img);
-            // document.body.appendChild(img); // This line only to see generated image.
+            var pdf = new jsPDF();
+            var width = pdf.internal.pageSize.width;
+            var height = pdf.internal.pageSize.height;
+            pdf.internal.scaleFactor = 11;
+            pdf.addImage(img, "JPEG", 10, 10);
+            pdf.save("download.pdf");
         }
     }
     photobooth.Photobooth = Photobooth;
