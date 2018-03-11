@@ -39,10 +39,18 @@ namespace ui {
         // Methods
         //----------------------------------------------------------------------
 
+
+        /**
+         * 
+         */
         private renderShelfItem():void{
             this.createElements();
         }
 
+
+        /**
+         * 
+         */
         private createElements():void {
             var coin = document.createElement("div");
                 coin.classList.add("coin");
@@ -53,6 +61,11 @@ namespace ui {
             this.element = coin;
         }
 
+
+        /**
+         * 
+         * @param event 
+         */
         private onMouseMove(event:MouseEvent):void {
             this.element.style.top = event.clientY - this.offsetY + "px";
             this.element.style.left = event.clientX - this.offsetX + "px";
@@ -75,6 +88,11 @@ namespace ui {
             }
         }
 
+
+        /**
+         * 
+         * @param event 
+         */
         private onMouseDown(event:MouseEvent):void {
             this.offsetX = event.clientX - parseInt(this.element.style.left);
             this.offsetY = event.clientY - parseInt(this.element.style.top);
@@ -82,11 +100,22 @@ namespace ui {
             this.element.addEventListener("mouseup",   this.mu, false);
         }
 
+
+        /**
+         * 
+         * @param event 
+         */
         private onMouseUp(event:MouseEvent):void {
             this.ui.body.removeEventListener("mousemove", this.mm, false);
             this.element.removeEventListener("mouseup",   this.mu, false);
         }
 
+
+        /**
+         * 
+         * @param element1 
+         * @param element2 
+         */
         private collisionDetection(element1:Element, element2:Element):boolean {
             var el1 = element1.getBoundingClientRect();
             var el2 = element2.getBoundingClientRect();
@@ -96,15 +125,27 @@ namespace ui {
                      (el1.left >= el2.right));
         }
 
+
+        /**
+         * 
+         */
         private removeCoin():void {
             this.element.parentElement.removeChild(this.element);
         }
 
+
+        /**
+         * 
+         */
         private coinInsert():void {
             this.removeCoin();
             this.dispatchEvent();
         }
 
+
+        /**
+         * 
+         */
         private dispatchEvent():void {
             var event = new Event(Coin.INSERT_EVENT);
             this.ui.coinSlot.dispatchEvent(event);

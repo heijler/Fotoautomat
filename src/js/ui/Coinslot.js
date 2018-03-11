@@ -24,9 +24,15 @@ var ui;
         //----------------------------------------------------------------------
         // Methods
         //----------------------------------------------------------------------
+        /**
+         *
+         */
         renderCoinslot() {
             this.createElements();
         }
+        /**
+         *
+         */
         createElements() {
             var coinslotWrapper = document.createElement("div");
             coinslotWrapper.classList.add("coinslotWrapper");

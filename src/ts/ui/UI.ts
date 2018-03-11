@@ -10,7 +10,6 @@ namespace ui {
         protected _coinSlot:HTMLElement         = null;
         protected _coinSlotWrapper:HTMLElement  = null;
         protected _start:HTMLElement            = null;
-        // protected _startBtn:HTMLElement         = null;
         protected _export:HTMLElement           = null;
         protected _frame:HTMLElement            = null;
         protected _videoOverlay:HTMLElement     = null;
@@ -88,8 +87,5 @@ namespace ui {
         public get export():HTMLElement {
             return this._export;
         }
-        // public get startBtn():HTMLElement {
-        //     return this._startBtn;
-        // }
     }
 }

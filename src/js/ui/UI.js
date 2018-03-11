@@ -15,7 +15,6 @@ var ui;
             this._coinSlot = null;
             this._coinSlotWrapper = null;
             this._start = null;
-            // protected _startBtn:HTMLElement         = null;
             this._export = null;
             this._frame = null;
             this._videoOverlay = null;

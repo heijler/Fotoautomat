@@ -23,15 +23,25 @@ var ui;
         //----------------------------------------------------------------------
         // Methods
         //----------------------------------------------------------------------
+        /**
+         *
+         */
         renderShelfItem() {
             this.createElements();
         }
+        /**
+         *
+         */
         createElements() {
             var shelfItem = document.createElement("div");
             shelfItem.classList.add(this.class, "shine");
             shelfItem.addEventListener("mousedown", this.onMouseDown.bind(this), false);
             this.element = shelfItem;
         }
+        /**
+         *
+         * @param event
+         */
         onMouseDown(event) {
             if (this.element.childNodes.length < 1) {
                 this.element.classList.remove("shine");

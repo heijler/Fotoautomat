@@ -29,10 +29,17 @@ namespace ui {
         // Methods
         //----------------------------------------------------------------------
 
+        /**
+         * 
+         */
         private renderSign():void{
             this.createElements();
         }
 
+
+        /**
+         * 
+         */
         private createElements():void {
             var signWrapper = document.createElement("div");
                 signWrapper.classList.add("signWrapper");

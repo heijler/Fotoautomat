@@ -18,9 +18,15 @@ var ui;
         //----------------------------------------------------------------------
         // Methods
         //----------------------------------------------------------------------
+        /**
+         *
+         */
         renderStartbutton() {
             this.createElements();
         }
+        /**
+         *
+         */
         createElements() {
             var startButton = document.createElement("div");
             startButton.id = "startButton";
@@ -29,6 +35,10 @@ var ui;
             startButton.addEventListener("mousedown", this.onMouseDown.bind(this), false);
             this.element = startButton;
         }
+        /**
+         *
+         * @param event
+         */
         onMouseDown(event) {
             if (this.element.classList.contains("startButton-active")) {
                 var audio = new Audio("assets/audio/button-push.wav");
@@ -36,6 +46,9 @@ var ui;
                 this.dispatchEvent();
             }
         }
+        /**
+         *
+         */
         dispatchEvent() {
             var event = new Event(Startbutton.BUTTON_PRESS);
             this.element.dispatchEvent(event);

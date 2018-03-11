@@ -24,10 +24,17 @@ namespace ui {
         // Methods
         //----------------------------------------------------------------------
 
+        /**
+         * 
+         */
         private renderStartbutton():void{
             this.createElements();
         }
 
+
+        /**
+         * 
+         */
         private createElements():void {
             var startButton = document.createElement("div");
                 startButton.id = "startButton";
@@ -38,6 +45,11 @@ namespace ui {
             this.element = startButton;
         }
 
+
+        /**
+         * 
+         * @param event 
+         */
         private onMouseDown(event:MouseEvent):void {
             if (this.element.classList.contains("startButton-active")) {
 
@@ -49,6 +61,10 @@ namespace ui {
             }
         }
 
+
+        /**
+         * 
+         */
         private dispatchEvent():void {
             var event = new Event(Startbutton.BUTTON_PRESS);
             this.element.dispatchEvent(event);

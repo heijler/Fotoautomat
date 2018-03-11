@@ -27,9 +27,15 @@ var ui;
         //----------------------------------------------------------------------
         // Methods
         //----------------------------------------------------------------------
+        /**
+         *
+         */
         renderSign() {
             this.createElements();
         }
+        /**
+         *
+         */
         createElements() {
             var signWrapper = document.createElement("div");
             signWrapper.classList.add("signWrapper");

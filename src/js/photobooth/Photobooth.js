@@ -147,25 +147,39 @@ var photobooth;
             downloadBtn.download = "Photostrip-" + this.getCurrentDateTime() + ".jpg";
             photobooth.Main.ui.canvas.toBlob(function (blob) {
                 downloadBtn.href = URL.createObjectURL(blob);
+                console.log(downloadBtn.href);
             }, "image/jpg");
             var event = new Event("photostrip-generated");
             photobooth.Main.ui.export.dispatchEvent(event);
         }
+        /**
+         *
+         */
         savePhotostripPDF() {
             this.pdf.internal.scaleFactor = photobooth.Main.ui.canvas.height * 0.00274177456;
             this.pdf.addImage(this.img, "JPEG", 10, 10);
             this.pdf.save("Photostrip-" + this.getCurrentDateTime() + ".pdf");
         }
+        /**
+         *
+         */
         printPhotostripPDF() {
             this.pdf.internal.scaleFactor = photobooth.Main.ui.canvas.height * 0.00274177456;
             this.pdf.addImage(this.img, "JPEG", 10, 10);
             this.pdf.autoPrint();
             window.open(this.pdf.output("bloburl"), "_blank");
         }
+        /**
+         *
+         */
         getCurrentDateTime() {
             var date = new Date();
             return date.getFullYear() + "-" + this.twoCharZeroPad(date.getMonth().toString()) + "-" + this.twoCharZeroPad(date.getDate().toString()) + "_" + date.getHours().toString() + "." + date.getMinutes().toString();
         }
+        /**
+         *
+         * @param string
+         */
         twoCharZeroPad(string) {
             return ("00" + string).substr(-2, 2);
         }

@@ -18,9 +18,15 @@ var ui;
         //----------------------------------------------------------------------
         // Methods
         //----------------------------------------------------------------------
+        /**
+         *
+         */
         init() {
             this.createElements();
         }
+        /**
+         *
+         */
         createElements() {
             this._wrapper = document.createElement("div");
             this._warning = document.createElement("div");
@@ -45,6 +51,9 @@ var ui;
             this._flash = document.createElement("div");
             this.assignAttributes();
         }
+        /**
+         *
+         */
         assignAttributes() {
             this._wrapper.classList.add("wrapper");
             this._warning.id = "warning";
@@ -71,6 +80,9 @@ var ui;
             this.createComponents();
             this.appendElements();
         }
+        /**
+         *
+         */
         appendElements() {
             // Clone wrapper elements
             this._coin.appendChild(this._coinSlotWrapper);
@@ -108,19 +120,31 @@ var ui;
             this._body.appendChild(this._canvas);
             this._body.appendChild(this._tempCanvas);
         }
+        /**
+         *
+         */
         createComponents() {
             this.createStartbutton();
             this.createExportslot();
             this.createShelf();
         }
+        /**
+         *
+         */
         createStartbutton() {
             var startbutton = new ui.Startbutton();
             this._start.appendChild(startbutton.element);
         }
+        /**
+         *
+         */
         createExportslot() {
             var exportSlot = new ui.Export();
             this._export.appendChild(exportSlot.element);
         }
+        /**
+         *
+         */
         createShelf() {
             var shelf = new ui.Shelf();
             this._shelf.appendChild(shelf.element);

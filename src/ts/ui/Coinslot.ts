@@ -26,10 +26,17 @@ namespace ui {
         // Methods
         //----------------------------------------------------------------------
 
+        /**
+         * 
+         */
         private renderCoinslot():void{
             this.createElements();
         }
 
+
+        /**
+         * 
+         */
         private createElements():void {
             var coinslotWrapper = document.createElement("div");
                 coinslotWrapper.classList.add("coinslotWrapper");

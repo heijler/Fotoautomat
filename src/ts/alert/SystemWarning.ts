@@ -25,7 +25,10 @@ namespace alert {
         //----------------------------------------------------------------------
         // Dymanic Methods
         //----------------------------------------------------------------------
-    
+        
+        /**
+         * 
+         */
         private logWarning() {
             console.error(this.warning.name, this.warning.message);
         }

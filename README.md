@@ -1,7 +1,7 @@
 # Fotoautomat
 A photo booth in the browser based on Web APIs, canvas and PHP.
 
-Ideal resolution: 3840x2160 (4k)
+Ideal resolution: 1920x1080 (HD)
 Will most likely result in webcams max resolution.
 
 ## Setup
@@ -15,23 +15,23 @@ tsc -p tsconfig.json
 - photobooth
     - Main - Document class
     - Photobooth - Represents the photobooth
+- alert
+    - Warning - Represents a warning
+    - UserWarning - Represents a user facing warning
+    - SystemWarning - Represents a system facing warning
 - ui
-    - Reflection - Represents the "reflection"
     - UI - Represents UI elements/references
-- utils
-    - Warning - Represents a warn/user feedback
+    - PhotoboothUI - Represents the photobooth UI
+    - Reflection - Represents the "reflection"
+    - Coin - Represents a Coin
+    - Coinslot - Represents a coinslot
+    - Export - Represents an exportslot
+    - Shelf - Represents a shelf
+    - ShelfItem - Represents an item on a shelf
+    - Sign - Represents a sign
+    - Startbutton - Represents a startbutton
 - webcam
     - Webcamera - Represents the camera connection
     - WebcameraSettings - Represents the settings for the MediaDevice
-
-
-## Future classes?
-- ui
-    - Reflection - Represents the reflection UI.
-    - Export - Represents the export UI.
-    - Coinslot - Represents the coinslot UI.
-    - PhotoStrips - Represents the photostrips UI.
-    - StartButton - Represents the start button UI.
-    - Sign - Represents a sign UI.
-    - PhotoboothUI - Start class for UI components.
+    - IWebcamSetting - Interface for webcamerasettings
 

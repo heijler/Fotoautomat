@@ -25,10 +25,16 @@ namespace ui {
         // Methods
         //----------------------------------------------------------------------
 
+        /**
+         * 
+         */
         private renderExportslot():void{
             this.createElements();
         }
 
+        /**
+         * 
+         */
         private createElements():void {
             var exportWrapper = document.createElement("div");
                 exportWrapper.classList.add("exportSlotWrapper");
@@ -72,27 +78,52 @@ namespace ui {
 
         }
 
+
+        /**
+         * 
+         * @param event 
+         */
         private onImageSave(event:Event):void {
             var event:Event = new Event("save-image");
             this.ui.export.dispatchEvent(event);
         }
 
+
+        /**
+         * 
+         * @param event 
+         */
         private onPdfSave(event:Event):void {
             var event:Event = new Event("save-pdf");
             this.ui.export.dispatchEvent(event);
         }
 
+
+        /**
+         * 
+         * @param event 
+         */
         private onPrintPdf(event:Event):void {
             var event:Event = new Event("print-pdf");
             this.ui.export.dispatchEvent(event);
         }
 
+
+        /**
+         * 
+         * @param event 
+         */
         private onMouseOver(event:Event):void {
             if(this.element.children[1].children[2].children.length > 0) {
                 (<HTMLElement>this.element.children[1].children[0]).style.display = "block";
             }
         }
 
+
+        /**
+         * 
+         * @param event 
+         */
         private onMouseOut(event:Event):void {
             (<HTMLElement>this.element.children[1].children[0]).style.display = "none";
         }

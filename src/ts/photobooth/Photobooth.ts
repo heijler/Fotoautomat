@@ -177,19 +177,26 @@ namespace photobooth {
             var downloadBtn:any = document.getElementById("exportOptions").children[0];
             downloadBtn.download = "Photostrip-" + this.getCurrentDateTime() + ".jpg";
             Main.ui.canvas.toBlob(function(blob) {
-                downloadBtn.href = URL.createObjectURL(blob)
+                downloadBtn.href = URL.createObjectURL(blob);
+                console.log(downloadBtn.href);
             }, "image/jpg");
 
             var event:Event = new Event("photostrip-generated");
             Main.ui.export.dispatchEvent(event);
         }
 
+        /**
+         * 
+         */
         public savePhotostripPDF():void {
             this.pdf.internal.scaleFactor = Main.ui.canvas.height * 0.00274177456;
             this.pdf.addImage(this.img, "JPEG", 10, 10);
             this.pdf.save("Photostrip-" + this.getCurrentDateTime() + ".pdf");
         }
 
+        /**
+         * 
+         */
         public printPhotostripPDF():void {
             this.pdf.internal.scaleFactor = Main.ui.canvas.height * 0.00274177456;
             this.pdf.addImage(this.img, "JPEG", 10, 10);
@@ -197,11 +204,18 @@ namespace photobooth {
             window.open(this.pdf.output("bloburl"), "_blank");
         }
 
+        /**
+         * 
+         */
         private getCurrentDateTime():string {
             var date = new Date();
             return date.getFullYear() + "-" + this.twoCharZeroPad(date.getMonth().toString()) + "-" + this.twoCharZeroPad(date.getDate().toString()) + "_" + date.getHours().toString() + "." + date.getMinutes().toString();
         }
 
+        /**
+         * 
+         * @param string 
+         */
         private twoCharZeroPad(string:string):string {
             return ("00"+string).substr(-2, 2);
         }

@@ -26,6 +26,9 @@ namespace ui {
         // Methods
         //----------------------------------------------------------------------
 
+        /**
+         * 
+         */
         private prepareVideo():void {
             this.width = (document.documentElement.clientHeight / 5) * 4;
             this.height = document.documentElement.clientHeight;
@@ -41,6 +44,9 @@ namespace ui {
             this.renderReflection();
         }
         
+        /**
+         * 
+         */
         private renderReflection():void {
             this.ui.video.srcObject = this.stream;
             this.ui.video.addEventListener("loadedmetadata", (event) => {

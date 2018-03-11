@@ -23,9 +23,15 @@ var ui;
         //----------------------------------------------------------------------
         // Methods
         //----------------------------------------------------------------------
+        /**
+         *
+         */
         renderExportslot() {
             this.createElements();
         }
+        /**
+         *
+         */
         createElements() {
             var exportWrapper = document.createElement("div");
             exportWrapper.classList.add("exportSlotWrapper");
@@ -61,23 +67,43 @@ var ui;
             exportWrapper.appendChild(exportEl);
             this.element = exportWrapper;
         }
+        /**
+         *
+         * @param event
+         */
         onImageSave(event) {
             var event = new Event("save-image");
             this.ui.export.dispatchEvent(event);
         }
+        /**
+         *
+         * @param event
+         */
         onPdfSave(event) {
             var event = new Event("save-pdf");
             this.ui.export.dispatchEvent(event);
         }
+        /**
+         *
+         * @param event
+         */
         onPrintPdf(event) {
             var event = new Event("print-pdf");
             this.ui.export.dispatchEvent(event);
         }
+        /**
+         *
+         * @param event
+         */
         onMouseOver(event) {
             if (this.element.children[1].children[2].children.length > 0) {
                 this.element.children[1].children[0].style.display = "block";
             }
         }
+        /**
+         *
+         * @param event
+         */
         onMouseOut(event) {
             this.element.children[1].children[0].style.display = "none";
         }

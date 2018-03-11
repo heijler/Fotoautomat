@@ -1,8 +1,15 @@
+/*----------------------------------------------------------------------
+* Fonts
+* --------------------------------------------------------------------*/
 @font-face {
     font-family: "Stardos Stencil";
     src: url(../fonts/StardosStencil-Regular.ttf);
     font-weight: 400;
 }
+
+/*----------------------------------------------------------------------
+* General
+* --------------------------------------------------------------------*/
 
 body {
     margin: 0;
@@ -27,6 +34,10 @@ body:after {
     background-image: url(../img/bg-pattern.png);
     opacity: 0.26;
 }
+
+/*----------------------------------------------------------------------
+* Generic
+* --------------------------------------------------------------------*/
 
 .wrapper {
     display: block;
@@ -65,17 +76,32 @@ body:after {
     margin: 20px 0px;
 }
 
+.controls {
+    margin: 0 20px;
+}
+
+
+/*----------------------------------------------------------------------
+* Flash
+* --------------------------------------------------------------------*/
+
+.flash {
+    width: 100vw;
+    height: 100vh;
+    background: white;
+    position: absolute;
+    z-index: 99;
+    background: radial-gradient(ellipse at center, rgba(255,255,255,1) 0%, rgb(161, 161, 161) 100%);
+    opacity: 0;
+    pointer-events: none;
+}
+
+/*----------------------------------------------------------------------
+* Coin & Coinslot
+* --------------------------------------------------------------------*/
+
 #coin {
     grid-area: coin;
-}
-
-#start {
-    grid-area: start;
-}
-
-#export {
-    grid-area: export;
-    margin-top: 30px;
 }
 
 .coinslotWrapper .signWrapper {
@@ -90,140 +116,46 @@ body:after {
     width:30%;
 }
 
-#videoContainer {
-    background: hsla(0, 0%, 39.6%, 0.6);
-    background: radial-gradient(ellipse at center, hsl(0, 0%, 21.2%) 0%,hsl(0, 0%, 12.9%) 100%);
-    max-height: 100vh;
+.coinslot {
+    background:#484848;
+    border: 10px solid #c3c3c3;
+    box-shadow: 4px 4px 11px -1px hsla(0, 0%, 30%, 0.6);
+}
+
+.coinstack {
+    background-image: url(../img/coin/coin-stack.png);
+    height: 120px;
+    width: 108px;
     display: block;
-    overflow: hidden;
-    margin: 0 auto;
-    position: absolute;
-    left: 0;
-    right: 0;
+    background-repeat: no-repeat;
+    position: relative;
+    top: -120px;
 }
 
-#videoContainer img {
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    position: absolute;
-    z-index: 1;
-    opacity: 0.7;
-    mix-blend-mode: color-dodge;
-    /* background-image: url("../img/HAL9000.png"); */
-    width: 328px;
-    height: 328px;
-    /* background-repeat: no-repeat; */
-    -moz-user-select: none;
-    user-select: none;
-    pointer-events: none;
-}
-
-#videoOverlay {
-    background-color: #dbdbdb;
-    background: radial-gradient(ellipse at top left, hsla(0,0%,100%,1) 0%, hsla(0,0%,70%,1) 100%);
-    min-height: 100%;
-    margin: 0 auto;
-    left: 0;
-    right: 0;
-    z-index: 1;
-    position: absolute;
-    opacity: 0.5;
-}
-
-#eyeLevel {
-    height: 10px;
-    width: 100%;
-    background: #ffffff;
-    top: calc(50% - 5px);
-    position: absolute;
-    z-index: 2;
-}
-
-video {
-    transform: scale(-1, 1);
-    mix-blend-mode: soft-light;
-    max-height:100vh;
-}
-
-#canvas, #tempCanvas {
-    display: none;
-}
-
-#warning {
-    display: none;
-    background: #ff7500;
-    color: #fff;
-    width: 100%;
-    z-index: 999;
-    position: absolute;
-    padding: 10px 40px;
-    text-align: right;
-    font-family: sans-serif;
-    box-sizing: border-box;
+.coinstack:hover {
     cursor: pointer;
 }
 
-#warning::after {
-    content: "X";
-    background-color: #e66900;
-    margin: 10px;
-    width: 30px;
-    height: 30px;
-    padding: 5px 11px;
-    border-radius: 27px;
-    color: #b35200;
+.coin {
+    background-image: url(../img/coin/coin-front.png);
+    height: 77px;
+    width: 77px;
+    background-repeat: no-repeat;
+    position: fixed;
+    background-position: center;
 }
 
-#warning:hover::after {
-    background-color: #bd5600;
-    color: #f57000;
+.coin:hover {
+    cursor: grab;
 }
 
-.sign {
-    background: #eaeaea;
-    padding: 10px 0;
+.coin:active {
+    cursor: grabbing;
 }
 
-.sign img {
-    max-width: calc(100% - 40px);
-    margin: 0 auto;
-    display: block;
-    -moz-user-select: none;
-    user-select: none;
-    pointer-events: none;
-}
-
-.signWrapper {
-    overflow: hidden;
-    /* outline: 20px solid #c3c3c3; */
-    border: 10px solid #c3c3c3;
-    box-shadow: 4px 4px 11px -1px hsla(0, 0%, 30%, 0.6);
-}
-
-.signTitle {
-    font-family: "Stardos Stencil", sans-serif;
-    font-size: 1.5vw;
-    line-height:1.1;
-    max-width: calc(100% - 40px);
-    margin: 0 auto;
-    display: block;
-    user-select: none;
-    -moz-user-select: none;
-    text-align: center;
-    color: #191111;
-}
-
-.coinslot {
-    background:#484848;
-    /* outline: 20px solid #c3c3c3; */
-    border: 10px solid #c3c3c3;
-    box-shadow: 4px 4px 11px -1px hsla(0, 0%, 30%, 0.6);
-}
-
-.controls {
-    margin: 0 20px;
-}
+/*----------------------------------------------------------------------
+* Startbutton
+* --------------------------------------------------------------------*/
 
 #start {
     grid-area: start;
@@ -232,7 +164,6 @@ video {
 }
 
 #startButton {
-    /* outline: 20px solid hsla(114.2, 73%, 17.6%, 0.9); */
     border: 10px solid hsla(114.2, 73%, 17.6%, 0.9);
     font-family: sans-serif;
     font-size: 4em;
@@ -260,16 +191,23 @@ video {
     background: radial-gradient(ellipse at center, rgba(163,250,169,1) 0%, rgba(52,247,65,1) 16%, rgba(76,171,65,1) 46%, rgba(23,117,14,1) 84%, rgba(23,117,14,1) 100%);
 }
 
+/*----------------------------------------------------------------------
+* Export
+* --------------------------------------------------------------------*/
+
+#export {
+    grid-area: export;
+    margin-top: 30px;
+}
+
 .export {
     width: 50%;
     height: 260px;
     background: #616161;
-    /* float: left; */
     margin: 20px auto;
-    /* outline: 20px solid #c3c3c3; */
     border: 10px solid #c3c3c3;
     overflow:hidden;
-    box-shadow: 4px 4px 11px -1px hsla(0, 0%, 30%, 0.6);
+    box-shadow: 4px 4px 11px -1px hsla(0, 0%, 30%, 0.6), inset 0px 0px 64px 1px rgba(0,0,0,0.34);
     position: relative;
 }
 
@@ -290,122 +228,6 @@ video {
     z-index: 2;
     box-shadow: 0px 0px 11px -1px hsla(0, 0%, 18.4%, 0.6);
     pointer-events: none;
-}
-
-.shelfWrapper {
-    margin-right:20px;
-}
-
-.shelf {
-    width: 20vw;
-    height: 20px;
-    background:#334a49;
-    position: absolute;
-    bottom: 20px;
-    box-shadow: 4px 4px 11px -1px hsla(0, 0%, 30%, 0.6);
-}
-
-.coinstack {
-    background-image: url(../img/coin/coin-stack.png);
-    height: 120px;
-    width: 108px;
-    display: block;
-    background-repeat: no-repeat;
-    position: relative;
-    top: -120px;
-}
-
-.coinstack:hover {
-    cursor: pointer;
-}
-
-.shine {
-    animation: shineAnimation 1.4s;
-    animation-iteration-count: infinite;
-    animation-timing-function: ease;
-    animation-delay: 1.4s;
-}
-
-@keyframes shineAnimation {
-    0% {
-        filter: brightness(100%);
-    } 50% {
-        filter: brightness(115%);
-    } 100% {
-        filter: brightness(100%);
-    }
-}
-
-.coin {
-    background-image: url(../img/coin/coin-front.png);
-    height: 77px;
-    width: 77px;
-    background-repeat: no-repeat;
-    position: fixed;
-    background-position: center;
-}
-
-.coin:hover {
-    cursor: grab;
-}
-
-.coin:active {
-    cursor: grabbing;
-}
-
-.flash {
-    width: 100vw;
-    height: 100vh;
-    background: white;
-    position: absolute;
-    z-index: 99;
-    background: radial-gradient(ellipse at center, rgba(255,255,255,1) 0%, rgb(161, 161, 161) 100%);
-    opacity: 0;
-    pointer-events: none;
-}
-
-.flashAnimation {
-    animation: brightFlash .5s;
-    animation-timing-function: ease;
-}
-
-@keyframes brightFlash {
-    0% {
-        opacity: 0;
-    } 50% {
-        opacity: 1;
-    } 100% {
-        opacity: 0;
-    }
-}
-
-.photostrip {
-    width:100%;
-}
-
-.photostripWrapper {
-    height:90vh;
-    width: 18.439515vh;
-    position: absolute;
-    z-index: 1;
-    margin:0 auto;
-    bottom:0;
-    left:0;
-    right:0;
-    pointer-events: none;
-}
-
-.slideDownStrip {
-    animation: slideDown 0.7s;
-    animation-timing-function: ease;
-}
-
-@keyframes slideDown {
-    0% {
-        bottom: 40vh;
-    } 100% {
-        bottom: 0vh;
-    }
 }
 
 #exportOptions {
@@ -460,4 +282,224 @@ video {
 .btn:hover {
     cursor: pointer;
     background: #c767da;
+}
+
+.photostrip {
+    width:100%;
+}
+
+.photostripWrapper {
+    height:90vh;
+    width: 18.439515vh;
+    position: absolute;
+    z-index: 1;
+    margin:0 auto;
+    bottom:0;
+    left:0;
+    right:0;
+    pointer-events: none;
+}
+
+/*----------------------------------------------------------------------
+* Video
+* --------------------------------------------------------------------*/
+
+#videoContainer {
+    background: hsla(0, 0%, 39.6%, 0.6);
+    background: radial-gradient(ellipse at center, hsl(0, 0%, 21.2%) 0%,hsl(0, 0%, 12.9%) 100%);
+    max-height: 100vh;
+    display: block;
+    overflow: hidden;
+    margin: 0 auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+}
+
+#videoContainer img {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    z-index: 1;
+    opacity: 0.7;
+    mix-blend-mode: color-dodge;
+    width: 328px;
+    height: 328px;
+    -moz-user-select: none;
+    user-select: none;
+    pointer-events: none;
+}
+
+#videoOverlay {
+    background-color: #dbdbdb;
+    background: radial-gradient(ellipse at top left, hsla(0,0%,100%,1) 0%, hsla(0,0%,70%,1) 100%);
+    min-height: 100%;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    position: absolute;
+    opacity: 0.5;
+}
+
+#eyeLevel {
+    height: 10px;
+    width: 100%;
+    background: #ffffff;
+    top: calc(50% - 5px);
+    position: absolute;
+    z-index: 2;
+}
+
+video {
+    transform: scale(-1, 1);
+    mix-blend-mode: soft-light;
+    max-height:100vh;
+}
+
+/*----------------------------------------------------------------------
+* Canvas
+* --------------------------------------------------------------------*/
+
+#canvas, #tempCanvas {
+    display: none;
+}
+
+/*----------------------------------------------------------------------
+* Warningbar
+* --------------------------------------------------------------------*/
+
+#warning {
+    display: none;
+    background: #ff7500;
+    color: #fff;
+    width: 100%;
+    z-index: 999;
+    position: absolute;
+    padding: 10px 40px;
+    text-align: right;
+    font-family: sans-serif;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+#warning::after {
+    content: "X";
+    background-color: #e66900;
+    margin: 10px;
+    width: 30px;
+    height: 30px;
+    padding: 5px 11px;
+    border-radius: 27px;
+    color: #b35200;
+}
+
+#warning:hover::after {
+    background-color: #bd5600;
+    color: #f57000;
+}
+
+/*----------------------------------------------------------------------
+* Signs
+* --------------------------------------------------------------------*/
+
+.sign {
+    background: #eaeaea;
+    padding: 10px 0;
+}
+
+.sign img {
+    max-width: calc(100% - 40px);
+    margin: 0 auto;
+    display: block;
+    -moz-user-select: none;
+    user-select: none;
+    pointer-events: none;
+}
+
+.signWrapper {
+    overflow: hidden;
+    border: 10px solid #c3c3c3;
+    box-shadow: 4px 4px 11px -1px hsla(0, 0%, 30%, 0.6);
+}
+
+.signTitle {
+    font-family: "Stardos Stencil", sans-serif;
+    font-size: 1.5vw;
+    line-height:1.1;
+    max-width: calc(100% - 40px);
+    margin: 0 auto;
+    display: block;
+    user-select: none;
+    -moz-user-select: none;
+    text-align: center;
+    color: #191111;
+}
+
+
+/*----------------------------------------------------------------------
+* Shelf
+* --------------------------------------------------------------------*/
+
+.shelfWrapper {
+    margin-right:20px;
+}
+
+.shelf {
+    width: 20vw;
+    height: 20px;
+    background:#334a49;
+    position: absolute;
+    bottom: 20px;
+    box-shadow: 4px 4px 11px -1px hsla(0, 0%, 30%, 0.6);
+}
+
+/*----------------------------------------------------------------------
+* Animations
+* --------------------------------------------------------------------*/
+
+.shine {
+    animation: shineAnimation 1.4s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease;
+    animation-delay: 1.4s;
+}
+
+.flashAnimation {
+    animation: brightFlash .5s;
+    animation-timing-function: ease;
+}
+
+.slideDownStrip {
+    animation: slideDown 0.7s;
+    animation-timing-function: ease;
+}
+
+@keyframes shineAnimation {
+    0% {
+        filter: brightness(100%);
+    } 50% {
+        filter: brightness(115%);
+    } 100% {
+        filter: brightness(100%);
+    }
+}
+
+@keyframes brightFlash {
+    0% {
+        opacity: 0;
+    } 50% {
+        opacity: 1;
+    } 100% {
+        opacity: 0;
+    }
+}
+
+@keyframes slideDown {
+    0% {
+        bottom: 40vh;
+    } 100% {
+        bottom: 0vh;
+    }
 }

@@ -24,6 +24,9 @@ var ui;
         //----------------------------------------------------------------------
         // Methods
         //----------------------------------------------------------------------
+        /**
+         *
+         */
         prepareVideo() {
             this.width = (document.documentElement.clientHeight / 5) * 4;
             this.height = document.documentElement.clientHeight;
@@ -35,6 +38,9 @@ var ui;
             this.ui.body.style.gridTemplateColumns = "1fr " + this.width + "px" + " 1fr";
             this.renderReflection();
         }
+        /**
+         *
+         */
         renderReflection() {
             this.ui.video.srcObject = this.stream;
             this.ui.video.addEventListener("loadedmetadata", (event) => {

@@ -31,9 +31,15 @@ var ui;
         //----------------------------------------------------------------------
         // Methods
         //----------------------------------------------------------------------
+        /**
+         *
+         */
         renderShelfItem() {
             this.createElements();
         }
+        /**
+         *
+         */
         createElements() {
             var coin = document.createElement("div");
             coin.classList.add("coin");
@@ -43,6 +49,10 @@ var ui;
             coin.addEventListener("mousedown", this.md, false);
             this.element = coin;
         }
+        /**
+         *
+         * @param event
+         */
         onMouseMove(event) {
             this.element.style.top = event.clientY - this.offsetY + "px";
             this.element.style.left = event.clientX - this.offsetX + "px";
@@ -63,16 +73,29 @@ var ui;
                 this.element.style.backgroundImage = "url('assets/img/coin/coin-front.png')";
             }
         }
+        /**
+         *
+         * @param event
+         */
         onMouseDown(event) {
             this.offsetX = event.clientX - parseInt(this.element.style.left);
             this.offsetY = event.clientY - parseInt(this.element.style.top);
             this.ui.body.addEventListener("mousemove", this.mm, false);
             this.element.addEventListener("mouseup", this.mu, false);
         }
+        /**
+         *
+         * @param event
+         */
         onMouseUp(event) {
             this.ui.body.removeEventListener("mousemove", this.mm, false);
             this.element.removeEventListener("mouseup", this.mu, false);
         }
+        /**
+         *
+         * @param element1
+         * @param element2
+         */
         collisionDetection(element1, element2) {
             var el1 = element1.getBoundingClientRect();
             var el2 = element2.getBoundingClientRect();
@@ -81,13 +104,22 @@ var ui;
                 (el1.right <= el2.left) ||
                 (el1.left >= el2.right));
         }
+        /**
+         *
+         */
         removeCoin() {
             this.element.parentElement.removeChild(this.element);
         }
+        /**
+         *
+         */
         coinInsert() {
             this.removeCoin();
             this.dispatchEvent();
         }
+        /**
+         *
+         */
         dispatchEvent() {
             var event = new Event(Coin.INSERT_EVENT);
             this.ui.coinSlot.dispatchEvent(event);

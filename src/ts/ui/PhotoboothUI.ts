@@ -21,10 +21,17 @@ namespace ui {
         // Methods
         //----------------------------------------------------------------------
 
+        /**
+         * 
+         */
         public init():void {
             this.createElements();
         }
 
+
+        /**
+         * 
+         */
         private createElements():void {
             this._wrapper = document.createElement("div");
             this._warning = document.createElement("div");
@@ -53,7 +60,10 @@ namespace ui {
             this.assignAttributes();
         }
 
-        
+
+        /**
+         * 
+         */
         private assignAttributes():void {
             this._wrapper.classList.add("wrapper");
             this._warning.id = "warning";
@@ -81,6 +91,10 @@ namespace ui {
             this.appendElements();
         }
 
+
+        /**
+         * 
+         */
         private appendElements():void {
             // Clone wrapper elements
             
@@ -129,22 +143,38 @@ namespace ui {
             this._body.appendChild(this._tempCanvas);
         }
 
+
+        /**
+         * 
+         */
         private createComponents():void {
             this.createStartbutton();
             this.createExportslot();
             this.createShelf();
         }
 
+
+        /**
+         * 
+         */
         private createStartbutton():void {
             var startbutton = new Startbutton();
             this._start.appendChild(startbutton.element);
         }
 
+
+        /**
+         * 
+         */
         private createExportslot():void {
             var exportSlot = new Export();
             this._export.appendChild(exportSlot.element);
         }
 
+        
+        /**
+         * 
+         */
         private createShelf():void {
             var shelf = new Shelf();
             this._shelf.appendChild(shelf.element);

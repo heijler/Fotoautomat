@@ -25,17 +25,28 @@ namespace ui {
         // Methods
         //----------------------------------------------------------------------
 
+        /**
+         * 
+         */
         private renderShelfItem():void{
             this.createElements();
         }
 
+        /**
+         * 
+         */
         private createElements():void {
             var shelfItem = document.createElement("div");
                 shelfItem.classList.add(this.class, "shine");
                 shelfItem.addEventListener("mousedown", this.onMouseDown.bind(this), false);
             this.element = shelfItem;
         }
-       
+        
+
+        /**
+         * 
+         * @param event 
+         */
         private onMouseDown(event:MouseEvent):void {
             if (this.element.childNodes.length < 1) {
                 this.element.classList.remove("shine");

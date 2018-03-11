@@ -24,11 +24,17 @@ namespace ui {
         // Methods
         //----------------------------------------------------------------------
         
+        /**
+         * 
+         */
         private renderShelf():void{
             this.shelfItems.push(new ShelfItem("coinstack"));
             this.createElements();
         }
 
+        /**
+         * 
+         */
         private createElements():void {
             var shelf = document.createElement("div");
                 shelf.classList.add("shelf");

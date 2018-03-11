@@ -22,10 +22,16 @@ var ui;
         //----------------------------------------------------------------------
         // Methods
         //----------------------------------------------------------------------
+        /**
+         *
+         */
         renderShelf() {
             this.shelfItems.push(new ui.ShelfItem("coinstack"));
             this.createElements();
         }
+        /**
+         *
+         */
         createElements() {
             var shelf = document.createElement("div");
             shelf.classList.add("shelf");
