@@ -55,23 +55,19 @@ namespace photobooth {
          * @memberof Photobooth
          */
         public saveImage():void {
-            // console.log("saveImage, before loop");
-            for (var i = 0; i < this.numPhotos; i++) {
-                // setTimeout(this.captureFrame.bind(this), 1000);
-                // console.log("saveImage, inside loop");
-                this.timeoutCaptureFrame();
-            }
-            setTimeout(this.getStrip.bind(this), 1000 * this.numPhotos);
-            // console.log("saveImage, after loop");
-        }
-
-        private timeoutCaptureFrame():void {
-            // console.log("timeoutCaptureFrame");
-            setTimeout(this.captureFrame.bind(this), 1000);
+            var counter = 0;
+            var interval = setInterval(function() {
+                this.captureFrame();
+                counter++;
+                if (counter == this.numPhotos) {
+                    clearInterval(interval);
+                    setTimeout(this.getStrip, 2000);
+                }
+            }.bind(this), 5000);
         }
 
         private captureFrame():void {
-            // console.log("captureFrame");
+            this.simulatePhotography();
             var context:CanvasRenderingContext2D = photobooth.Main.ui.tempCanvas.getContext('2d');
             var videoOffset:number = Math.abs(parseInt(Main.ui.video.style.marginLeft));
                 context.drawImage(photobooth.Main.ui.video, videoOffset, 0, this.width, this.height, 0, 0, this.width, this.height);
@@ -82,8 +78,18 @@ namespace photobooth {
                 img.addEventListener("load", function() {
                     Main.ui.canvas.getContext("2d").drawImage(img, 20, 20 + (this.photos.length * this.height) + (20 * this.photos.length));
                     this.photos.length++;
-                    
                 }.bind(this));
+        }
+
+        private simulatePhotography():void {
+            var audio = new Audio("assets/audio/camera-shutter.wav");
+                audio.play();
+
+            Main.ui.flash.classList.add("flashAnimation");
+            Main.ui.flash.addEventListener("animationend", function() {
+                Main.ui.flash.classList.remove("flashAnimation");
+            });
+
         }
 
         private setCanvasSize():void {
@@ -92,8 +98,14 @@ namespace photobooth {
             Main.ui.tempCanvas.width  = this.width;
 
             // Set the photostrip canvas size
+            
             Main.ui.canvas.height = (this.height * this.numPhotos) + ((this.numPhotos + 1) * 20);
             Main.ui.canvas.width = this.width + 40;
+            
+            var ctx = Main.ui.canvas.getContext("2d");
+            ctx.fillStyle = "white";
+            ctx.rect(0, 0, this.width + 40, (this.height * this.numPhotos) + ((this.numPhotos + 1) * 20));
+            ctx.fill();
         }
 
         private getStrip():void {

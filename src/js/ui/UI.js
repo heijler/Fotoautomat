@@ -26,6 +26,7 @@ var ui;
             this._canvas = null;
             this._tempCanvas = null;
             this._shelf = null;
+            this._flash = null;
             this._body = document.getElementsByTagName("body")[0];
         }
         //----------------------------------------------------------------------
@@ -66,6 +67,9 @@ var ui;
         }
         get start() {
             return this._start;
+        }
+        get flash() {
+            return this._flash;
         }
     }
     ui.UI = UI;

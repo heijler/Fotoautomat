@@ -333,3 +333,29 @@ video {
 .coin:active {
     cursor: grabbing;
 }
+
+.flash {
+    width: 100vw;
+    height: 100vh;
+    background: white;
+    position: absolute;
+    z-index: 2;
+    background: radial-gradient(ellipse at center, rgba(255,255,255,1) 0%, rgb(161, 161, 161) 100%);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.flashAnimation {
+    animation: brightFlash .5s;
+    animation-timing-function: ease;
+}
+
+@keyframes brightFlash {
+    0% {
+        opacity: 0;
+    } 50% {
+        opacity: 1;
+    } 100% {
+        opacity: 0;
+    }
+}

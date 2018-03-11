@@ -21,6 +21,7 @@ namespace ui {
         protected _canvas:HTMLCanvasElement     = null;
         protected _tempCanvas:HTMLCanvasElement = null;
         protected _shelf:HTMLElement            = null;
+        protected _flash:HTMLElement            = null;
         
         //----------------------------------------------------------------------
         // Constructor
@@ -80,6 +81,9 @@ namespace ui {
             return this._start;
         }
 
+        public get flash():HTMLElement {
+            return this._flash;
+        }
         // public get startBtn():HTMLElement {
         //     return this._startBtn;
         // }

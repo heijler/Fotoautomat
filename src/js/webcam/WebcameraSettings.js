@@ -16,7 +16,7 @@ var webcam;
          * @param height default: 2160, ideal webcamera stream height
          * @TODO: new jsdoc here
          */
-        constructor(width = { ideal: 3840 }, height = { ideal: 2160 }) {
+        constructor(width = { ideal: 1920 }, height = { ideal: 1080 }) {
             //----------------------------------------------------------------------
             // Properties
             //----------------------------------------------------------------------

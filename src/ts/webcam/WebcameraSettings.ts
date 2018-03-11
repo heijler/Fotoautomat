@@ -24,7 +24,7 @@ namespace webcam {
          * @param height default: 2160, ideal webcamera stream height
          * @TODO: new jsdoc here
          */
-        public constructor(width:IDimension = {ideal:3840}, height:IDimension = {ideal:2160}) {
+        public constructor(width:IDimension = {ideal:1920}, height:IDimension = {ideal:1080}) {
             this.video.height = height;
             this.video.width = width;
             

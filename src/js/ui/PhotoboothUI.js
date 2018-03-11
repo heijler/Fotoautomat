@@ -42,6 +42,7 @@ var ui;
             this._canvas = document.createElement("canvas");
             this._tempCanvas = document.createElement("canvas");
             this._shelf = document.createElement("div");
+            this._flash = document.createElement("div");
             this.assignAttributes();
         }
         assignAttributes() {
@@ -66,6 +67,7 @@ var ui;
             // this._canvas.height = 500;
             this._tempCanvas.id = "tempCanvas";
             this._shelf.classList.add("shelfWrapper");
+            this._flash.classList.add("flash");
             this.createComponents();
             this.appendElements();
         }
@@ -98,6 +100,7 @@ var ui;
             videoWrap.appendChild(this._frame);
             stripsWrap.appendChild(this._shelf);
             // Append to body
+            this._body.appendChild(this._flash);
             this._body.appendChild(warnWrap);
             this._body.appendChild(controlsWrap);
             this._body.appendChild(videoWrap);
