@@ -87,7 +87,7 @@ body:after {
 }
 
 .coinslotWrapper .sign img {
-    width:50%;
+    width:30%;
 }
 
 #videoContainer {
@@ -200,7 +200,7 @@ video {
 
 .signTitle {
     font-family: "Stardos Stencil", sans-serif;
-    font-size: 2.5vw;
+    font-size: 1.5vw;
     line-height:1.1;
     max-width: calc(100% - 40px);
     margin: 0 auto;
@@ -229,7 +229,7 @@ video {
 #startButton {
     outline: 20px solid hsla(114.2, 73%, 17.6%, 0.9);
     font-family: sans-serif;
-    font-size: 5em;
+    font-size: 4em;
     text-align: center;
     color: hsla(0, 0%, 100%, 0.7);
 }
@@ -251,11 +251,11 @@ video {
 }
 
 .export {
-    width: 100%;
+    width: 50%;
     height: 260px;
     background: #616161;
-    float: left;
-    margin-top: 60px;
+    /* float: left; */
+    margin: 60px auto;
     outline: 20px solid #c3c3c3;
     overflow:hidden;
 }
