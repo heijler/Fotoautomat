@@ -93,10 +93,14 @@ var photobooth;
             ctx.fill();
         }
         getStrip() {
+            var photostripWrapper = document.getElementsByClassName("photostripWrapper")[0]; // Make reference through main..
             var URI = photobooth.Main.ui.canvas.toDataURL("image/png");
             var img = new Image();
             img.src = URI;
-            document.body.appendChild(img); // This line only to see generated image.
+            img.classList.add("photostrip");
+            photostripWrapper.classList.add("slideDownStrip");
+            photostripWrapper.appendChild(img);
+            // document.body.appendChild(img); // This line only to see generated image.
         }
     }
     photobooth.Photobooth = Photobooth;

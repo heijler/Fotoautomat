@@ -263,6 +263,7 @@ video {
     float: left;
     margin-top: 60px;
     outline: 20px solid #c3c3c3;
+    overflow:hidden;
 }
 
 #exportSlotDivider {
@@ -271,6 +272,8 @@ video {
     display: block;
     background: #5b5b5b;
     margin: 0 auto;
+    position: relative;
+    z-index: 2;
 }
 
 .shelfWrapper {
@@ -339,7 +342,7 @@ video {
     height: 100vh;
     background: white;
     position: absolute;
-    z-index: 2;
+    z-index: 99;
     background: radial-gradient(ellipse at center, rgba(255,255,255,1) 0%, rgb(161, 161, 161) 100%);
     opacity: 0;
     pointer-events: none;
@@ -357,5 +360,31 @@ video {
         opacity: 1;
     } 100% {
         opacity: 0;
+    }
+}
+
+.photostrip {
+    width:100%;
+}
+
+.photostripWrapper {
+    height:90vh;
+    width: 18.439515vh;
+    position: relative;
+    z-index: 1;
+    margin:0 auto;
+    top:-880px;
+}
+
+.slideDownStrip {
+    animation: slideDown 0.7s;
+    animation-timing-function: ease;
+}
+
+@keyframes slideDown {
+    0% {
+        top: -1200px;
+    } 100% {
+        top: -880px;
     }
 }

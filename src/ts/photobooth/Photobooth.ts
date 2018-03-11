@@ -109,10 +109,15 @@ namespace photobooth {
         }
 
         private getStrip():void {
+            var photostripWrapper = document.getElementsByClassName("photostripWrapper")[0]; // Make reference through main..
             var URI = Main.ui.canvas.toDataURL("image/png");
             var img = new Image();
             img.src = URI;
-            document.body.appendChild(img); // This line only to see generated image.
+            img.classList.add("photostrip");
+            
+            photostripWrapper.classList.add("slideDownStrip")
+            photostripWrapper.appendChild(img);
+            // document.body.appendChild(img); // This line only to see generated image.
         }
     }
 }
