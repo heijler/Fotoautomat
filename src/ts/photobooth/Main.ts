@@ -38,6 +38,10 @@ namespace photobooth {
                 // console.log("Startbutton was pressed");
                 pb.saveImage();
             });
+
+            Main.ui.body.addEventListener("photostrip-generated", function(event:Event) {
+                console.log("photostrip generated");
+            });
         }
     }
 

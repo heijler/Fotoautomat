@@ -84,6 +84,10 @@ namespace ui {
         public get flash():HTMLElement {
             return this._flash;
         }
+
+        public get export():HTMLElement {
+            return this._export;
+        }
         // public get startBtn():HTMLElement {
         //     return this._startBtn;
         // }

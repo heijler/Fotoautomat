@@ -142,14 +142,17 @@ var photobooth;
             img.classList.add("photostrip");
             photostripWrapper.classList.add("slideDownStrip");
             photostripWrapper.appendChild(img);
+            var event = new Event("photostrip-generated");
+            photobooth.Main.ui.body.dispatchEvent(event);
             var pdf = new jsPDF();
             var width = pdf.internal.pageSize.width;
             var height = pdf.internal.pageSize.height;
-            // image height * 0.00274177456
-            // pdf.internal.scaleFactor = 11;
-            pdf.internal.scaleFactor = 7.973080;
-            pdf.addImage(img, "JPEG", 10, 10);
-            pdf.save("download.pdf");
+            // pdf.internal.scaleFactor = Main.ui.canvas.height * 0.00274177456;
+            // pdf.addImage(img, "JPEG", 10, 10);
+            // pdf.autoPrint();
+            // pdf.save();
+            // window.open(pdf.output('bloburl'), '_blank');
+            // pdf.save("download.pdf");
         }
     }
     photobooth.Photobooth = Photobooth;

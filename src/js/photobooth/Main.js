@@ -27,6 +27,9 @@ var photobooth;
                 // console.log("Startbutton was pressed");
                 pb.saveImage();
             });
+            Main.ui.body.addEventListener("photostrip-generated", function (event) {
+                console.log("photostrip generated");
+            });
         }
     }
     //----------------------------------------------------------------------

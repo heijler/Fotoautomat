@@ -71,6 +71,9 @@ var ui;
         get flash() {
             return this._flash;
         }
+        get export() {
+            return this._export;
+        }
     }
     ui.UI = UI;
 })(ui || (ui = {}));

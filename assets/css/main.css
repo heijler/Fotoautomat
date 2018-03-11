@@ -270,6 +270,7 @@ video {
     border: 10px solid #c3c3c3;
     overflow:hidden;
     box-shadow: 4px 4px 11px -1px hsla(0, 0%, 30%, 0.6);
+    position: relative;
 }
 
 #export .signWrapper {
@@ -283,8 +284,12 @@ video {
     display: block;
     background: #5b5b5b;
     margin: 0 auto;
-    position: relative;
+    position: absolute;
+    left:0;
+    right:0;
     z-index: 2;
+    box-shadow: 0px 0px 11px -1px hsla(0, 0%, 18.4%, 0.6);
+    pointer-events: none;
 }
 
 .shelfWrapper {
@@ -381,10 +386,13 @@ video {
 .photostripWrapper {
     height:90vh;
     width: 18.439515vh;
-    position: relative;
+    position: absolute;
     z-index: 1;
     margin:0 auto;
-    top:-90vh;
+    bottom:0;
+    left:0;
+    right:0;
+    pointer-events: none;
 }
 
 .slideDownStrip {
@@ -394,8 +402,58 @@ video {
 
 @keyframes slideDown {
     0% {
-        top: -200vh;
+        bottom: 40vh;
     } 100% {
-        top: -90vh;
+        bottom: 0vh;
     }
+}
+
+#exportOptions {
+    width: 100%;
+    height: 100%;
+    background: white;
+    opacity: 0.7;
+    z-index: 3;
+    position: absolute;
+    display: none;
+    padding-top: 40px;
+    font-family: "Stardos Stencil", sans-serif;
+}
+
+.btn {
+    padding: 6px 0;
+    background-color: #c6c6c6;
+    border: 1px solid white;
+    box-sizing: border-box;
+    margin: 0px;
+    width: 100%;
+    display: inline-block;
+    padding-left:50px;
+}
+
+.print:before {
+    content: " ";
+    height: 20px;
+    width: 20px;
+    background-image: url(../img/icons/printer.png);
+    position: absolute;
+    left: 20px;
+    background-size: cover;
+    margin-top: 2px;
+}
+
+.save:before {
+    content: " ";
+    height: 20px;
+    width: 20px;
+    background-image: url(../img/icons/cloud-download.png);
+    position: absolute;
+    left: 20px;
+    background-size: cover;
+    margin-top: 2px;
+}
+
+.btn:hover {
+    cursor: pointer;
+    background: #c767da;
 }
