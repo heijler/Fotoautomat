@@ -6,7 +6,7 @@
 
 body {
     margin: 0;
-    background: #7DB3B1;
+    background: #F2F3E5;
     display:grid;
     grid-column-gap:20px;
     grid-template-columns: 1fr 1fr 1fr;
@@ -25,7 +25,7 @@ body:after {
     position: absolute;
     z-index: -1;
     background-image: url(../img/bg-pattern.png);
-    opacity: 0.4;
+    opacity: 0.26;
 }
 
 .wrapper {
@@ -43,7 +43,7 @@ body:after {
     height:100vh;
     margin-left:20px;
     display:grid;
-    grid-row-gap: 20px;
+    grid-row-gap: 10px;
     grid-template-rows: 1fr 1fr 8fr;
     grid-template-areas: 
     "coin"
@@ -58,11 +58,11 @@ body:after {
 
 .coinslotWrapper {
     display:grid;
-    grid-column-gap: 60px;
-    grid-template-columns: 20fr 1fr;
+    grid-column-gap: 10px;
+    grid-template-columns: 14fr 1fr;
     grid-template-areas:
     "sign coinslot";
-    margin: 40px 0px;
+    margin: 20px 0px;
 }
 
 #coin {
@@ -75,7 +75,7 @@ body:after {
 
 #export {
     grid-area: export;
-    margin-top: 40px;
+    margin-top: 30px;
 }
 
 .coinslotWrapper .signWrapper {
@@ -196,7 +196,9 @@ video {
 
 .signWrapper {
     overflow: hidden;
-    outline: 20px solid #c3c3c3;
+    /* outline: 20px solid #c3c3c3; */
+    border: 10px solid #c3c3c3;
+    box-shadow: 4px 4px 11px -1px hsla(0, 0%, 30%, 0.6);
 }
 
 .signTitle {
@@ -214,7 +216,9 @@ video {
 
 .coinslot {
     background:#484848;
-    outline: 20px solid #c3c3c3;
+    /* outline: 20px solid #c3c3c3; */
+    border: 10px solid #c3c3c3;
+    box-shadow: 4px 4px 11px -1px hsla(0, 0%, 30%, 0.6);
 }
 
 .controls {
@@ -228,11 +232,15 @@ video {
 }
 
 #startButton {
-    outline: 20px solid hsla(114.2, 73%, 17.6%, 0.9);
+    /* outline: 20px solid hsla(114.2, 73%, 17.6%, 0.9); */
+    border: 10px solid hsla(114.2, 73%, 17.6%, 0.9);
     font-family: sans-serif;
     font-size: 4em;
     text-align: center;
     color: hsla(0, 0%, 100%, 0.7);
+    width: 70%;
+    margin: 0 auto;
+    box-shadow: 4px 4px 11px -1px hsla(147.9, 64.6%, 25.5%, 0.6);
 }
 
 #startButton:hover {
@@ -256,9 +264,16 @@ video {
     height: 260px;
     background: #616161;
     /* float: left; */
-    margin: 60px auto;
-    outline: 20px solid #c3c3c3;
+    margin: 20px auto;
+    /* outline: 20px solid #c3c3c3; */
+    border: 10px solid #c3c3c3;
     overflow:hidden;
+    box-shadow: 4px 4px 11px -1px hsla(0, 0%, 30%, 0.6);
+}
+
+#export .signWrapper {
+    width: 50%;
+    margin: 0 auto;
 }
 
 #exportSlotDivider {
@@ -278,9 +293,10 @@ video {
 .shelf {
     width: 20vw;
     height: 20px;
-    background:black;
+    background:#334a49;
     position: absolute;
     bottom: 20px;
+    box-shadow: 4px 4px 11px -1px hsla(0, 0%, 30%, 0.6);
 }
 
 .coinstack {
