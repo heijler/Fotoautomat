@@ -17,6 +17,8 @@ namespace photobooth {
         public  height:number = 0;
         private numPhotos = 0;
         private photos:Array<null> = new Array();
+        private img:HTMLImageElement;
+        private pdf:any;
     
         //----------------------------------------------------------------------
         // Constructor
@@ -25,6 +27,7 @@ namespace photobooth {
         public constructor(constraints:webcam.WebcameraSettings, numPhotos:number) {
             this.constraints = constraints;
             this.numPhotos = numPhotos;
+            this.pdf = new jsPDF();
             this.init();
         }
     
@@ -52,18 +55,18 @@ namespace photobooth {
         }
 
         /**
-         * saveImage
+         * captureImages
          * Writes image data to canvas and fetches the image DataURI
          * @memberof Photobooth
          */
-        public saveImage():void {
+        public captureImages():void {
             var counter = 0;
             var interval = setInterval(function() {
                 this.captureFrame();
                 counter++;
                 if (counter == this.numPhotos) {
                     clearInterval(interval);
-                    setTimeout(this.assignStripToElement, 2000);
+                    setTimeout(this.assignStripToElement.bind(this), 2000);
                 }
             }.bind(this), 5000);
         }
@@ -162,29 +165,45 @@ namespace photobooth {
          * 
          */
         private assignStripToElement():void {
-            var photostripWrapper = document.getElementsByClassName("photostripWrapper")[0]; // Make reference through main..
-
-            var URI = Main.ui.canvas.toDataURL("image/jpg");
-            var img = new Image();
-            img.src = URI;
-            img.classList.add("photostrip");
+            var photostripWrapper:Element = document.getElementsByClassName("photostripWrapper")[0]; // Make reference through main..
+            var URI:string = Main.ui.canvas.toDataURL("image/jpg");
+            this.img = new Image();
+            this.img.src = URI;
+            this.img.classList.add("photostrip");
             
             photostripWrapper.classList.add("slideDownStrip")
-            photostripWrapper.appendChild(img);
+            photostripWrapper.appendChild(this.img);
+
+            var downloadBtn:any = document.getElementById("exportOptions").children[0];
+            downloadBtn.download = "Photostrip-" + this.getCurrentDateTime() + ".jpg";
+            Main.ui.canvas.toBlob(function(blob) {
+                downloadBtn.href = URL.createObjectURL(blob)
+            }, "image/jpg");
 
             var event:Event = new Event("photostrip-generated");
-            Main.ui.body.dispatchEvent(event);
+            Main.ui.export.dispatchEvent(event);
+        }
 
-            var pdf = new jsPDF();
-            var width = pdf.internal.pageSize.width;
-            var height = pdf.internal.pageSize.height;
+        public savePhotostripPDF():void {
+            this.pdf.internal.scaleFactor = Main.ui.canvas.height * 0.00274177456;
+            this.pdf.addImage(this.img, "JPEG", 10, 10);
+            this.pdf.save("Photostrip-" + this.getCurrentDateTime() + ".pdf");
+        }
 
-            // pdf.internal.scaleFactor = Main.ui.canvas.height * 0.00274177456;
-            // pdf.addImage(img, "JPEG", 10, 10);
-            // pdf.autoPrint();
-            // pdf.save();
-            // window.open(pdf.output('bloburl'), '_blank');
-            // pdf.save("download.pdf");
+        public printPhotostripPDF():void {
+            this.pdf.internal.scaleFactor = Main.ui.canvas.height * 0.00274177456;
+            this.pdf.addImage(this.img, "JPEG", 10, 10);
+            this.pdf.autoPrint();
+            window.open(this.pdf.output("bloburl"), "_blank");
+        }
+
+        private getCurrentDateTime():string {
+            var date = new Date();
+            return date.getFullYear() + "-" + this.twoCharZeroPad(date.getMonth().toString()) + "-" + this.twoCharZeroPad(date.getDate().toString()) + "_" + date.getHours().toString() + "." + date.getMinutes().toString();
+        }
+
+        private twoCharZeroPad(string:string):string {
+            return ("00"+string).substr(-2, 2);
         }
     }
 }

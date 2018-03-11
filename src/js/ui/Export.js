@@ -48,6 +48,9 @@ var ui;
             exportEl.classList.add("export");
             exportEl.addEventListener("mouseover", this.onMouseOver.bind(this));
             exportEl.addEventListener("mouseout", this.onMouseOut.bind(this));
+            exportImage.addEventListener("click", this.onImageSave.bind(this));
+            exportPdf.addEventListener("click", this.onPdfSave.bind(this));
+            printPdf.addEventListener("click", this.onPrintPdf.bind(this));
             exportOptions.appendChild(exportImage);
             exportOptions.appendChild(exportPdf);
             exportOptions.appendChild(printPdf);
@@ -58,13 +61,24 @@ var ui;
             exportWrapper.appendChild(exportEl);
             this.element = exportWrapper;
         }
+        onImageSave(event) {
+            var event = new Event("save-image");
+            this.ui.export.dispatchEvent(event);
+        }
+        onPdfSave(event) {
+            var event = new Event("save-pdf");
+            this.ui.export.dispatchEvent(event);
+        }
+        onPrintPdf(event) {
+            var event = new Event("print-pdf");
+            this.ui.export.dispatchEvent(event);
+        }
         onMouseOver(event) {
-            // console.log(this.ui.export.children[0].children[1].children[0]);
-            // console.log(this.element.children[1].children[0]);
-            this.element.children[1].children[0].style.display = "block";
+            if (this.element.children[1].children[2].children.length > 0) {
+                this.element.children[1].children[0].style.display = "block";
+            }
         }
         onMouseOut(event) {
-            // console.log("mouseout!");
             this.element.children[1].children[0].style.display = "none";
         }
     }

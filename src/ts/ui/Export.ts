@@ -55,6 +55,9 @@ namespace ui {
 
             exportEl.addEventListener("mouseover", this.onMouseOver.bind(this));
             exportEl.addEventListener("mouseout", this.onMouseOut.bind(this));
+            exportImage.addEventListener("click", this.onImageSave.bind(this));
+            exportPdf.addEventListener("click", this.onPdfSave.bind(this));
+            printPdf.addEventListener("click", this.onPrintPdf.bind(this));
                 
             exportOptions.appendChild(exportImage);
             exportOptions.appendChild(exportPdf);
@@ -69,14 +72,28 @@ namespace ui {
 
         }
 
+        private onImageSave(event:Event):void {
+            var event:Event = new Event("save-image");
+            this.ui.export.dispatchEvent(event);
+        }
+
+        private onPdfSave(event:Event):void {
+            var event:Event = new Event("save-pdf");
+            this.ui.export.dispatchEvent(event);
+        }
+
+        private onPrintPdf(event:Event):void {
+            var event:Event = new Event("print-pdf");
+            this.ui.export.dispatchEvent(event);
+        }
+
         private onMouseOver(event:Event):void {
-            // console.log(this.ui.export.children[0].children[1].children[0]);
-            // console.log(this.element.children[1].children[0]);
-            (<HTMLElement>this.element.children[1].children[0]).style.display = "block";
+            if(this.element.children[1].children[2].children.length > 0) {
+                (<HTMLElement>this.element.children[1].children[0]).style.display = "block";
+            }
         }
 
         private onMouseOut(event:Event):void {
-            // console.log("mouseout!");
             (<HTMLElement>this.element.children[1].children[0]).style.display = "none";
         }
        

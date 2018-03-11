@@ -30,17 +30,26 @@ namespace photobooth {
             var constraints:webcam.WebcameraSettings = new webcam.WebcameraSettings();
             var pb:photobooth.Photobooth = new photobooth.Photobooth(constraints, Main.numPhotos);
 
-            // This should listen for Coin.INSERT_EVENT.. 
             Main.ui.coinSlot.addEventListener("coin-insert", function(event:Event) {
                 Main.ui.start.children[0].className = "startButton-active";
             });
+
             Main.ui.start.children[0].addEventListener("start-pressed", function(event:Event) {
-                // console.log("Startbutton was pressed");
-                pb.saveImage();
+                pb.captureImages();
             });
 
-            Main.ui.body.addEventListener("photostrip-generated", function(event:Event) {
+            Main.ui.export.addEventListener("photostrip-generated", function(event:Event) {
                 console.log("photostrip generated");
+            });
+
+            Main.ui.export.addEventListener("save-pdf", function(){
+                console.log("main, save pdf");
+                pb.savePhotostripPDF();
+            });
+
+            Main.ui.export.addEventListener("print-pdf", function(){
+                console.log("main, print pdf");
+                pb.printPhotostripPDF();
             });
         }
     }

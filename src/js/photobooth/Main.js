@@ -19,16 +19,22 @@ var photobooth;
             Main.ui.init();
             var constraints = new webcam.WebcameraSettings();
             var pb = new photobooth.Photobooth(constraints, Main.numPhotos);
-            // This should listen for Coin.INSERT_EVENT.. 
             Main.ui.coinSlot.addEventListener("coin-insert", function (event) {
                 Main.ui.start.children[0].className = "startButton-active";
             });
             Main.ui.start.children[0].addEventListener("start-pressed", function (event) {
-                // console.log("Startbutton was pressed");
-                pb.saveImage();
+                pb.captureImages();
             });
-            Main.ui.body.addEventListener("photostrip-generated", function (event) {
+            Main.ui.export.addEventListener("photostrip-generated", function (event) {
                 console.log("photostrip generated");
+            });
+            Main.ui.export.addEventListener("save-pdf", function () {
+                console.log("main, save pdf");
+                pb.savePhotostripPDF();
+            });
+            Main.ui.export.addEventListener("print-pdf", function () {
+                console.log("main, print pdf");
+                pb.printPhotostripPDF();
             });
         }
     }

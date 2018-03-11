@@ -15,6 +15,7 @@ var photobooth;
             this.photos = new Array();
             this.constraints = constraints;
             this.numPhotos = numPhotos;
+            this.pdf = new jsPDF();
             this.init();
         }
         //----------------------------------------------------------------------
@@ -39,18 +40,18 @@ var photobooth;
             });
         }
         /**
-         * saveImage
+         * captureImages
          * Writes image data to canvas and fetches the image DataURI
          * @memberof Photobooth
          */
-        saveImage() {
+        captureImages() {
             var counter = 0;
             var interval = setInterval(function () {
                 this.captureFrame();
                 counter++;
                 if (counter == this.numPhotos) {
                     clearInterval(interval);
-                    setTimeout(this.assignStripToElement, 2000);
+                    setTimeout(this.assignStripToElement.bind(this), 2000);
                 }
             }.bind(this), 5000);
         }
@@ -137,22 +138,36 @@ var photobooth;
         assignStripToElement() {
             var photostripWrapper = document.getElementsByClassName("photostripWrapper")[0]; // Make reference through main..
             var URI = photobooth.Main.ui.canvas.toDataURL("image/jpg");
-            var img = new Image();
-            img.src = URI;
-            img.classList.add("photostrip");
+            this.img = new Image();
+            this.img.src = URI;
+            this.img.classList.add("photostrip");
             photostripWrapper.classList.add("slideDownStrip");
-            photostripWrapper.appendChild(img);
+            photostripWrapper.appendChild(this.img);
+            var downloadBtn = document.getElementById("exportOptions").children[0];
+            downloadBtn.download = "Photostrip-" + this.getCurrentDateTime() + ".jpg";
+            photobooth.Main.ui.canvas.toBlob(function (blob) {
+                downloadBtn.href = URL.createObjectURL(blob);
+            }, "image/jpg");
             var event = new Event("photostrip-generated");
-            photobooth.Main.ui.body.dispatchEvent(event);
-            var pdf = new jsPDF();
-            var width = pdf.internal.pageSize.width;
-            var height = pdf.internal.pageSize.height;
-            // pdf.internal.scaleFactor = Main.ui.canvas.height * 0.00274177456;
-            // pdf.addImage(img, "JPEG", 10, 10);
-            // pdf.autoPrint();
-            // pdf.save();
-            // window.open(pdf.output('bloburl'), '_blank');
-            // pdf.save("download.pdf");
+            photobooth.Main.ui.export.dispatchEvent(event);
+        }
+        savePhotostripPDF() {
+            this.pdf.internal.scaleFactor = photobooth.Main.ui.canvas.height * 0.00274177456;
+            this.pdf.addImage(this.img, "JPEG", 10, 10);
+            this.pdf.save("Photostrip-" + this.getCurrentDateTime() + ".pdf");
+        }
+        printPhotostripPDF() {
+            this.pdf.internal.scaleFactor = photobooth.Main.ui.canvas.height * 0.00274177456;
+            this.pdf.addImage(this.img, "JPEG", 10, 10);
+            this.pdf.autoPrint();
+            window.open(this.pdf.output("bloburl"), "_blank");
+        }
+        getCurrentDateTime() {
+            var date = new Date();
+            return date.getFullYear() + "-" + this.twoCharZeroPad(date.getMonth().toString()) + "-" + this.twoCharZeroPad(date.getDate().toString()) + "_" + date.getHours().toString() + "." + date.getMinutes().toString();
+        }
+        twoCharZeroPad(string) {
+            return ("00" + string).substr(-2, 2);
         }
     }
     photobooth.Photobooth = Photobooth;
