@@ -19,13 +19,15 @@ var ui;
         // Methods
         //----------------------------------------------------------------------
         /**
-         *
+         * renderStartbutton
+         * Starting point for the class
          */
         renderStartbutton() {
             this.createElements();
         }
         /**
-         *
+         * createElements
+         * Creates elements, adds attributes, and eventlisteners
          */
         createElements() {
             var startButton = document.createElement("div");
@@ -36,7 +38,8 @@ var ui;
             this.element = startButton;
         }
         /**
-         *
+         * onMouseDown
+         * Mouse down handler
          * @param event
          */
         onMouseDown(event) {
@@ -47,7 +50,8 @@ var ui;
             }
         }
         /**
-         *
+         * dispatchEvent
+         * Dispatches an event when button is pressed.
          */
         dispatchEvent() {
             var event = new Event(Startbutton.BUTTON_PRESS);

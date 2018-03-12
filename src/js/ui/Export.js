@@ -24,13 +24,15 @@ var ui;
         // Methods
         //----------------------------------------------------------------------
         /**
-         *
+         * renderExportslot
+         * Starting point for class
          */
         renderExportslot() {
             this.createElements();
         }
         /**
-         *
+         * createElements
+         * Creates elements, adds attributes and eventlisteners
          */
         createElements() {
             var exportWrapper = document.createElement("div");
@@ -54,7 +56,7 @@ var ui;
             exportEl.classList.add("export");
             exportEl.addEventListener("mouseover", this.onMouseOver.bind(this));
             exportEl.addEventListener("mouseout", this.onMouseOut.bind(this));
-            exportImage.addEventListener("click", this.onImageSave.bind(this));
+            // exportImage.addEventListener("click", this.onImageSave.bind(this));
             exportPdf.addEventListener("click", this.onPdfSave.bind(this));
             printPdf.addEventListener("click", this.onPrintPdf.bind(this));
             exportOptions.appendChild(exportImage);
@@ -67,16 +69,17 @@ var ui;
             exportWrapper.appendChild(exportEl);
             this.element = exportWrapper;
         }
+        // /**
+        //  * onImageSave
+        //  * @param event 
+        //  */
+        // private onImageSave(event:Event):void {
+        //     var event:Event = new Event("save-image");
+        //     this.ui.export.dispatchEvent(event);
+        // }
         /**
-         *
-         * @param event
-         */
-        onImageSave(event) {
-            var event = new Event("save-image");
-            this.ui.export.dispatchEvent(event);
-        }
-        /**
-         *
+         * onPdfSave
+         * On click on save button an event will be dispatched
          * @param event
          */
         onPdfSave(event) {
@@ -84,7 +87,8 @@ var ui;
             this.ui.export.dispatchEvent(event);
         }
         /**
-         *
+         * onPrintPdf
+         * On click on print button an event will be dispatched
          * @param event
          */
         onPrintPdf(event) {
@@ -92,7 +96,8 @@ var ui;
             this.ui.export.dispatchEvent(event);
         }
         /**
-         *
+         * onMouseOver
+         * To display the export options on mouseover.
          * @param event
          */
         onMouseOver(event) {
@@ -101,7 +106,8 @@ var ui;
             }
         }
         /**
-         *
+         * onMouseOut
+         * To hide the export options on mouse out.
          * @param event
          */
         onMouseOut(event) {

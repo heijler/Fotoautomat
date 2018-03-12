@@ -12,7 +12,7 @@ var photobooth;
             this.width = 0;
             this.height = 0;
             this.numPhotos = 0;
-            this.photos = new Array();
+            this.photos = 0;
             this.constraints = constraints;
             this.numPhotos = numPhotos;
             this.pdf = new jsPDF();
@@ -57,7 +57,8 @@ var photobooth;
         }
         /**
          * captureFrame
-         *
+         * Captures a frame and draws it on a temporary canvas.
+         * Makes the image grayscale
          */
         captureFrame() {
             this.simulatePhotography();
@@ -70,15 +71,15 @@ var photobooth;
         }
         /**
          * drawFrameOnCanvas
-         *
+         * draws the image on a photostrip canvas, with calculated position
          */
         drawFrameOnCanvas() {
             var imgBase64 = photobooth.Main.ui.tempCanvas.toDataURL('image/jpg');
             var img = new Image();
             img.src = imgBase64;
             img.addEventListener("load", function () {
-                photobooth.Main.ui.canvas.getContext("2d").drawImage(img, 20, 20 + (this.photos.length * this.height) + (20 * this.photos.length));
-                this.photos.length++;
+                photobooth.Main.ui.canvas.getContext("2d").drawImage(img, 20, 20 + (this.photos * this.height) + (20 * this.photos));
+                this.photos++;
             }.bind(this));
         }
         /**
@@ -104,7 +105,7 @@ var photobooth;
         }
         /**
          * simulatePhotography
-         *
+         * Simulates photography, with shutter sound and flashing screen.
          */
         simulatePhotography() {
             var audio = new Audio("assets/audio/camera-shutter.wav");
@@ -116,7 +117,7 @@ var photobooth;
         }
         /**
          * setCanvasSize
-         *
+         * Sets the canvas sizes and fills the photostrip canvas with white
          */
         setCanvasSize() {
             // Set the tempcanvas size, where photo will be temporarily stored
@@ -133,6 +134,7 @@ var photobooth;
         }
         /**
          * assignStripToElement
+         * Assigns the photostrip to an img element to display it
          *
          */
         assignStripToElement() {
@@ -143,17 +145,27 @@ var photobooth;
             this.img.classList.add("photostrip");
             photostripWrapper.classList.add("slideDownStrip");
             photostripWrapper.appendChild(this.img);
-            var downloadBtn = document.getElementById("exportOptions").children[0];
-            downloadBtn.download = "Photostrip-" + this.getCurrentDateTime() + ".jpg";
-            photobooth.Main.ui.canvas.toBlob(function (blob) {
-                downloadBtn.href = URL.createObjectURL(blob);
-                console.log(downloadBtn.href);
-            }, "image/jpg");
+            this.savePhotostripImage();
             var event = new Event("photostrip-generated");
             photobooth.Main.ui.export.dispatchEvent(event);
         }
         /**
-         *
+         * savePhotostripImage
+         * Creates a blob, and assigns it to the download button
+         * @private
+         * @memberof Photobooth
+         */
+        savePhotostripImage() {
+            var downloadBtn = document.getElementById("exportOptions").children[0];
+            downloadBtn.download = "Photostrip-" + this.getCurrentDateTime() + ".jpg";
+            photobooth.Main.ui.canvas.toBlob(function (blob) {
+                downloadBtn.href = URL.createObjectURL(blob);
+            }, "image/jpg");
+        }
+        /**
+         * savePhotostripPDF
+         * Saves a pdf of the photostrip, with a corrected scalefactor to work for
+         * different image sizes
          */
         savePhotostripPDF() {
             this.pdf.internal.scaleFactor = photobooth.Main.ui.canvas.height * 0.00274177456;
@@ -161,7 +173,8 @@ var photobooth;
             this.pdf.save("Photostrip-" + this.getCurrentDateTime() + ".pdf");
         }
         /**
-         *
+         * printPhotostripPDF
+         * Attempts to print the photostrip
          */
         printPhotostripPDF() {
             this.pdf.internal.scaleFactor = photobooth.Main.ui.canvas.height * 0.00274177456;
@@ -170,14 +183,20 @@ var photobooth;
             window.open(this.pdf.output("bloburl"), "_blank");
         }
         /**
-         *
+         * getCurrentDateTime
+         * Returns a string in format: YYYY-MM-DD_HH.mm
+         * @private
+         * @returns {string}
+         * @memberof Photobooth
          */
         getCurrentDateTime() {
             var date = new Date();
             return date.getFullYear() + "-" + this.twoCharZeroPad(date.getMonth().toString()) + "-" + this.twoCharZeroPad(date.getDate().toString()) + "_" + date.getHours().toString() + "." + date.getMinutes().toString();
         }
         /**
-         *
+         * twoCharZeroPad
+         * Returns a zero padded two char string
+         * "6" -> "06"
          * @param string
          */
         twoCharZeroPad(string) {

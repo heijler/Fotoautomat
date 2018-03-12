@@ -24,13 +24,15 @@ var ui;
         // Methods
         //----------------------------------------------------------------------
         /**
-         *
+         * renderShelfItem
+         * Starting point for the class
          */
         renderShelfItem() {
             this.createElements();
         }
         /**
-         *
+         * createElements
+         * Creates elements, attributes and eventlisteners
          */
         createElements() {
             var shelfItem = document.createElement("div");
@@ -39,7 +41,8 @@ var ui;
             this.element = shelfItem;
         }
         /**
-         *
+         * onMouseDown
+         * Handles mouse down events
          * @param event
          */
         onMouseDown(event) {

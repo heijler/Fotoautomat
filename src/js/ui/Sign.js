@@ -28,13 +28,15 @@ var ui;
         // Methods
         //----------------------------------------------------------------------
         /**
-         *
+         * renderSign
+         * Starting point for class
          */
         renderSign() {
             this.createElements();
         }
         /**
-         *
+         * createElements
+         * Creates elements, attributes and appends
          */
         createElements() {
             var signWrapper = document.createElement("div");

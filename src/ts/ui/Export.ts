@@ -26,14 +26,16 @@ namespace ui {
         //----------------------------------------------------------------------
 
         /**
-         * 
+         * renderExportslot
+         * Starting point for class
          */
         private renderExportslot():void{
             this.createElements();
         }
 
         /**
-         * 
+         * createElements
+         * Creates elements, adds attributes and eventlisteners
          */
         private createElements():void {
             var exportWrapper = document.createElement("div");
@@ -61,7 +63,7 @@ namespace ui {
 
             exportEl.addEventListener("mouseover", this.onMouseOver.bind(this));
             exportEl.addEventListener("mouseout", this.onMouseOut.bind(this));
-            exportImage.addEventListener("click", this.onImageSave.bind(this));
+            // exportImage.addEventListener("click", this.onImageSave.bind(this));
             exportPdf.addEventListener("click", this.onPdfSave.bind(this));
             printPdf.addEventListener("click", this.onPrintPdf.bind(this));
                 
@@ -79,18 +81,19 @@ namespace ui {
         }
 
 
-        /**
-         * 
-         * @param event 
-         */
-        private onImageSave(event:Event):void {
-            var event:Event = new Event("save-image");
-            this.ui.export.dispatchEvent(event);
-        }
+        // /**
+        //  * onImageSave
+        //  * @param event 
+        //  */
+        // private onImageSave(event:Event):void {
+        //     var event:Event = new Event("save-image");
+        //     this.ui.export.dispatchEvent(event);
+        // }
 
 
         /**
-         * 
+         * onPdfSave
+         * On click on save button an event will be dispatched
          * @param event 
          */
         private onPdfSave(event:Event):void {
@@ -100,7 +103,8 @@ namespace ui {
 
 
         /**
-         * 
+         * onPrintPdf
+         * On click on print button an event will be dispatched
          * @param event 
          */
         private onPrintPdf(event:Event):void {
@@ -110,7 +114,8 @@ namespace ui {
 
 
         /**
-         * 
+         * onMouseOver
+         * To display the export options on mouseover.
          * @param event 
          */
         private onMouseOver(event:Event):void {
@@ -121,7 +126,8 @@ namespace ui {
 
 
         /**
-         * 
+         * onMouseOut
+         * To hide the export options on mouse out.
          * @param event 
          */
         private onMouseOut(event:Event):void {

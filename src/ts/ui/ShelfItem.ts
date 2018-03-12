@@ -26,14 +26,16 @@ namespace ui {
         //----------------------------------------------------------------------
 
         /**
-         * 
+         * renderShelfItem
+         * Starting point for the class
          */
         private renderShelfItem():void{
             this.createElements();
         }
 
         /**
-         * 
+         * createElements
+         * Creates elements, attributes and eventlisteners
          */
         private createElements():void {
             var shelfItem = document.createElement("div");
@@ -44,7 +46,8 @@ namespace ui {
         
 
         /**
-         * 
+         * onMouseDown
+         * Handles mouse down events
          * @param event 
          */
         private onMouseDown(event:MouseEvent):void {

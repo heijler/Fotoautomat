@@ -15,8 +15,8 @@ namespace photobooth {
         private constraints:webcam.WebcameraSettings = null;
         public  width:number  = 0;
         public  height:number = 0;
-        private numPhotos = 0;
-        private photos:Array<null> = new Array();
+        private numPhotos:number = 0;
+        private photos:number = 0;
         private img:HTMLImageElement;
         private pdf:any;
     
@@ -73,7 +73,8 @@ namespace photobooth {
 
         /**
          * captureFrame
-         * 
+         * Captures a frame and draws it on a temporary canvas.
+         * Makes the image grayscale
          */
         private captureFrame():void {
             this.simulatePhotography();
@@ -89,15 +90,15 @@ namespace photobooth {
 
         /**
          * drawFrameOnCanvas
-         * 
+         * draws the image on a photostrip canvas, with calculated position
          */
         private drawFrameOnCanvas():void {
             var imgBase64:string = Main.ui.tempCanvas.toDataURL('image/jpg');
             var img:HTMLImageElement = new Image();
                 img.src = imgBase64;
                 img.addEventListener("load", function() {
-                    Main.ui.canvas.getContext("2d").drawImage(img, 20, 20 + (this.photos.length * this.height) + (20 * this.photos.length));
-                    this.photos.length++;
+                    Main.ui.canvas.getContext("2d").drawImage(img, 20, 20 + (this.photos * this.height) + (20 * this.photos));
+                    this.photos++;
                 }.bind(this));
         }
 
@@ -126,7 +127,7 @@ namespace photobooth {
 
         /**
          * simulatePhotography
-         * 
+         * Simulates photography, with shutter sound and flashing screen.
          */
         private simulatePhotography():void {
             var audio = new Audio("assets/audio/camera-shutter.wav");
@@ -141,7 +142,7 @@ namespace photobooth {
 
         /**
          * setCanvasSize
-         * 
+         * Sets the canvas sizes and fills the photostrip canvas with white
          */
         private setCanvasSize():void {
             // Set the tempcanvas size, where photo will be temporarily stored
@@ -162,6 +163,7 @@ namespace photobooth {
 
         /**
          * assignStripToElement
+         * Assigns the photostrip to an img element to display it
          * 
          */
         private assignStripToElement():void {
@@ -174,19 +176,31 @@ namespace photobooth {
             photostripWrapper.classList.add("slideDownStrip")
             photostripWrapper.appendChild(this.img);
 
-            var downloadBtn:any = document.getElementById("exportOptions").children[0];
-            downloadBtn.download = "Photostrip-" + this.getCurrentDateTime() + ".jpg";
-            Main.ui.canvas.toBlob(function(blob) {
-                downloadBtn.href = URL.createObjectURL(blob);
-                console.log(downloadBtn.href);
-            }, "image/jpg");
+            this.savePhotostripImage();
 
             var event:Event = new Event("photostrip-generated");
             Main.ui.export.dispatchEvent(event);
         }
 
+
         /**
-         * 
+         * savePhotostripImage
+         * Creates a blob, and assigns it to the download button
+         * @private
+         * @memberof Photobooth
+         */
+        private savePhotostripImage():void {
+            var downloadBtn:any = document.getElementById("exportOptions").children[0];
+            downloadBtn.download = "Photostrip-" + this.getCurrentDateTime() + ".jpg";
+            Main.ui.canvas.toBlob(function(blob) {
+                downloadBtn.href = URL.createObjectURL(blob);
+            }, "image/jpg");
+        }
+
+        /**
+         * savePhotostripPDF
+         * Saves a pdf of the photostrip, with a corrected scalefactor to work for
+         * different image sizes
          */
         public savePhotostripPDF():void {
             this.pdf.internal.scaleFactor = Main.ui.canvas.height * 0.00274177456;
@@ -195,7 +209,8 @@ namespace photobooth {
         }
 
         /**
-         * 
+         * printPhotostripPDF
+         * Attempts to print the photostrip
          */
         public printPhotostripPDF():void {
             this.pdf.internal.scaleFactor = Main.ui.canvas.height * 0.00274177456;
@@ -205,7 +220,11 @@ namespace photobooth {
         }
 
         /**
-         * 
+         * getCurrentDateTime
+         * Returns a string in format: YYYY-MM-DD_HH.mm
+         * @private
+         * @returns {string} 
+         * @memberof Photobooth
          */
         private getCurrentDateTime():string {
             var date = new Date();
@@ -213,7 +232,9 @@ namespace photobooth {
         }
 
         /**
-         * 
+         * twoCharZeroPad
+         * Returns a zero padded two char string
+         * "6" -> "06"
          * @param string 
          */
         private twoCharZeroPad(string:string):string {

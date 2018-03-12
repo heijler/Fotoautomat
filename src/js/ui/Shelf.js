@@ -23,14 +23,16 @@ var ui;
         // Methods
         //----------------------------------------------------------------------
         /**
-         *
+         * renderShelf
+         * Starting point for the class
          */
         renderShelf() {
             this.shelfItems.push(new ui.ShelfItem("coinstack"));
             this.createElements();
         }
         /**
-         *
+         * createElements
+         * Creates elements, attributes
          */
         createElements() {
             var shelf = document.createElement("div");

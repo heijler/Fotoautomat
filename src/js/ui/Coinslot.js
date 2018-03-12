@@ -25,13 +25,15 @@ var ui;
         // Methods
         //----------------------------------------------------------------------
         /**
-         *
+         * renderCoinslot
+         * Starting point for the class
          */
         renderCoinslot() {
             this.createElements();
         }
         /**
-         *
+         * createElements
+         * To create the elements, attributes and appends.
          */
         createElements() {
             var coinslotWrapper = document.createElement("div");

@@ -22,7 +22,8 @@ namespace ui {
         //----------------------------------------------------------------------
 
         /**
-         * 
+         * init
+         * Starting point for the class
          */
         public init():void {
             this.createElements();
@@ -30,7 +31,8 @@ namespace ui {
 
 
         /**
-         * 
+         * createElements
+         * Creates the UI elements.
          */
         private createElements():void {
             this._wrapper = document.createElement("div");
@@ -40,11 +42,6 @@ namespace ui {
             var cs = new Coinslot();
             this._coinSlotWrapper = cs.element;
             this._coinSlot = cs.child;
-
-            // var sb = new Startbutton();
-            // this._start = sb.element;
-            // this._startBtn = sb.child;
-
             this._start = document.createElement("div");
             this._export = document.createElement("div");
             this._frame = document.createElement("div");
@@ -62,7 +59,8 @@ namespace ui {
 
 
         /**
-         * 
+         * AssignAttributes
+         * Assigns the attributes to the UI elements
          */
         private assignAttributes():void {
             this._wrapper.classList.add("wrapper");
@@ -82,8 +80,6 @@ namespace ui {
             this._hal9000.draggable = false;
             this._video.id = "reflectionVideo";
             this._canvas.id = "canvas";
-            // this._canvas.width = 400;
-            // this._canvas.height = 500;
             this._tempCanvas.id = "tempCanvas";
             this._shelf.classList.add("shelfWrapper");
             this._flash.classList.add("flash");
@@ -93,7 +89,8 @@ namespace ui {
 
 
         /**
-         * 
+         * appendElements
+         * Appends the UI elements
          */
         private appendElements():void {
             // Clone wrapper elements
@@ -145,7 +142,8 @@ namespace ui {
 
 
         /**
-         * 
+         * createComponents
+         * Starting point for creating certain components
          */
         private createComponents():void {
             this.createStartbutton();
@@ -155,7 +153,8 @@ namespace ui {
 
 
         /**
-         * 
+         * createStartbutton
+         * Creates the startbutton
          */
         private createStartbutton():void {
             var startbutton = new Startbutton();
@@ -164,7 +163,8 @@ namespace ui {
 
 
         /**
-         * 
+         * createExportslot
+         * Creates the export component
          */
         private createExportslot():void {
             var exportSlot = new Export();
@@ -173,7 +173,8 @@ namespace ui {
 
         
         /**
-         * 
+         * createShelf
+         * Creates the shelf
          */
         private createShelf():void {
             var shelf = new Shelf();

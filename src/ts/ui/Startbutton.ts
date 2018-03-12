@@ -25,7 +25,8 @@ namespace ui {
         //----------------------------------------------------------------------
 
         /**
-         * 
+         * renderStartbutton
+         * Starting point for the class
          */
         private renderStartbutton():void{
             this.createElements();
@@ -33,7 +34,8 @@ namespace ui {
 
 
         /**
-         * 
+         * createElements
+         * Creates elements, adds attributes, and eventlisteners
          */
         private createElements():void {
             var startButton = document.createElement("div");
@@ -47,7 +49,8 @@ namespace ui {
 
 
         /**
-         * 
+         * onMouseDown
+         * Mouse down handler
          * @param event 
          */
         private onMouseDown(event:MouseEvent):void {
@@ -63,7 +66,8 @@ namespace ui {
 
 
         /**
-         * 
+         * dispatchEvent
+         * Dispatches an event when button is pressed.
          */
         private dispatchEvent():void {
             var event = new Event(Startbutton.BUTTON_PRESS);

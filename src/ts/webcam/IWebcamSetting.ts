@@ -1,7 +1,7 @@
 namespace webcam {
 
     /**
-     * 
+     * {audio:true, video:ISize}
      */
     export interface IWebcamSetting {
         audio: boolean;
@@ -9,7 +9,7 @@ namespace webcam {
     }
 
     /**
-     * 
+     *  {height:IDmension, width: IDimension}
      */
     export interface ISize {
         height: IDimension;
@@ -17,7 +17,7 @@ namespace webcam {
     }
 
     /**
-     * 
+     * {ideal:number}
      */
     export interface IDimension {
         ideal: number;

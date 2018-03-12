@@ -21,7 +21,6 @@ namespace alert {
         public constructor(warning:Error) {
             this.warning = warning;
             this.warningElement = photobooth.Main.ui.warning;
-            this.displayWarning();
         }
     
         
@@ -35,7 +34,7 @@ namespace alert {
          * @return void
          * @memberof Warning
          */
-        private displayWarning():void {
+        protected displayWarning():void {
             // Error/Warning name - message mapping
             var map = {
                 NotAllowedError: "You must allow your webcamera to be used!",
@@ -44,7 +43,7 @@ namespace alert {
                 NotFoundError: "null",
                 OverconstrainedError: "null",
                 SecurityError: "null",
-                TypeError: "null",
+                TypeError: "Something went wrong, try and reload the page",
                 PermissionDismissedError: "You must allow your webcamera to be used!",
                 PermissionDeniedError: "You must allow your webcamera to be used! Reload to try again."
             };

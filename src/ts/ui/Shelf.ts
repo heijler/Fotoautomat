@@ -25,7 +25,8 @@ namespace ui {
         //----------------------------------------------------------------------
         
         /**
-         * 
+         * renderShelf
+         * Starting point for the class
          */
         private renderShelf():void{
             this.shelfItems.push(new ShelfItem("coinstack"));
@@ -33,7 +34,8 @@ namespace ui {
         }
 
         /**
-         * 
+         * createElements
+         * Creates elements, attributes
          */
         private createElements():void {
             var shelf = document.createElement("div");

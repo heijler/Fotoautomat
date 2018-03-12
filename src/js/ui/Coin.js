@@ -32,13 +32,15 @@ var ui;
         // Methods
         //----------------------------------------------------------------------
         /**
-         *
+         * renderShelfItem
+         * Starting point for the class.
          */
         renderShelfItem() {
             this.createElements();
         }
         /**
-         *
+         * createElements
+         * Creates the element and adds attributes, styles and eventlistener
          */
         createElements() {
             var coin = document.createElement("div");
@@ -50,23 +52,20 @@ var ui;
             this.element = coin;
         }
         /**
-         *
+         * onMouseMove
+         * On mouse move, update the position of the coin
          * @param event
          */
         onMouseMove(event) {
             this.element.style.top = event.clientY - this.offsetY + "px";
             this.element.style.left = event.clientX - this.offsetX + "px";
-            // this.ui.coin.children[0].children[1] == coinslot, but it's not a safe
-            // reference to the element.
             if (this.collisionDetection(this.element, this.ui.coinSlot)) {
                 this.element.style.backgroundImage = "url('assets/img/coin/coin-side.png')";
                 if (this.flag) {
                     var audio = new Audio("assets/audio/coin-insert.wav");
                     audio.play();
                     this.flag = false;
-                    var timer = setTimeout(this.coinInsert.bind(this), 500);
-                    // this.dispatchEvent();
-                    // clearTimeout(timer);
+                    var timer = setTimeout(this.coinInsert.bind(this), 500); // Should be cleared when done
                 }
             }
             else {
@@ -74,7 +73,8 @@ var ui;
             }
         }
         /**
-         *
+         * onMouseDown
+         * Calculate the mouse-element offset and add eventListeners
          * @param event
          */
         onMouseDown(event) {
@@ -84,7 +84,8 @@ var ui;
             this.element.addEventListener("mouseup", this.mu, false);
         }
         /**
-         *
+         * onMouseUp
+         * Remove eventlisteners
          * @param event
          */
         onMouseUp(event) {
@@ -92,7 +93,9 @@ var ui;
             this.element.removeEventListener("mouseup", this.mu, false);
         }
         /**
-         *
+         * collisionDetection
+         * Calculate if two elements have collided using their BoundingRect
+         * Modified version of this: https://stackoverflow.com/a/9607413
          * @param element1
          * @param element2
          */
@@ -105,20 +108,23 @@ var ui;
                 (el1.left >= el2.right));
         }
         /**
-         *
+         * removeCoin
+         * Remove the element
          */
         removeCoin() {
             this.element.parentElement.removeChild(this.element);
         }
         /**
-         *
+         * coinInsert
+         * When coin is inserted: removeCoin, and dispatch event
          */
         coinInsert() {
             this.removeCoin();
             this.dispatchEvent();
         }
         /**
-         *
+         * dispatchEvent
+         * Dispatches an event when coin is inserted
          */
         dispatchEvent() {
             var event = new Event(Coin.INSERT_EVENT);

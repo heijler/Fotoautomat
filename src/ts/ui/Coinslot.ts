@@ -27,7 +27,8 @@ namespace ui {
         //----------------------------------------------------------------------
 
         /**
-         * 
+         * renderCoinslot
+         * Starting point for the class
          */
         private renderCoinslot():void{
             this.createElements();
@@ -35,7 +36,8 @@ namespace ui {
 
 
         /**
-         * 
+         * createElements
+         * To create the elements, attributes and appends.
          */
         private createElements():void {
             var coinslotWrapper = document.createElement("div");

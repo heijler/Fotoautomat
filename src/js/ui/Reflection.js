@@ -25,7 +25,8 @@ var ui;
         // Methods
         //----------------------------------------------------------------------
         /**
-         *
+         * prepareVideo
+         * Prepares the video element to recieve the video
          */
         prepareVideo() {
             this.width = (document.documentElement.clientHeight / 5) * 4;
@@ -39,7 +40,8 @@ var ui;
             this.renderReflection();
         }
         /**
-         *
+         * renderReflection
+         * Renders the reflection video stream by getting the stream to the video
          */
         renderReflection() {
             this.ui.video.srcObject = this.stream;

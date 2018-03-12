@@ -19,13 +19,15 @@ var ui;
         // Methods
         //----------------------------------------------------------------------
         /**
-         *
+         * init
+         * Starting point for the class
          */
         init() {
             this.createElements();
         }
         /**
-         *
+         * createElements
+         * Creates the UI elements.
          */
         createElements() {
             this._wrapper = document.createElement("div");
@@ -34,9 +36,6 @@ var ui;
             var cs = new ui.Coinslot();
             this._coinSlotWrapper = cs.element;
             this._coinSlot = cs.child;
-            // var sb = new Startbutton();
-            // this._start = sb.element;
-            // this._startBtn = sb.child;
             this._start = document.createElement("div");
             this._export = document.createElement("div");
             this._frame = document.createElement("div");
@@ -52,7 +51,8 @@ var ui;
             this.assignAttributes();
         }
         /**
-         *
+         * AssignAttributes
+         * Assigns the attributes to the UI elements
          */
         assignAttributes() {
             this._wrapper.classList.add("wrapper");
@@ -72,8 +72,6 @@ var ui;
             this._hal9000.draggable = false;
             this._video.id = "reflectionVideo";
             this._canvas.id = "canvas";
-            // this._canvas.width = 400;
-            // this._canvas.height = 500;
             this._tempCanvas.id = "tempCanvas";
             this._shelf.classList.add("shelfWrapper");
             this._flash.classList.add("flash");
@@ -81,7 +79,8 @@ var ui;
             this.appendElements();
         }
         /**
-         *
+         * appendElements
+         * Appends the UI elements
          */
         appendElements() {
             // Clone wrapper elements
@@ -121,7 +120,8 @@ var ui;
             this._body.appendChild(this._tempCanvas);
         }
         /**
-         *
+         * createComponents
+         * Starting point for creating certain components
          */
         createComponents() {
             this.createStartbutton();
@@ -129,21 +129,24 @@ var ui;
             this.createShelf();
         }
         /**
-         *
+         * createStartbutton
+         * Creates the startbutton
          */
         createStartbutton() {
             var startbutton = new ui.Startbutton();
             this._start.appendChild(startbutton.element);
         }
         /**
-         *
+         * createExportslot
+         * Creates the export component
          */
         createExportslot() {
             var exportSlot = new ui.Export();
             this._export.appendChild(exportSlot.element);
         }
         /**
-         *
+         * createShelf
+         * Creates the shelf
          */
         createShelf() {
             var shelf = new ui.Shelf();

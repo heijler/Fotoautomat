@@ -27,7 +27,8 @@ namespace ui {
         //----------------------------------------------------------------------
 
         /**
-         * 
+         * prepareVideo
+         * Prepares the video element to recieve the video
          */
         private prepareVideo():void {
             this.width = (document.documentElement.clientHeight / 5) * 4;
@@ -45,7 +46,8 @@ namespace ui {
         }
         
         /**
-         * 
+         * renderReflection
+         * Renders the reflection video stream by getting the stream to the video
          */
         private renderReflection():void {
             this.ui.video.srcObject = this.stream;

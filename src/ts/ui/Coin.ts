@@ -41,7 +41,8 @@ namespace ui {
 
 
         /**
-         * 
+         * renderShelfItem
+         * Starting point for the class.
          */
         private renderShelfItem():void{
             this.createElements();
@@ -49,7 +50,8 @@ namespace ui {
 
 
         /**
-         * 
+         * createElements
+         * Creates the element and adds attributes, styles and eventlistener
          */
         private createElements():void {
             var coin = document.createElement("div");
@@ -63,25 +65,20 @@ namespace ui {
 
 
         /**
-         * 
+         * onMouseMove
+         * On mouse move, update the position of the coin
          * @param event 
          */
         private onMouseMove(event:MouseEvent):void {
             this.element.style.top = event.clientY - this.offsetY + "px";
             this.element.style.left = event.clientX - this.offsetX + "px";
-
-            // this.ui.coin.children[0].children[1] == coinslot, but it's not a safe
-            // reference to the element.
             if (this.collisionDetection(this.element, this.ui.coinSlot)) {
                 this.element.style.backgroundImage = "url('assets/img/coin/coin-side.png')";
                 if (this.flag) {
                     var audio = new Audio("assets/audio/coin-insert.wav");
                     audio.play();
                     this.flag = false;
-                    var timer = setTimeout(this.coinInsert.bind(this), 500);
-                    // this.dispatchEvent();
-                    // clearTimeout(timer);
-                    
+                    var timer = setTimeout(this.coinInsert.bind(this), 500); // Should be cleared when done
                 }
             } else {
                 this.element.style.backgroundImage = "url('assets/img/coin/coin-front.png')";
@@ -90,7 +87,8 @@ namespace ui {
 
 
         /**
-         * 
+         * onMouseDown
+         * Calculate the mouse-element offset and add eventListeners
          * @param event 
          */
         private onMouseDown(event:MouseEvent):void {
@@ -102,7 +100,8 @@ namespace ui {
 
 
         /**
-         * 
+         * onMouseUp
+         * Remove eventlisteners
          * @param event 
          */
         private onMouseUp(event:MouseEvent):void {
@@ -112,7 +111,9 @@ namespace ui {
 
 
         /**
-         * 
+         * collisionDetection
+         * Calculate if two elements have collided using their BoundingRect
+         * Modified version of this: https://stackoverflow.com/a/9607413
          * @param element1 
          * @param element2 
          */
@@ -127,7 +128,8 @@ namespace ui {
 
 
         /**
-         * 
+         * removeCoin
+         * Remove the element
          */
         private removeCoin():void {
             this.element.parentElement.removeChild(this.element);
@@ -135,7 +137,8 @@ namespace ui {
 
 
         /**
-         * 
+         * coinInsert
+         * When coin is inserted: removeCoin, and dispatch event
          */
         private coinInsert():void {
             this.removeCoin();
@@ -144,7 +147,8 @@ namespace ui {
 
 
         /**
-         * 
+         * dispatchEvent
+         * Dispatches an event when coin is inserted
          */
         private dispatchEvent():void {
             var event = new Event(Coin.INSERT_EVENT);

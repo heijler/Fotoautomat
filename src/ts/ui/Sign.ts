@@ -30,7 +30,8 @@ namespace ui {
         //----------------------------------------------------------------------
 
         /**
-         * 
+         * renderSign
+         * Starting point for class
          */
         private renderSign():void{
             this.createElements();
@@ -38,7 +39,8 @@ namespace ui {
 
 
         /**
-         * 
+         * createElements
+         * Creates elements, attributes and appends
          */
         private createElements():void {
             var signWrapper = document.createElement("div");

@@ -14,7 +14,6 @@ var alert;
             this.eventHandler = this.hideWarning.bind(this); //To keep a a reference to the function/method in the correct scope.
             this.warning = warning;
             this.warningElement = photobooth.Main.ui.warning;
-            this.displayWarning();
         }
         //----------------------------------------------------------------------
         // Methods
@@ -34,7 +33,7 @@ var alert;
                 NotFoundError: "null",
                 OverconstrainedError: "null",
                 SecurityError: "null",
-                TypeError: "null",
+                TypeError: "Something went wrong, try and reload the page",
                 PermissionDismissedError: "You must allow your webcamera to be used!",
                 PermissionDeniedError: "You must allow your webcamera to be used! Reload to try again."
             };
