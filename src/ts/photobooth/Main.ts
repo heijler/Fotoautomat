@@ -21,14 +21,13 @@ namespace photobooth {
          * init
          * Assigns DOM-element references to properties and instantiates the photobooth
          * @static
-         * @memberof Main
          */
         public static init():void {
             Main.ui = new ui.PhotoboothUI();
             Main.ui.init();
 
             var constraints:webcam.WebcameraSettings = new webcam.WebcameraSettings();
-            var pb:photobooth.Photobooth = new photobooth.Photobooth(constraints, Main.numPhotos);
+            var pb:photobooth.Photobooth = new photobooth.Photobooth(constraints, Main.numPhotos, 1000);
 
             Main.ui.coinSlot.addEventListener("coin-insert", function(event:Event) {
                 Main.ui.start.children[0].className = "startButton-active";

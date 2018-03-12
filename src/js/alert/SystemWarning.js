@@ -3,7 +3,7 @@ var alert;
     /**
      * SystemWarning
      * Represents a warning/error message and displaying of warn/err-bar.
-     * @class Warning
+     * @class UserWarning
      */
     class SystemWarning extends alert.Warning {
         //----------------------------------------------------------------------

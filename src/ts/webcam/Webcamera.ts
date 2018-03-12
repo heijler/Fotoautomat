@@ -27,7 +27,6 @@ namespace webcam {
          * getCamera
          * Returns the promise that is returned from mediaDevices.getUserMedia().
          * @returns {(Promise <void | MediaStream>)} 
-         * @memberof Webcamera
          */
         private getCamera():Promise <any> {
             if(navigator.mediaDevices) {
@@ -46,7 +45,6 @@ namespace webcam {
          * getStreamPromise
          * Returns the promise which will resolve to the stream
          * @returns {Promise<MediaStream>} 
-         * @memberof Webcamera
          */
         public async getStreamPromise():Promise<MediaStream> {
             return await this.getCamera();

@@ -503,3 +503,17 @@ video {
         bottom: 0vh;
     }
 }
+/* FOR DEBUG
+#canvas {
+    display:block;
+    position: absolute;
+    height:50%;
+    right:0;
+}
+
+#tempCanvas {
+    display: block;
+    position: absolute;
+    height: 50%;
+    right: 110px;
+}*/

@@ -27,7 +27,6 @@ var webcam;
          * getCamera
          * Returns the promise that is returned from mediaDevices.getUserMedia().
          * @returns {(Promise <void | MediaStream>)}
-         * @memberof Webcamera
          */
         getCamera() {
             if (navigator.mediaDevices) {
@@ -45,7 +44,6 @@ var webcam;
          * getStreamPromise
          * Returns the promise which will resolve to the stream
          * @returns {Promise<MediaStream>}
-         * @memberof Webcamera
          */
         getStreamPromise() {
             return __awaiter(this, void 0, void 0, function* () {

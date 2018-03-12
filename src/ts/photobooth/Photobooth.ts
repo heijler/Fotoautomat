@@ -16,17 +16,20 @@ namespace photobooth {
         public  width:number  = 0;
         public  height:number = 0;
         private numPhotos:number = 0;
+        private delay:number = 2000;
         private photos:number = 0;
         private img:HTMLImageElement;
         private pdf:any;
+        private reflection:ui.Reflection;
     
         //----------------------------------------------------------------------
         // Constructor
         //----------------------------------------------------------------------
         
-        public constructor(constraints:webcam.WebcameraSettings, numPhotos:number) {
+        public constructor(constraints:webcam.WebcameraSettings, numPhotos:number, delay:number) {
             this.constraints = constraints;
             this.numPhotos = numPhotos;
+            this.delay = delay;
             this.pdf = new jsPDF();
             this.init();
         }
@@ -38,15 +41,14 @@ namespace photobooth {
         /**
          * Init
          * Get the promise from webcamera and resolve to video
-         * @memberof Photobooth
          */
         private init():void {
             var cam = new webcam.Webcamera(this.constraints);
             var stream = cam.getStreamPromise();
             stream.then((stream:MediaStream) => {
-                var reflection = new ui.Reflection(stream);
-                this.width = reflection.width;
-                this.height = reflection.height;
+                this.reflection = new ui.Reflection(stream);
+                this.width = this.reflection.width;
+                this.height = this.reflection.height;
                 this.setCanvasSize();
             })
             .catch((err:Error) => {
@@ -57,18 +59,57 @@ namespace photobooth {
         /**
          * captureImages
          * Writes image data to canvas and fetches the image DataURI
-         * @memberof Photobooth
          */
         public captureImages():void {
+            this.clearCanvases();
+            this.clearImage();
             var counter = 0;
             var interval = setInterval(function() {
                 this.captureFrame();
                 counter++;
                 if (counter == this.numPhotos) {
+                    console.log("inside counter");
                     clearInterval(interval);
                     setTimeout(this.assignStripToElement.bind(this), 2000);
                 }
-            }.bind(this), 5000);
+            }.bind(this), this.delay);
+        }
+
+
+        /**
+         * clearImages
+         * Call clearing methods
+         */
+        private clearImages():void {
+            this.clearCanvases();
+            this.clearImage();
+            this.photos = 0;
+        }
+
+        /**
+         * clearCanvases
+         * Clears both the single photo canvas (tempcanvas) and the photostrip canvas (canvas)
+         */
+        private clearCanvases():void {
+            Main.ui.tempCanvas.getContext("2d").clearRect(0, 0, Main.ui.tempCanvas.width, Main.ui.tempCanvas.height);
+            Main.ui.canvas.getContext("2d").clearRect(0, 0, Main.ui.canvas.width, Main.ui.canvas.height);
+            this.width = this.reflection.width;
+            this.height = this.reflection.height;
+            this.setCanvasSize(); 
+
+        }
+
+        /**
+         * clearImage
+         * Removes imagestrip element if it exists
+         */
+        private clearImage():void {
+            if (this.img) {
+                console.log("image exists");
+                this.img.parentElement.classList.remove("slideDownStrip");
+                this.img.parentElement.removeChild(this.img);
+                this.img.src = "";
+            }
         }
 
         /**
@@ -97,6 +138,7 @@ namespace photobooth {
             var img:HTMLImageElement = new Image();
                 img.src = imgBase64;
                 img.addEventListener("load", function() {
+                    console.log("img load")
                     Main.ui.canvas.getContext("2d").drawImage(img, 20, 20 + (this.photos * this.height) + (20 * this.photos));
                     this.photos++;
                 }.bind(this));
@@ -187,7 +229,6 @@ namespace photobooth {
          * savePhotostripImage
          * Creates a blob, and assigns it to the download button
          * @private
-         * @memberof Photobooth
          */
         private savePhotostripImage():void {
             var downloadBtn:any = document.getElementById("exportOptions").children[0];
@@ -224,7 +265,6 @@ namespace photobooth {
          * Returns a string in format: YYYY-MM-DD_HH.mm
          * @private
          * @returns {string} 
-         * @memberof Photobooth
          */
         private getCurrentDateTime():string {
             var date = new Date();

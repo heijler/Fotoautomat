@@ -1,5 +1,10 @@
 var ui;
 (function (ui) {
+    /**
+    * UI
+    * Represents the UI
+    * @class UI
+    */
     class UI {
         //----------------------------------------------------------------------
         // Constructor

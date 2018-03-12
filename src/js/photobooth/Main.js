@@ -12,13 +12,12 @@ var photobooth;
          * init
          * Assigns DOM-element references to properties and instantiates the photobooth
          * @static
-         * @memberof Main
          */
         static init() {
             Main.ui = new ui.PhotoboothUI();
             Main.ui.init();
             var constraints = new webcam.WebcameraSettings();
-            var pb = new photobooth.Photobooth(constraints, Main.numPhotos);
+            var pb = new photobooth.Photobooth(constraints, Main.numPhotos, 1000);
             Main.ui.coinSlot.addEventListener("coin-insert", function (event) {
                 Main.ui.start.children[0].className = "startButton-active";
             });

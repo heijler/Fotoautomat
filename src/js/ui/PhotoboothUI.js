@@ -1,9 +1,9 @@
 var ui;
 (function (ui) {
     /**
-     * Reflection
-     * Represents the reflection/mirror
-     * @class Reflection
+     * PhotoboothUI
+     * Represents the PhotoboothUI
+     * @class PhotoboothUI
      */
     class PhotoboothUI extends ui.UI {
         //----------------------------------------------------------------------
