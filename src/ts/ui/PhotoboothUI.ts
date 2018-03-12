@@ -1,8 +1,8 @@
 namespace ui {
     /** 
-     * Reflection
-     * Represents the reflection/mirror
-     * @class Reflection
+     * PhotoboothUI
+     * Represents the PhotoboothUI
+     * @class PhotoboothUI
      */
     export class PhotoboothUI extends UI {
         //----------------------------------------------------------------------

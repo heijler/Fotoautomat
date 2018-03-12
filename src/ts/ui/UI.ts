@@ -1,4 +1,9 @@
-namespace ui {
+namespace ui {    
+    /** 
+    * UI
+    * Represents the UI
+    * @class UI
+    */
     export abstract class UI {
         //----------------------------------------------------------------------
         // Properties

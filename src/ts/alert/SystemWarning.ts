@@ -2,7 +2,7 @@ namespace alert {
     /**
      * SystemWarning
      * Represents a warning/error message and displaying of warn/err-bar.
-     * @class Warning
+     * @class UserWarning
      */
     export class SystemWarning extends Warning {
         //----------------------------------------------------------------------

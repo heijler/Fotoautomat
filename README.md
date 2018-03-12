@@ -1,5 +1,5 @@
 # Fotoautomat
-A photo booth in the browser based on Web APIs, canvas and PHP.
+A photo booth in the browser based on Web APIs, canvas and using jsPDF.
 
 Ideal resolution: 1920x1080 (HD)
 Will most likely result in webcams max resolution.
@@ -35,3 +35,6 @@ tsc -p tsconfig.json
     - WebcameraSettings - Represents the settings for the MediaDevice
     - IWebcamSetting - Interface for webcamerasettings
 
+
+## About
+This project was constructed for the course Webbteknik 6 (Web technology 6 - 1ME326), taught by Henrik Andersen and administered by the department of [Media Technology] (https://lnu.se/mot-linneuniversitetet/Organisation/fakulteten-for-teknik/mot-fakulteten/medieteknik/) at [Linnaeus University](https://lnu.se) in Växjö, Sweden.
