@@ -26,16 +26,16 @@ var ui;
             this.posX = x;
             this.posY = y;
             this.ui = photobooth.Main.ui;
-            this.renderShelfItem();
+            this.renderCoin();
         }
         //----------------------------------------------------------------------
         // Methods
         //----------------------------------------------------------------------
         /**
-         * renderShelfItem
+         * renderCoin
          * Starting point for the class.
          */
-        renderShelfItem() {
+        renderCoin() {
             this.createElements();
         }
         /**

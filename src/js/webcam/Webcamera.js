@@ -36,6 +36,7 @@ var webcam;
                     return mediaStream;
                 })
                     .catch(function (err) {
+                    console.log(err);
                     var warn = new alert.UserWarning(err);
                 });
             }

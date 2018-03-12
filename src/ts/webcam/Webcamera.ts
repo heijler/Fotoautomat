@@ -36,6 +36,7 @@ namespace webcam {
                     return mediaStream;
                 })
                 .catch(function(err:Error){
+                    console.log(err);
                     var warn = new alert.UserWarning(err);
                 });
             }
