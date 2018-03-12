@@ -23,16 +23,15 @@ var photobooth;
             });
             Main.ui.start.children[0].addEventListener("start-pressed", function (event) {
                 pb.captureImages();
+                Main.ui.start.children[0].className = "startButton-inactive";
             });
             Main.ui.export.addEventListener("photostrip-generated", function (event) {
                 console.log("photostrip generated");
             });
             Main.ui.export.addEventListener("save-pdf", function () {
-                console.log("main, save pdf");
                 pb.savePhotostripPDF();
             });
             Main.ui.export.addEventListener("print-pdf", function () {
-                console.log("main, print pdf");
                 pb.printPhotostripPDF();
             });
         }
@@ -41,7 +40,7 @@ var photobooth;
     // Properties
     //----------------------------------------------------------------------
     Main.ui = null;
-    Main.numPhotos = 10;
+    Main.numPhotos = 4;
     photobooth.Main = Main;
 })(photobooth || (photobooth = {}));
 window.addEventListener("load", photobooth.Main.init, false);

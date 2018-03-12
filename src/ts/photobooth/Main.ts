@@ -35,6 +35,7 @@ namespace photobooth {
 
             Main.ui.start.children[0].addEventListener("start-pressed", function(event:Event) {
                 pb.captureImages();
+                Main.ui.start.children[0].className = "startButton-inactive";
             });
 
             Main.ui.export.addEventListener("photostrip-generated", function(event:Event) {
@@ -42,12 +43,10 @@ namespace photobooth {
             });
 
             Main.ui.export.addEventListener("save-pdf", function(){
-                console.log("main, save pdf");
                 pb.savePhotostripPDF();
             });
 
             Main.ui.export.addEventListener("print-pdf", function(){
-                console.log("main, print pdf");
                 pb.printPhotostripPDF();
             });
         }
