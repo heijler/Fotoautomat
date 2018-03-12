@@ -41,7 +41,7 @@ var photobooth;
     // Properties
     //----------------------------------------------------------------------
     Main.ui = null;
-    Main.numPhotos = 4;
+    Main.numPhotos = 10;
     photobooth.Main = Main;
 })(photobooth || (photobooth = {}));
 window.addEventListener("load", photobooth.Main.init, false);
