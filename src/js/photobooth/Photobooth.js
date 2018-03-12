@@ -32,9 +32,7 @@ var photobooth;
             var stream = cam.getStreamPromise();
             stream.then((stream) => {
                 this.reflection = new ui.Reflection(stream);
-                this.width = this.reflection.width;
-                this.height = this.reflection.height;
-                this.setCanvasSize();
+                this.prepareCanvas();
             })
                 .catch((err) => {
                 var warn = new alert.SystemWarning(err);
@@ -51,11 +49,19 @@ var photobooth;
                 this.captureFrame();
                 counter++;
                 if (counter == this.numPhotos) {
-                    console.log("inside counter");
                     clearInterval(interval);
                     setTimeout(this.assignStripToElement.bind(this), 2000);
                 }
             }.bind(this), this.delay);
+        }
+        /**
+         * prepareCanvas
+         * Set properties and call setCanvasSize
+         */
+        prepareCanvas() {
+            this.width = this.reflection.width;
+            this.height = this.reflection.height;
+            this.setCanvasSize();
         }
         /**
          * clearImages
@@ -73,9 +79,7 @@ var photobooth;
         clearCanvases() {
             photobooth.Main.ui.tempCanvas.getContext("2d").clearRect(0, 0, photobooth.Main.ui.tempCanvas.width, photobooth.Main.ui.tempCanvas.height);
             photobooth.Main.ui.canvas.getContext("2d").clearRect(0, 0, photobooth.Main.ui.canvas.width, photobooth.Main.ui.canvas.height);
-            this.width = this.reflection.width;
-            this.height = this.reflection.height;
-            this.setCanvasSize();
+            this.prepareCanvas();
         }
         /**
          * clearImage
@@ -162,8 +166,8 @@ var photobooth;
             photobooth.Main.ui.canvas.height = (this.height * this.numPhotos) + ((this.numPhotos + 1) * 20);
             photobooth.Main.ui.canvas.width = this.width + 40;
             var ctx = photobooth.Main.ui.canvas.getContext("2d");
-            // Fill canvas with white.
-            ctx.fillStyle = "#ffffff";
+            // Fill canvas.
+            ctx.fillStyle = "#000000";
             ctx.rect(0, 0, this.width + 40, (this.height * this.numPhotos) + ((this.numPhotos + 1) * 20));
             ctx.fill();
         }

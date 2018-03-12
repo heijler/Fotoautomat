@@ -47,9 +47,7 @@ namespace photobooth {
             var stream = cam.getStreamPromise();
             stream.then((stream:MediaStream) => {
                 this.reflection = new ui.Reflection(stream);
-                this.width = this.reflection.width;
-                this.height = this.reflection.height;
-                this.setCanvasSize();
+                this.prepareCanvas();
             })
             .catch((err:Error) => {
                 var warn = new alert.SystemWarning(err);
@@ -73,6 +71,16 @@ namespace photobooth {
             }.bind(this), this.delay);
         }
 
+        /**
+         * prepareCanvas
+         * Set properties and call setCanvasSize
+         */
+        private prepareCanvas():void {
+            this.width = this.reflection.width;
+            this.height = this.reflection.height;
+            this.setCanvasSize();
+        }
+
 
         /**
          * clearImages
@@ -91,10 +99,7 @@ namespace photobooth {
         private clearCanvases():void {
             Main.ui.tempCanvas.getContext("2d").clearRect(0, 0, Main.ui.tempCanvas.width, Main.ui.tempCanvas.height);
             Main.ui.canvas.getContext("2d").clearRect(0, 0, Main.ui.canvas.width, Main.ui.canvas.height);
-            this.width = this.reflection.width;
-            this.height = this.reflection.height;
-            this.setCanvasSize(); 
-
+            this.prepareCanvas();
         }
 
         /**
@@ -195,8 +200,8 @@ namespace photobooth {
             Main.ui.canvas.width = this.width + 40;
             
             var ctx = Main.ui.canvas.getContext("2d");
-            // Fill canvas with white.
-            ctx.fillStyle = "#ffffff";
+            // Fill canvas.
+            ctx.fillStyle = "#000000";
             ctx.rect(0, 0, this.width + 40, (this.height * this.numPhotos) + ((this.numPhotos + 1) * 20));
             ctx.fill();
         }
