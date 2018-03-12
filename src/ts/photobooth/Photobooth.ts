@@ -61,8 +61,7 @@ namespace photobooth {
          * Writes image data to canvas and fetches the image DataURI
          */
         public captureImages():void {
-            this.clearCanvases();
-            this.clearImage();
+            this.clearImages();
             var counter = 0;
             var interval = setInterval(function() {
                 this.captureFrame();
