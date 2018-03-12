@@ -11,7 +11,7 @@ namespace alert {
     
         protected warning:Error;
         private warningElement:HTMLElement;
-        private eventHandler = this.hideWarning.bind(this); //To keep a a reference to the function/method in the correct scope.
+        private eventHandler:any = this.hideWarning.bind(this); //To keep a a reference to the function/method in the correct scope.
     
         //----------------------------------------------------------------------
         // Constructor

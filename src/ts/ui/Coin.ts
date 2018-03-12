@@ -32,7 +32,7 @@ namespace ui {
             this.posX = x;
             this.posY = y;
             this.ui = photobooth.Main.ui;
-            this.renderShelfItem();
+            this.renderCoin();
         }
 
         //----------------------------------------------------------------------
@@ -41,10 +41,10 @@ namespace ui {
 
 
         /**
-         * renderShelfItem
+         * renderCoin
          * Starting point for the class.
          */
-        private renderShelfItem():void{
+        private renderCoin():void{
             this.createElements();
         }
 

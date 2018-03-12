@@ -40,7 +40,7 @@ namespace photobooth {
          * Get the promise from webcamera and resolve to video
          * @memberof Photobooth
          */
-        private init() {
+        private init():void {
             var cam = new webcam.Webcamera(this.constraints);
             var stream = cam.getStreamPromise();
             stream.then((stream:MediaStream) => {
