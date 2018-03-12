@@ -27,7 +27,7 @@ namespace photobooth {
             Main.ui.init();
 
             var constraints:webcam.WebcameraSettings = new webcam.WebcameraSettings();
-            var pb:photobooth.Photobooth = new photobooth.Photobooth(constraints, Main.numPhotos, 1000);
+            var pb:photobooth.Photobooth = new photobooth.Photobooth(constraints, Main.numPhotos, 4500);
 
             Main.ui.coinSlot.addEventListener("coin-insert", function(event:Event) {
                 Main.ui.start.children[0].className = "startButton-active";

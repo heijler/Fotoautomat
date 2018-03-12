@@ -67,7 +67,6 @@ namespace photobooth {
                 this.captureFrame();
                 counter++;
                 if (counter == this.numPhotos) {
-                    console.log("inside counter");
                     clearInterval(interval);
                     setTimeout(this.assignStripToElement.bind(this), 2000);
                 }
