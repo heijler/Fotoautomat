@@ -37,4 +37,4 @@ tsc -p tsconfig.json
 
 
 ## About
-This project was constructed for the course Webbteknik 6 (Web technology 6 - 1ME326), taught by Henrik Andersen and administered by the department of [Media Technology] (https://lnu.se/mot-linneuniversitetet/Organisation/fakulteten-for-teknik/mot-fakulteten/medieteknik/) at [Linnaeus University](https://lnu.se) in Växjö, Sweden.
+This project was constructed for the course Webbteknik 6 (Web technology 6 - 1ME326), taught by Henrik Andersen and administered by the department of [Media Technology](https://lnu.se/mot-linneuniversitetet/Organisation/fakulteten-for-teknik/mot-fakulteten/medieteknik/) at [Linnaeus University](https://lnu.se) in Växjö, Sweden.
