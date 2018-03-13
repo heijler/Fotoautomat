@@ -66,7 +66,7 @@ namespace photobooth {
                 counter++;
                 if (counter == this.numPhotos) {
                     clearInterval(interval);
-                    setTimeout(this.assignStripToElement.bind(this), 2000);
+                    setTimeout(this.assignStripToElement.bind(this), 2000); // Not optimal, should not depend on timeout..
                 }
             }.bind(this), this.delay);
         }
