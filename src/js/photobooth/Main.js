@@ -17,7 +17,7 @@ var photobooth;
             Main.ui = new ui.PhotoboothUI();
             Main.ui.init();
             var constraints = new webcam.WebcameraSettings();
-            var pb = new photobooth.Photobooth(constraints, Main.numPhotos, 4500);
+            var pb = new photobooth.Photobooth(constraints, Main.numPhotos, 500);
             Main.ui.coinSlot.addEventListener("coin-insert", function (event) {
                 Main.ui.start.children[0].className = "startButton-active";
             });

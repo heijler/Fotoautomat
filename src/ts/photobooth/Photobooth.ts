@@ -123,12 +123,18 @@ namespace photobooth {
         private captureFrame():void {
             this.simulatePhotography();
             var context:CanvasRenderingContext2D = photobooth.Main.ui.tempCanvas.getContext('2d');
-            var videoOffset:number = Math.abs(parseInt(Main.ui.video.style.marginLeft));
-            context.drawImage(photobooth.Main.ui.video, videoOffset, 0, this.width, this.height, 0, 0, this.width, this.height);
+            var fullWidth = Main.ui.video.videoWidth;
+            var cropWidth = (Main.ui.video.videoHeight / 5) * 4;
+            var videoOffset:number = fullWidth / 2 - cropWidth /2;
 
+            context.drawImage(
+                photobooth.Main.ui.video, 
+                videoOffset, 0, (Main.ui.video.videoHeight / 5) * 4, Main.ui.video.videoHeight, 
+                0, 0, this.width, this.height
+            );
+            
             var imgData:ImageData = context.getImageData(0, 0, this.width, this.height);
             context.putImageData(this.toGrayScale(imgData), 0, 0);
-
             this.drawFrameOnCanvas();
         }
 
